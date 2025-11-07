@@ -28,47 +28,36 @@ export const BracketConnections = () => {
     };
 
     const sketch = (p: p5) => {
-      const getCanvasSize = () => {
-        const parent = canvasRef.current?.parentElement;
-        const grid = document.getElementById("bracket-grid");
-        if (!parent || !grid) return { width: 0, height: 0 };
-
-        // Get the grid's actual rendered size and position
-        const gridRect = grid.getBoundingClientRect();
-        const parentRect = parent.getBoundingClientRect();
-
-        // Calculate total content size including scroll offset
-        const scrollLeft = parent.scrollLeft;
-        const scrollTop = parent.scrollTop;
-
-        // Total width/height needed is the furthest edge of content
-        const contentRight = gridRect.right - parentRect.left + scrollLeft;
-        const contentBottom = gridRect.bottom - parentRect.top + scrollTop;
-
-        // Use the larger of viewport or actual content
-        const width = Math.max(parent.clientWidth, contentRight);
-        const height = Math.max(parent.clientHeight, contentBottom);
-
-        return { width, height };
-      };
-
       p.setup = () => {
         const parent = canvasRef.current!.parentElement;
         if (!parent) return;
-        const { width, height } = getCanvasSize();
-        const canvas = p.createCanvas(width, height);
+        // Start with viewport size, will resize dynamically
+        const canvas = p.createCanvas(parent.clientWidth, parent.clientHeight);
         canvas.parent(canvasRef.current!);
       };
 
       p.draw = () => {
         p.clear();
+
+        // Dynamically resize canvas to cover all content before drawing
+        const parent = canvasRef.current?.parentElement;
+        if (parent) {
+          const neededWidth = parent.scrollWidth;
+          const neededHeight = parent.scrollHeight;
+
+          // Only resize if dimensions changed
+          if (p.width !== neededWidth || p.height !== neededHeight) {
+            p.resizeCanvas(neededWidth, neededHeight);
+          }
+        }
+
         drawConnections(p);
       };
 
       p.windowResized = () => {
-        const { width, height } = getCanvasSize();
-        if (width > 0 && height > 0) {
-          p.resizeCanvas(width, height);
+        const parent = canvasRef.current?.parentElement;
+        if (parent) {
+          p.resizeCanvas(parent.scrollWidth, parent.scrollHeight);
         }
       };
 
@@ -147,6 +136,6 @@ export const BracketConnections = () => {
   }, []);
 
   return (
-    <Box ref={canvasRef} position="absolute" top={0} left={0} width="100%" height="100%" pointerEvents="none" zIndex={0} />
+    <Box ref={canvasRef} position="absolute" top={0} left={0} width="1px" height="1px" pointerEvents="none" zIndex={0} />
   );
 };
