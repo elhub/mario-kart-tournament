@@ -167,7 +167,7 @@ function App() {
                 <List spacing={2}>
                   <ListItem>
                     <Text>
-                      📍 <strong>One match per day</strong>, every weekday
+                      📍 <strong>One race per day</strong>, every weekday
                     </Text>
                   </ListItem>
                   <ListItem>
@@ -198,11 +198,11 @@ function App() {
                   </ListItem>
                   <ListItem>
                     <Text>
-                      🏁 <strong>Top 2 finishers</strong> from each match advance to the next round
+                      🏁 <strong>Top 2 finishers</strong> from each race advance to the next round
                     </Text>
                   </ListItem>
                   <ListItem>
-                    <Text>🏁 Circuits and CC classes have been pre-selected for each match</Text>
+                    <Text>🏁 Circuits and CC classes have been pre-selected for each race</Text>
                   </ListItem>
                   <ListItem>
                     <Text>🏁 Choose your in-game character wisely - it could make all the difference!</Text>
