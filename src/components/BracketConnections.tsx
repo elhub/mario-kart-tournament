@@ -28,12 +28,35 @@ export const BracketConnections = () => {
     };
 
     const sketch = (p: p5) => {
+      const getCanvasSize = () => {
+        const parent = canvasRef.current?.parentElement;
+        const grid = document.getElementById("bracket-grid");
+        if (!parent || !grid) return { width: 0, height: 0 };
+
+        // Get the grid's actual rendered size and position
+        const gridRect = grid.getBoundingClientRect();
+        const parentRect = parent.getBoundingClientRect();
+
+        // Calculate total content size including scroll offset
+        const scrollLeft = parent.scrollLeft;
+        const scrollTop = parent.scrollTop;
+
+        // Total width/height needed is the furthest edge of content
+        const contentRight = gridRect.right - parentRect.left + scrollLeft;
+        const contentBottom = gridRect.bottom - parentRect.top + scrollTop;
+
+        // Use the larger of viewport or actual content
+        const width = Math.max(parent.clientWidth, contentRight);
+        const height = Math.max(parent.clientHeight, contentBottom);
+
+        return { width, height };
+      };
+
       p.setup = () => {
-        // Get the parent container size
         const parent = canvasRef.current!.parentElement;
         if (!parent) return;
-        // Use scrollWidth/scrollHeight to cover the entire scrollable content area
-        const canvas = p.createCanvas(parent.scrollWidth, parent.scrollHeight);
+        const { width, height } = getCanvasSize();
+        const canvas = p.createCanvas(width, height);
         canvas.parent(canvasRef.current!);
       };
 
@@ -43,10 +66,9 @@ export const BracketConnections = () => {
       };
 
       p.windowResized = () => {
-        const parent = canvasRef.current?.parentElement;
-        if (parent) {
-          // Resize to cover the entire scrollable content area
-          p.resizeCanvas(parent.scrollWidth, parent.scrollHeight);
+        const { width, height } = getCanvasSize();
+        if (width > 0 && height > 0) {
+          p.resizeCanvas(width, height);
         }
       };
 

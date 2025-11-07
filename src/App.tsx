@@ -56,7 +56,7 @@ function App() {
       px={8}
       position="relative"
       overflow="auto"
-      backgroundImage="url('/mario-kart-tournament/emkwt-bg-3.jpg')"
+      backgroundImage="url('/mario-kart-tournament/emkwt-bg-4.jpg')"
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -75,6 +75,7 @@ function App() {
     >
       <BracketConnections />
       <Grid
+        id="bracket-grid"
         templateColumns="repeat(7, 1fr)"
         templateRows="repeat(4, 1fr)"
         w="full"
