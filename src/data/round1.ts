@@ -181,7 +181,7 @@ export const round1: Round = {
       id: "m4",
       date: "Thursday, December 4th 2025",
       time: "11:30 AM",
-      circuit: "Star Cup",
+      circuit: "Shell Cup",
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
