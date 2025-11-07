@@ -52,6 +52,24 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roun
     }
   };
 
+  // Helper function to get background color for qualified players
+  const getPlayerBg = (player: Player, isHovered: boolean) => {
+    if (!match.isFinished || !player.position) {
+      return isHovered ? useColorModeValue("gray.50", "gray.600") : "transparent";
+    }
+
+    // 1st and 2nd place get highlighted backgrounds
+    if (player.position === 1) {
+      return isHovered ? useColorModeValue("yellow.300", "yellow.700") : useColorModeValue("yellow.200", "yellow.800");
+    }
+    if (player.position === 2) {
+      return isHovered ? useColorModeValue("blue.300", "blue.700") : useColorModeValue("blue.200", "blue.800");
+    }
+
+    // 3rd and 4th place remain normal
+    return isHovered ? useColorModeValue("gray.50", "gray.600") : "transparent";
+  };
+
   return (
     <Box position="relative" my="auto">
       {rowIndex === 0 && (
@@ -98,28 +116,35 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roun
 
         {/* Players Section */}
         <VStack spacing={0} /* py={2} */ align="stretch" borderY="1px solid" borderColor={border}>
-          {match.players.map((p, index) => (
-            <Box
-              key={p.id}
-              w="full"
-              py={0}
-              px={3}
-              borderBottom={index < match.players.length - 1 ? "1px solid" : "none"}
-              borderColor={border}
-              _hover={{ bg: useColorModeValue("gray.50", "gray.600"), cursor: p.description ? "pointer" : "default" }}
-              transition="background 0.2s"
-              onClick={() => handlePlayerClick(p)}
-              data-player-id={p.id}
-              data-position={p.position}
-            >
-              <HStack justify="space-between" w="full">
-                <Text fontWeight="semibold" fontSize="sm">
-                  {p.name}
-                </Text>
-                {match.isFinished && p.position && <Text fontSize="lg">{getPositionEmoji(p.position)}</Text>}
-              </HStack>
-            </Box>
-          ))}
+          {match.players.map((p, index) => {
+            const [isHovered, setIsHovered] = useState(false);
+
+            return (
+              <Box
+                key={p.id}
+                w="full"
+                py={0}
+                px={3}
+                borderBottom={index < match.players.length - 1 ? "1px solid" : "none"}
+                borderColor={border}
+                bg={getPlayerBg(p, isHovered)}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                cursor={p.description ? "pointer" : "default"}
+                transition="background 0.2s"
+                onClick={() => handlePlayerClick(p)}
+                data-player-id={p.id}
+                data-position={p.position}
+              >
+                <HStack justify="space-between" w="full">
+                  <Text fontWeight="semibold" fontSize="sm">
+                    {p.name}
+                  </Text>
+                  {match.isFinished && p.position && <Text fontSize="lg">{getPositionEmoji(p.position)}</Text>}
+                </HStack>
+              </Box>
+            );
+          })}
         </VStack>
 
         {/* Footer Section - Circuit & CC */}

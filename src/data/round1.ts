@@ -11,7 +11,7 @@ export const round1: Round = {
       circuit: "Mushroom Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       players: [
         {
           id: "p1",
@@ -70,7 +70,7 @@ export const round1: Round = {
       circuit: "Flower Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       players: [
         {
           id: "p5",
