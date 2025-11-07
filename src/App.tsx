@@ -1,4 +1,22 @@
-import { Box, Grid } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  VStack,
+  Text,
+  Heading,
+  Divider,
+  List,
+  ListItem,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import type { Tournament } from "@/types";
 import { Round } from "@/components/Round";
 import { BracketConnections } from "@/components/BracketConnections";
@@ -13,6 +31,8 @@ const tournament: Tournament = {
 };
 
 function App() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const roundOfSixteenPart1 = {
     ...tournament.rounds[0],
     matches: tournament.rounds[0].matches.slice(0, 4),
@@ -73,6 +93,181 @@ function App() {
         pointerEvents: "none",
       }}
     >
+      {/* Rules Button */}
+      <Button
+        position="fixed"
+        top="75%"
+        left="50%"
+        transform="translate(-50%, -50%)"
+        zIndex={10}
+        colorScheme="blue"
+        size="lg"
+        onClick={onOpen}
+        leftIcon={<Text>📋</Text>}
+        boxShadow="xl"
+      >
+        Tournament Rules
+      </Button>
+
+      {/* Rules Modal */}
+      <Modal isOpen={isOpen} onClose={onClose} size="2xl" scrollBehavior="inside">
+        <ModalOverlay backdropFilter="blur(4px)" />
+        <ModalContent bg={useColorModeValue("white", "gray.800")} maxH="90vh">
+          <ModalHeader bg={useColorModeValue("blue.500", "blue.600")} color="white" borderTopRadius="md">
+            <VStack align="start" spacing={1}>
+              <Heading size="lg">🏁 ELHUB MARIO KART WORLD CHRISTMAS TOURNAMENT 2025 🏆</Heading>
+            </VStack>
+          </ModalHeader>
+          <ModalCloseButton color="white" />
+          <ModalBody py={6}>
+            <VStack align="stretch" spacing={6}>
+              <Box>
+                <Text fontSize="lg" fontWeight="bold" mb={2}>
+                  Hey Elhub Racers! 🎮
+                </Text>
+                <Text>
+                  Get ready to put your driving skills to the ultimate test! We're excited to announce the{" "}
+                  <strong>Elhub Mario Kart World Christmas Tournament</strong> - where 32 of Elhub's finest racers will go
+                  head-to-head in an epic battle for glory!
+                </Text>
+              </Box>
+
+              <Divider />
+
+              <Box>
+                <Heading size="md" mb={3}>
+                  🎯 What's at Stake?
+                </Heading>
+                <List spacing={2}>
+                  <ListItem>
+                    <Text>
+                      ✅ Only <strong>32 spots available</strong> - first come, first served!
+                    </Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>✅ Showcase your unique racing abilities and special skills</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>
+                      ✅ <strong>Podium prizes</strong> for our top champions
+                    </Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>✅ Bragging rights that'll last well into 2026!</Text>
+                  </ListItem>
+                </List>
+              </Box>
+
+              <Divider />
+
+              <Box>
+                <Heading size="md" mb={3}>
+                  📅 Tournament Schedule
+                </Heading>
+                <List spacing={2}>
+                  <ListItem>
+                    <Text>
+                      📍 <strong>One match per day</strong>, every weekday
+                    </Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>📍 December 1st - December 19th</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>
+                      📍 <strong>Time:</strong> 11:30 AM sharp (don't be late!)
+                    </Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>
+                      📍 <strong>Location:</strong> Huben
+                    </Text>
+                  </ListItem>
+                </List>
+              </Box>
+
+              <Divider />
+
+              <Box>
+                <Heading size="md" mb={3}>
+                  🏎️ Tournament Format
+                </Heading>
+                <List spacing={2}>
+                  <ListItem>
+                    <Text>🏁 Single elimination bracket</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>
+                      🏁 <strong>Top 2 finishers</strong> from each match advance to the next round
+                    </Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>🏁 Circuits and CC classes have been pre-selected for each match</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Text>🏁 Choose your in-game character wisely - it could make all the difference!</Text>
+                  </ListItem>
+                </List>
+              </Box>
+
+              <Divider />
+
+              <Box>
+                <Heading size="md" mb={3}>
+                  📊 Check Out the Brackets!
+                </Heading>
+                <Text>
+                  You're already viewing the full tournament bracket! Explore the matchups, track your favorite racers, and
+                  plan your path to victory. Click on player names to see their unique abilities and racing styles!
+                </Text>
+              </Box>
+
+              <Divider />
+
+              <Box bg={useColorModeValue("red.50", "red.900")} p={4} borderRadius="md" borderLeft="4px solid red">
+                <Heading size="md" mb={3} color={useColorModeValue("red.700", "red.300")}>
+                  ⚠️ MOST IMPORTANT: REGISTRATION MEETING
+                </Heading>
+                <Text fontWeight="bold" mb={2}>
+                  Attendance is MANDATORY to secure your spot!
+                </Text>
+                <Text mb={2}>📍 First Info Meeting: TBA</Text>
+                <Text>
+                  Registration happens at the first info meeting - <strong>if you're not there, you're not racing!</strong>{" "}
+                  With only 32 spots available, don't miss your chance to compete.
+                </Text>
+              </Box>
+
+              <Divider />
+
+              <Box>
+                <Heading size="md" mb={3}>
+                  ⚡ Quick Facts
+                </Heading>
+                <List spacing={2}>
+                  <ListItem>✅ 32 racers enter, 1 champion emerges</ListItem>
+                  <ListItem>✅ Daily races at 11:30 AM</ListItem>
+                  <ListItem>✅ Pre-selected circuits and CC classes</ListItem>
+                  <ListItem>✅ Prizes for the podium</ListItem>
+                  <ListItem>✅ Register at the info meeting - BE THERE!</ListItem>
+                </List>
+              </Box>
+
+              <Box textAlign="center" py={4}>
+                <Text fontSize="xl" fontWeight="bold">
+                  May the blue shells be ever in your favor! 🐢💨
+                </Text>
+                <Text fontSize="sm" color={useColorModeValue("gray.600", "gray.400")} mt={2}>
+                  See you on the track,
+                  <br />
+                  <strong>The Tournament Committee</strong>
+                </Text>
+              </Box>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
       <BracketConnections />
       <Grid
         id="bracket-grid"
