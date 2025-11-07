@@ -30,10 +30,12 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roun
   const matchNumber = match.id.replace(/\D/g, "");
 
   const handlePlayerClick = (player: Player) => {
-    if (player.description) {
-      setSelectedPlayer(player);
-      onOpen();
+    // Don't open modal for placeholder players (Player X format) or players without description
+    if (!player.description || player.name.match(/^Player \d+$/)) {
+      return;
     }
+    setSelectedPlayer(player);
+    onOpen();
   };
 
   // Helper function to get position emoji
@@ -118,6 +120,8 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roun
         <VStack spacing={0} /* py={2} */ align="stretch" borderY="1px solid" borderColor={border}>
           {match.players.map((p, index) => {
             const [isHovered, setIsHovered] = useState(false);
+            const isPlaceholder = p.name.match(/^Player \d+$/);
+            const isClickable = p.description && !isPlaceholder;
 
             return (
               <Box
@@ -130,7 +134,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roun
                 bg={getPlayerBg(p, isHovered)}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                cursor={p.description ? "pointer" : "default"}
+                cursor={isClickable ? "pointer" : "default"}
                 transition="background 0.2s"
                 onClick={() => handlePlayerClick(p)}
                 data-player-id={p.id}
