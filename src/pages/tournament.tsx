@@ -56,7 +56,7 @@ export default function BracketPage() {
       pt={8}
       px={8}
       position="relative"
-      backgroundImage="url('/user-interface-starter-template/emkwt-bg-3.jpg')"
+      backgroundImage="url('/mario-kart-tournament/emkwt-bg-3.jpg')"
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"

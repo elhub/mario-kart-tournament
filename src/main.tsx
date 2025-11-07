@@ -15,7 +15,7 @@ ReactDOM.createRoot(root!).render(
   <StrictMode>
     <NuqsAdapter>
       <ChakraProvider>
-        <BrowserRouter basename="/user-interface-starter-template">
+        <BrowserRouter basename="/mario-kart-tournament">
           <Routes>
             <Route element={<RootLayout />}>
               <Route index element={<App />} errorElement={<Error />} />

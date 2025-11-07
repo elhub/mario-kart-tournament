@@ -1,4 +1,4 @@
-# user-interface-starter-template
+# mario-kart-tournament
 
 Bootstrapped with
 
