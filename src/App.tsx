@@ -53,7 +53,7 @@ function App() {
       h="100vh"
       w="100vw"
       pt={8}
-      px={8}
+      pb={8}
       position="relative"
       overflow="auto"
       backgroundImage="url('/mario-kart-tournament/emkwt-bg-4.jpg')"
@@ -81,6 +81,7 @@ function App() {
         w="full"
         gap={8}
         my={8}
+        mx={8}
         position="relative"
         zIndex={1}
       >
