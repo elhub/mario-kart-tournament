@@ -1,0 +1,26 @@
+{
+  "typedocOptions": {
+    "out": "doc/typedoc"
+  },
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "noImplicitAny": true,
+    "noEmit": true,
+    "module": "ES2020",
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "types": ["react", "@types/node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "moduleResolution": "bundler"
+  },
+  "src": "./react"
+}

@@ -1,0 +1,202 @@
+import {
+  Box,
+  VStack,
+  Text,
+  useColorModeValue,
+  Heading,
+  HStack,
+  Badge,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import type { Match, Player } from "@/types";
+
+export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roundName: string; rowIndex: number }) => {
+  const bg = useColorModeValue("white", "gray.700");
+  const border = useColorModeValue("gray.400", "gray.700");
+  const headerBg = useColorModeValue("blue.50", "blue.900");
+  const footerBg = useColorModeValue("gray.50", "gray.800");
+  const labelColor = useColorModeValue("gray.600", "gray.400");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
+
+  // Extract match number from id (e.g., "m1" -> "1")
+  const matchNumber = match.id.replace(/\D/g, "");
+
+  const handlePlayerClick = (player: Player) => {
+    if (player.description) {
+      setSelectedPlayer(player);
+      onOpen();
+    }
+  };
+
+  // Helper function to get position emoji
+  const getPositionEmoji = (position?: number) => {
+    switch (position) {
+      case 1:
+        return "🥇";
+      case 2:
+        return "🥈";
+      case 3:
+        return "🥉";
+      case 4:
+        return "4️⃣";
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <Box position="relative" my="auto">
+      {rowIndex === 0 && (
+        <Heading position="absolute" top="-35px" w="210px" size="md" color="gray.700" textAlign="center">
+          {roundName}
+        </Heading>
+      )}
+      <Box
+        position="relative"
+        id={match.id}
+        w="210px"
+        /* h="fit-content" */
+        borderWidth="1px"
+        borderColor={border}
+        borderRadius="lg"
+        bg={bg}
+        boxShadow="2xl"
+        overflow="hidden"
+      >
+        {/* Finished Race Flag */}
+        {match.isFinished && (
+          <Box position="absolute" top={0} right={1} fontSize="xl" zIndex={1} className="finished-flag">
+            🏁
+          </Box>
+        )}
+
+        {/* Header Section - Match Info */}
+        <Box bg={headerBg} px={3} py={2} borderBottom="1px solid" borderColor={border}>
+          <VStack spacing={0} align="start">
+            <Text fontSize="xs" fontWeight="bold" color={labelColor}>
+              Match {matchNumber}
+            </Text>
+            <Text fontSize="xs" fontWeight="medium">
+              {match.date}
+            </Text>
+            <Text fontSize="xs" color={labelColor}>
+              {match.time}
+            </Text>
+            <Text fontSize="xs" fontWeight="medium">
+              @{match.location}
+            </Text>
+          </VStack>
+        </Box>
+
+        {/* Players Section */}
+        <VStack spacing={0} /* py={2} */ align="stretch" borderY="1px solid" borderColor={border}>
+          {match.players.map((p, index) => (
+            <Box
+              key={p.id}
+              w="full"
+              py={0}
+              px={3}
+              borderBottom={index < match.players.length - 1 ? "1px solid" : "none"}
+              borderColor={border}
+              _hover={{ bg: useColorModeValue("gray.50", "gray.600"), cursor: p.description ? "pointer" : "default" }}
+              transition="background 0.2s"
+              onClick={() => handlePlayerClick(p)}
+              data-player-id={p.id}
+              data-position={p.position}
+            >
+              <HStack justify="space-between" w="full">
+                <Text fontWeight="semibold" fontSize="sm">
+                  {p.name}
+                </Text>
+                {match.isFinished && p.position && <Text fontSize="lg">{getPositionEmoji(p.position)}</Text>}
+              </HStack>
+            </Box>
+          ))}
+        </VStack>
+
+        {/* Footer Section - Circuit & CC */}
+        <Box bg={footerBg} px={3} py={2} borderTop="1px solid" borderColor={border}>
+          <HStack justify="space-between" spacing={2}>
+            <VStack align="start" spacing={0} flex={1}>
+              <Text fontSize="xs" color={labelColor}>
+                Circuit
+              </Text>
+              <Badge colorScheme="purple" fontSize="2xs">
+                {match.circuit}
+              </Badge>
+            </VStack>
+            <VStack align="end" spacing={0} flex={1}>
+              <Text fontSize="xs" color={labelColor}>
+                CC
+              </Text>
+              <Badge colorScheme="green" fontSize="2xs">
+                {match.cc}
+              </Badge>
+            </VStack>
+          </HStack>
+        </Box>
+
+        {/* Player Info Modal */}
+        <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
+          <ModalOverlay backdropFilter="blur(4px)" />
+          <ModalContent bg={useColorModeValue("white", "gray.800")} borderRadius="2xl" boxShadow="2xl" mx={4}>
+            <ModalHeader bg={useColorModeValue("blue.500", "blue.600")} color="white" borderTopRadius="2xl" py={6}>
+              <VStack align="start" spacing={2}>
+                <HStack>
+                  <Text fontSize="3xl">🏎️</Text>
+                  <Heading size="lg">{selectedPlayer?.name}</Heading>
+                </HStack>
+                <Badge colorScheme="yellow" fontSize="sm" px={3} py={1} borderRadius="full">
+                  Mario Kart Champion
+                </Badge>
+              </VStack>
+            </ModalHeader>
+            <ModalCloseButton color="white" size="lg" />
+            <ModalBody py={8} px={6}>
+              <VStack spacing={6} align="stretch">
+                <Box
+                  bg={useColorModeValue("blue.50", "blue.900")}
+                  p={6}
+                  borderRadius="xl"
+                  borderLeft="4px solid"
+                  borderColor="blue.500"
+                >
+                  <HStack mb={3}>
+                    <Text fontSize="2xl">⚡</Text>
+                    <Heading size="sm" color={useColorModeValue("blue.700", "blue.300")}>
+                      Unique Abilities
+                    </Heading>
+                  </HStack>
+                  <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
+                    {selectedPlayer?.description?.replace(/\{name\}/g, selectedPlayer.name)}
+                  </Text>
+                </Box>
+
+                {selectedPlayer?.attributes && selectedPlayer.attributes.length > 0 && (
+                  <HStack justify="center" spacing={4} pt={2} flexWrap="wrap">
+                    {selectedPlayer.attributes.map((attr, index) => (
+                      <VStack key={index}>
+                        <Text fontSize="3xl">{attr.emoji}</Text>
+                        <Text fontSize="xs" color={labelColor} textAlign="center">
+                          {attr.label}
+                        </Text>
+                      </VStack>
+                    ))}
+                  </HStack>
+                )}
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Box>
+    </Box>
+  );
+};

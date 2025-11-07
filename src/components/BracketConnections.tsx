@@ -1,0 +1,108 @@
+import { useEffect, useRef } from "react";
+import { Box } from "@chakra-ui/react";
+import p5 from "p5";
+
+export const BracketConnections = () => {
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const p5Instance = useRef<p5 | null>(null);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    // Match connection mapping: source match -> destination match
+    const matchConnections: Record<string, string> = {
+      m1: "m9",
+      m2: "m9",
+      m3: "m10",
+      m4: "m10",
+      m5: "m11",
+      m6: "m11",
+      m7: "m12",
+      m8: "m12",
+      m9: "m13",
+      m10: "m13",
+      m11: "m14",
+      m12: "m14",
+      m13: "m15",
+      m14: "m15",
+    };
+
+    const sketch = (p: p5) => {
+      p.setup = () => {
+        // Get the parent container size
+        const parent = canvasRef.current!.parentElement;
+        if (!parent) return;
+        const canvas = p.createCanvas(parent.scrollWidth, parent.scrollHeight);
+        canvas.parent(canvasRef.current!);
+      };
+
+      p.draw = () => {
+        p.clear();
+        drawConnections(p);
+      };
+
+      p.windowResized = () => {
+        const parent = canvasRef.current?.parentElement;
+        if (parent) {
+          p.resizeCanvas(parent.scrollWidth, parent.scrollHeight);
+        }
+      };
+
+      const drawConnections = (p: p5) => {
+        // Get the canvas container's bounding rect for offset calculation
+        const canvasContainer = canvasRef.current?.parentElement;
+        if (!canvasContainer) return;
+        const containerRect = canvasContainer.getBoundingClientRect();
+
+        // Iterate through all source matches
+        Object.entries(matchConnections).forEach(([sourceMatchId, targetMatchId]) => {
+          // Check if source match is finished
+          const sourceElement = document.getElementById(sourceMatchId);
+          if (!sourceElement) return;
+
+          // Check if match has finished flag
+          const finishedFlag = sourceElement.querySelector(".finished-flag");
+          if (!finishedFlag) return;
+
+          const targetElement = document.getElementById(targetMatchId);
+          if (!targetElement) return;
+
+          // Get positions relative to the container
+          const sourceRect = sourceElement.getBoundingClientRect();
+          const targetRect = targetElement.getBoundingClientRect();
+
+          // Calculate connection points relative to the canvas container
+          const startX = sourceRect.right - containerRect.left;
+          const startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
+          const endX = targetRect.left - containerRect.left;
+          const endY = targetRect.top - containerRect.top + targetRect.height / 2;
+
+          // Calculate control points for Bezier curve
+          const controlPointDistance = (endX - startX) / 2;
+          const cp1X = startX + controlPointDistance;
+          const cp1Y = startY;
+          const cp2X = endX - controlPointDistance;
+          const cp2Y = endY;
+
+          // Draw the curved line
+          p.strokeWeight(3);
+          p.stroke(10, 50, 70, 200); // Steel blue with some transparency
+          p.noFill();
+          p.bezier(startX, startY, cp1X, cp1Y, cp2X, cp2Y, endX, endY);
+        });
+      };
+    };
+
+    p5Instance.current = new p5(sketch);
+
+    return () => {
+      if (p5Instance.current) {
+        p5Instance.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <Box ref={canvasRef} position="absolute" top={0} left={0} width="100%" height="100%" pointerEvents="none" zIndex={0} />
+  );
+};
