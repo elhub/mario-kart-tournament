@@ -11,7 +11,7 @@ export const round2: Round = {
       circuit: "Flower Cup",
       cc: "100cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         { id: "p33", name: "Winner of Match 1", description: "" },
         { id: "p34", name: "Winner of Match 2", description: "" },
@@ -26,7 +26,7 @@ export const round2: Round = {
       circuit: "Star Cup",
       cc: "100cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         { id: "p37", name: "Winner of Match 3", description: "" },
         { id: "p38", name: "Winner of Match 4", description: "" },
@@ -41,7 +41,7 @@ export const round2: Round = {
       circuit: "Shell Cup",
       cc: "100cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         { id: "p41", name: "Winner of Match 5", description: "" },
         { id: "p42", name: "Winner of Match 6", description: "" },
@@ -56,7 +56,7 @@ export const round2: Round = {
       circuit: "Banana Cup",
       cc: "100cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         { id: "p45", name: "Winner of Match 7", description: "" },
         { id: "p46", name: "Winner of Match 8", description: "" },

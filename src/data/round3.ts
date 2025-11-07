@@ -11,7 +11,7 @@ export const round3: Round = {
       circuit: "Leaf Cup",
       cc: "150cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         { id: "p49", name: "Winner of Match 9", description: "" },
         { id: "p50", name: "Winner of Match 10", description: "" },
@@ -26,7 +26,7 @@ export const round3: Round = {
       circuit: "Lightning Cup",
       cc: "150cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         { id: "p53", name: "Winner of Match 11", description: "" },
         { id: "p54", name: "Winner of Match 12", description: "" },

@@ -11,11 +11,11 @@ export const round1: Round = {
       circuit: "Mushroom Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p1",
-          name: "Sander",
+          name: "Player 1",
           description:
             "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
           attributes: [
@@ -27,7 +27,7 @@ export const round1: Round = {
         },
         {
           id: "p2",
-          name: "Linn Victoria",
+          name: "Player 2",
           description:
             "Queen of Speed - {name}'s lightning-fast reflexes and tactical item usage leave opponents eating her dust on the straights.",
           attributes: [
@@ -39,7 +39,7 @@ export const round1: Round = {
         },
         {
           id: "p3",
-          name: "Truls",
+          name: "Player 3",
           description:
             "The Strategist - {name} calculates every shortcut and boost pad with mathematical precision, turning races into perfectly executed symphonies.",
           attributes: [
@@ -51,7 +51,7 @@ export const round1: Round = {
         },
         {
           id: "p4",
-          name: "Johan",
+          name: "Player 4",
           description:
             "Master of Chaos - {name} thrives in the mayhem, turning red shells and banana peels into opportunities for spectacular comebacks.",
           attributes: [
@@ -70,11 +70,11 @@ export const round1: Round = {
       circuit: "Flower Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p5",
-          name: "Christoffer",
+          name: "Player 5",
           description:
             "The Comeback Kid - {name} never gives up, using every mushroom and star to claw back from impossible positions.",
           attributes: [
@@ -86,7 +86,7 @@ export const round1: Round = {
         },
         {
           id: "p6",
-          name: "Mette",
+          name: "Player 6",
           description:
             "Rainbow Road Royalty - {name} navigates treacherous tracks with grace, making hairpin turns look effortless while others fall behind.",
           attributes: [
@@ -98,7 +98,7 @@ export const round1: Round = {
         },
         {
           id: "p7",
-          name: "Ada",
+          name: "Player 7",
           description:
             "The Perfectionist - {name}'s smooth racing lines and flawless mini-turbos create an unstoppable momentum that rivals fear.",
           attributes: [
@@ -110,7 +110,7 @@ export const round1: Round = {
         },
         {
           id: "p8",
-          name: "Alexander",
+          name: "Player 8",
           description:
             "Shell Shock Specialist - {name}'s uncanny ability to land triple red shells with surgical precision has earned him legendary status.",
           attributes: [
@@ -129,11 +129,11 @@ export const round1: Round = {
       circuit: "Star Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p9",
-          name: "Gard",
+          name: "Player 9",
           description:
             "The Guardian - {name}'s defensive driving and strategic banana placement make him an impenetrable wall on the track.",
           attributes: [
@@ -144,7 +144,7 @@ export const round1: Round = {
         },
         {
           id: "p10",
-          name: "Bastian",
+          name: "Player 10",
           description:
             "Boost Master - {name}'s mastery of mushroom chains and turbo slides propels him to victory with explosive acceleration.",
           attributes: [
@@ -155,7 +155,7 @@ export const round1: Round = {
         },
         {
           id: "p11",
-          name: "Per Erik",
+          name: "Player 11",
           description:
             "The Veteran - {name}'s years of experience shine through clutch plays and knowing exactly when to unleash that star power.",
           attributes: [
@@ -166,7 +166,7 @@ export const round1: Round = {
         },
         {
           id: "p12",
-          name: "Markus",
+          name: "Player 12",
           description:
             "Track Whisperer - {name} knows every shortcut, every jump, every hidden path that others can only dream of discovering.",
           attributes: [
@@ -184,11 +184,11 @@ export const round1: Round = {
       circuit: "Star Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p13",
-          name: "Brian",
+          name: "Player 13",
           description:
             "The Intimidator - {name}'s aggressive racing style and fearless overtakes leave opponents second-guessing every move.",
           attributes: [
@@ -199,7 +199,7 @@ export const round1: Round = {
         },
         {
           id: "p14",
-          name: "Michael",
+          name: "Player 14",
           description:
             "Precision Pilot - {name}'s pixel-perfect drifts and calculated risks make him a master of high-speed technical circuits.",
           attributes: [
@@ -210,7 +210,7 @@ export const round1: Round = {
         },
         {
           id: "p15",
-          name: "Johanna",
+          name: "Player 15",
           description:
             "The Phoenix - {name} rises from last place with devastating comebacks, fueled by bullet bills and pure determination.",
           attributes: [
@@ -221,7 +221,7 @@ export const round1: Round = {
         },
         {
           id: "p16",
-          name: "Anders",
+          name: "Player 16",
           description:
             "Ice in His Veins - {name} stays cool under pressure, turning close finishes into victories with nerves of steel.",
           attributes: [
@@ -239,11 +239,11 @@ export const round1: Round = {
       circuit: "Banana Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p17",
-          name: "Jan Magne",
+          name: "Player 17",
           description:
             "The Thunder - {name}'s explosive starts and dominant leads make him a lightning bolt on wheels that's impossible to catch.",
           attributes: [
@@ -254,7 +254,7 @@ export const round1: Round = {
         },
         {
           id: "p18",
-          name: "Enzo",
+          name: "Player 18",
           description:
             "Rising Star - {name}'s natural talent and fearless approach to rainbow roads mark him as the future champion in the making.",
           attributes: [
@@ -265,7 +265,7 @@ export const round1: Round = {
         },
         {
           id: "p19",
-          name: "Kristoffer",
+          name: "Player 19",
           description:
             "The Tactician - {name}'s mind games and strategic item hoarding create psychological warfare that breaks opponents' spirits.",
           attributes: [
@@ -276,7 +276,7 @@ export const round1: Round = {
         },
         {
           id: "p20",
-          name: "Brynhildur",
+          name: "Player 20",
           description:
             "Valkyrie of Victory - {name} charges through the pack with warrior-like determination, claiming podiums as her birthright.",
           attributes: [
@@ -294,11 +294,11 @@ export const round1: Round = {
       circuit: "Leaf Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p21",
-          name: "Christine",
+          name: "Player 21",
           description:
             "Speed Demon - {name}'s throttle control and boost optimization create blistering lap times that shatter records.",
           attributes: [
@@ -309,7 +309,7 @@ export const round1: Round = {
         },
         {
           id: "p22",
-          name: "Eigil",
+          name: "Player 22",
           description:
             "The Wall - {name}'s defensive mastery and position holding make overtaking him an exercise in frustration for rivals.",
           attributes: [
@@ -320,7 +320,7 @@ export const round1: Round = {
         },
         {
           id: "p23",
-          name: "Alf",
+          name: "Player 23",
           description:
             "Old School Legend - {name}'s classic racing techniques and timeless strategies prove that experience beats youth every time.",
           attributes: [
@@ -331,7 +331,7 @@ export const round1: Round = {
         },
         {
           id: "p24",
-          name: "Kalle",
+          name: "Player 24",
           description:
             "The Showman - {name}'s flashy tricks and spectacular jumps entertain crowds while devastating opponents with style.",
           attributes: [
@@ -349,11 +349,11 @@ export const round1: Round = {
       circuit: "Lightning Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p25",
-          name: "Frode",
+          name: "Player 25",
           description:
             "The Innovator - {name} discovers new racing lines and unconventional strategies that revolutionize how the game is played.",
           attributes: [
@@ -364,7 +364,7 @@ export const round1: Round = {
         },
         {
           id: "p26",
-          name: "Nikhil",
+          name: "Player 26",
           description:
             "Consistency King - {name}'s reliable performances and steady hands guarantee podium finishes race after race without fail.",
           attributes: [
@@ -375,7 +375,7 @@ export const round1: Round = {
         },
         {
           id: "p27",
-          name: "Ingrid",
+          name: "Player 27",
           description:
             "The Huntress - {name} stalks her prey with patience, then strikes with devastating speed when the moment is right.",
           attributes: [
@@ -386,7 +386,7 @@ export const round1: Round = {
         },
         {
           id: "p28",
-          name: "Pons",
+          name: "Player 28",
           description:
             "Gravity Defier - {name} makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory.",
           attributes: [
@@ -404,11 +404,11 @@ export const round1: Round = {
       circuit: "Mushroom Cup",
       cc: "50cc",
       location: "Huben",
-      isFinished: true,
+      // isFinished: true,
       players: [
         {
           id: "p29",
-          name: "Ingvar",
+          name: "Player 29",
           description:
             "The Anchor - {name}'s unshakeable focus and ironclad nerves keep him steady when chaos erupts around every corner.",
           attributes: [
@@ -419,7 +419,7 @@ export const round1: Round = {
         },
         {
           id: "p30",
-          name: "Sandra",
+          name: "Player 30",
           description:
             "Nitro Queen - {name}'s perfect mushroom timing and boost chains create acceleration bursts that leave rivals in the dust.",
           attributes: [
@@ -430,7 +430,7 @@ export const round1: Round = {
         },
         {
           id: "p31",
-          name: "Hedda",
+          name: "Player 31",
           description:
             "The Underdog - {name}'s tenacity and refusal to accept defeat fuel miraculous victories against all odds and expectations.",
           attributes: [
@@ -441,7 +441,7 @@ export const round1: Round = {
         },
         {
           id: "p32",
-          name: "Henrik",
+          name: "Player 32",
           description:
             "Master of Momentum - {name} flows through tracks like water, maintaining perfect speed while others brake and stumble.",
           attributes: [
