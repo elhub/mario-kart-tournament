@@ -17,7 +17,7 @@ Get ready to put your driving skills to the ultimate test! We're excited to anno
 
 ## 📅 Tournament Schedule
 
-- 📍 **One match per day**, every weekday
+- 📍 **One race per day**, every weekday
 - 📍 December 1st - December 19th
 - 📍 **Time:** 11:30 AM sharp (don't be late!)
 - 📍 **Location:** Huben
@@ -27,8 +27,8 @@ Get ready to put your driving skills to the ultimate test! We're excited to anno
 ## 🏎️ Tournament Format
 
 - 🏁 Single elimination bracket
-- 🏁 **Top 2 finishers** from each match advance to the next round
-- 🏁 Circuits and CC classes have been pre-selected for each match
+- 🏁 **Top 2 finishers** from each race advance to the next round
+- 🏁 Circuits and CC classes have been pre-selected for each race
 - 🏁 Choose your in-game character wisely - it could make all the difference!
 
 ---

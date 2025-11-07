@@ -11,7 +11,7 @@ export type Player = {
   position?: number; // 1st, 2nd, 3rd, 4th place
 };
 
-export type Match = {
+export type Race = {
   id: string;
   date: string;
   time: string;
@@ -26,7 +26,7 @@ export type Match = {
 export type Round = {
   id: string;
   name: string; // "Quarterfinals", "Semifinals", etc.
-  matches: Match[];
+  matches: Race[];
 };
 
 export type Tournament = {

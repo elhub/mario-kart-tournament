@@ -15,9 +15,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import type { Match, Player } from "@/types";
+import type { Race, Player } from "@/types";
 
-export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roundName: string; rowIndex: number }) => {
+export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; roundName: string; rowIndex: number }) => {
   const bg = useColorModeValue("white", "gray.700");
   const border = useColorModeValue("gray.400", "gray.700");
   const headerBg = useColorModeValue("blue.50", "blue.900");
@@ -98,11 +98,11 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Match; roun
           </Box>
         )}
 
-        {/* Header Section - Match Info */}
+        {/* Header Section - Race Info */}
         <Box bg={headerBg} px={3} py={2} borderBottom="1px solid" borderColor={border}>
           <VStack spacing={0} align="start">
             <Text fontSize="xs" fontWeight="bold" color={labelColor}>
-              Match {matchNumber}
+              Race {matchNumber}
             </Text>
             <Text fontSize="xs" fontWeight="medium">
               {match.date}

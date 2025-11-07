@@ -9,7 +9,7 @@ export const BracketConnections = () => {
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    // Match connection mapping: source match -> destination match
+    // Race connection mapping: source match -> destination match
     const matchConnections: Record<string, string> = {
       m1: "m9",
       m2: "m9",
@@ -70,20 +70,20 @@ export const BracketConnections = () => {
         const scrollLeft = canvasContainer.scrollLeft;
         const scrollTop = canvasContainer.scrollTop;
 
-        // Matches on the right side of the screen (need reversed connections)
-        const rightSideMatches = new Set(["m5", "m6", "m7", "m8", "m11", "m12", "m14"]);
+        // Races on the right side of the screen (need reversed connections)
+        const rightSideRaces = new Set(["m5", "m6", "m7", "m8", "m11", "m12", "m14"]);
 
         // Iterate through all source matches
-        Object.entries(matchConnections).forEach(([sourceMatchId, targetMatchId]) => {
+        Object.entries(matchConnections).forEach(([sourceRaceId, targetRaceId]) => {
           // Check if source match is finished
-          const sourceElement = document.getElementById(sourceMatchId);
+          const sourceElement = document.getElementById(sourceRaceId);
           if (!sourceElement) return;
 
           // Check if match has finished flag
           const finishedFlag = sourceElement.querySelector(".finished-flag");
           if (!finishedFlag) return;
 
-          const targetElement = document.getElementById(targetMatchId);
+          const targetElement = document.getElementById(targetRaceId);
           if (!targetElement) return;
 
           // Get positions relative to the document
@@ -91,7 +91,7 @@ export const BracketConnections = () => {
           const targetRect = targetElement.getBoundingClientRect();
 
           // Determine if this is a right-side match (connection needs to be reversed)
-          const isRightSide = rightSideMatches.has(sourceMatchId);
+          const isRightSide = rightSideRaces.has(sourceRaceId);
 
           // Calculate connection points accounting for scroll position
           let startX, startY, endX, endY;
