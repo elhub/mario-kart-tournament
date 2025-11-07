@@ -54,6 +54,9 @@ export const BracketConnections = () => {
         if (!canvasContainer) return;
         const containerRect = canvasContainer.getBoundingClientRect();
 
+        // Matches on the right side of the screen (need reversed connections)
+        const rightSideMatches = new Set(["m5", "m6", "m7", "m8", "m11", "m12", "m14"]);
+
         // Iterate through all source matches
         Object.entries(matchConnections).forEach(([sourceMatchId, targetMatchId]) => {
           // Check if source match is finished
@@ -71,17 +74,31 @@ export const BracketConnections = () => {
           const sourceRect = sourceElement.getBoundingClientRect();
           const targetRect = targetElement.getBoundingClientRect();
 
+          // Determine if this is a right-side match (connection needs to be reversed)
+          const isRightSide = rightSideMatches.has(sourceMatchId);
+
           // Calculate connection points relative to the canvas container
-          const startX = sourceRect.right - containerRect.left;
-          const startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
-          const endX = targetRect.left - containerRect.left;
-          const endY = targetRect.top - containerRect.top + targetRect.height / 2;
+          let startX, startY, endX, endY;
+
+          if (isRightSide) {
+            // Right side: draw from left of source to right of target
+            startX = sourceRect.left - containerRect.left;
+            startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
+            endX = targetRect.right - containerRect.left;
+            endY = targetRect.top - containerRect.top + targetRect.height / 2;
+          } else {
+            // Left side: draw from right of source to left of target
+            startX = sourceRect.right - containerRect.left;
+            startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
+            endX = targetRect.left - containerRect.left;
+            endY = targetRect.top - containerRect.top + targetRect.height / 2;
+          }
 
           // Calculate control points for Bezier curve
-          const controlPointDistance = (endX - startX) / 2;
-          const cp1X = startX + controlPointDistance;
+          const controlPointDistance = Math.abs(endX - startX) / 2;
+          const cp1X = isRightSide ? startX - controlPointDistance : startX + controlPointDistance;
           const cp1Y = startY;
-          const cp2X = endX - controlPointDistance;
+          const cp2X = isRightSide ? endX + controlPointDistance : endX - controlPointDistance;
           const cp2Y = endY;
 
           // Draw the curved line
