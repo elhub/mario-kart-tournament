@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "transpile": "tsc -b",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "knip": "knip"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.10.5",
@@ -26,7 +27,7 @@
   },
   "devDependencies": {
     "@types/css": "^0.0.38",
-    "@types/node": "^22.10.6",
+    "@types/node": "^22.19.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
@@ -35,7 +36,8 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "typescript": "^5.7.3",
+    "knip": "^5.68.0",
+    "typescript": "^5.9.3",
     "vite": "^6.0.7"
   }
 }
