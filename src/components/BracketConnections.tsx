@@ -32,6 +32,7 @@ export const BracketConnections = () => {
         // Get the parent container size
         const parent = canvasRef.current!.parentElement;
         if (!parent) return;
+        // Use scrollWidth/scrollHeight to cover the entire scrollable content area
         const canvas = p.createCanvas(parent.scrollWidth, parent.scrollHeight);
         canvas.parent(canvasRef.current!);
       };
@@ -44,6 +45,7 @@ export const BracketConnections = () => {
       p.windowResized = () => {
         const parent = canvasRef.current?.parentElement;
         if (parent) {
+          // Resize to cover the entire scrollable content area
           p.resizeCanvas(parent.scrollWidth, parent.scrollHeight);
         }
       };
@@ -52,7 +54,10 @@ export const BracketConnections = () => {
         // Get the canvas container's bounding rect for offset calculation
         const canvasContainer = canvasRef.current?.parentElement;
         if (!canvasContainer) return;
-        const containerRect = canvasContainer.getBoundingClientRect();
+
+        // Get scroll position
+        const scrollLeft = canvasContainer.scrollLeft;
+        const scrollTop = canvasContainer.scrollTop;
 
         // Matches on the right side of the screen (need reversed connections)
         const rightSideMatches = new Set(["m5", "m6", "m7", "m8", "m11", "m12", "m14"]);
@@ -70,28 +75,28 @@ export const BracketConnections = () => {
           const targetElement = document.getElementById(targetMatchId);
           if (!targetElement) return;
 
-          // Get positions relative to the container
+          // Get positions relative to the document
           const sourceRect = sourceElement.getBoundingClientRect();
           const targetRect = targetElement.getBoundingClientRect();
 
           // Determine if this is a right-side match (connection needs to be reversed)
           const isRightSide = rightSideMatches.has(sourceMatchId);
 
-          // Calculate connection points relative to the canvas container
+          // Calculate connection points accounting for scroll position
           let startX, startY, endX, endY;
 
           if (isRightSide) {
             // Right side: draw from left of source to right of target
-            startX = sourceRect.left - containerRect.left;
-            startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
-            endX = targetRect.right - containerRect.left;
-            endY = targetRect.top - containerRect.top + targetRect.height / 2;
+            startX = sourceRect.left + scrollLeft;
+            startY = sourceRect.top + scrollTop + sourceRect.height / 2;
+            endX = targetRect.right + scrollLeft;
+            endY = targetRect.top + scrollTop + targetRect.height / 2;
           } else {
             // Left side: draw from right of source to left of target
-            startX = sourceRect.right - containerRect.left;
-            startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
-            endX = targetRect.left - containerRect.left;
-            endY = targetRect.top - containerRect.top + targetRect.height / 2;
+            startX = sourceRect.right + scrollLeft;
+            startY = sourceRect.top + scrollTop + sourceRect.height / 2;
+            endX = targetRect.left + scrollLeft;
+            endY = targetRect.top + scrollTop + targetRect.height / 2;
           }
 
           // Calculate control points for Bezier curve

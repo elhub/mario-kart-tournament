@@ -50,25 +50,27 @@ function App() {
 
   return (
     <Box
-      minH="100vh"
-      minW="100vw"
-      w="full"
+      h="100vh"
+      w="100vw"
       pt={8}
       px={8}
       position="relative"
+      overflow="auto"
       backgroundImage="url('/mario-kart-tournament/emkwt-bg-3.jpg')"
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
+      backgroundAttachment="fixed"
       _before={{
         content: '""',
-        position: "absolute",
+        position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
         backgroundColor: "rgba(255, 255, 255, 0.7)",
         zIndex: 0,
+        pointerEvents: "none",
       }}
     >
       <BracketConnections />
