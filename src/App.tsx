@@ -226,15 +226,27 @@ function App() {
 
               <Box bg={useColorModeValue("red.50", "red.900")} p={4} borderRadius="md" borderLeft="4px solid red">
                 <Heading size="md" mb={3} color={useColorModeValue("red.700", "red.300")}>
-                  ⚠️ MOST IMPORTANT: REGISTRATION MEETING
+                  ⚠️ MOST IMPORTANT: HOW TO REGISTER
                 </Heading>
                 <Text fontWeight="bold" mb={2}>
-                  Attendance is MANDATORY to secure your spot!
+                  Registration is now OPEN - First come, first served!
                 </Text>
-                <Text mb={2}>📍 First Info Meeting: TBA</Text>
-                <Text>
-                  Registration happens at the first info meeting - <strong>if you're not there, you're not racing!</strong>{" "}
-                  With only 32 spots available, don't miss your chance to compete.
+                <Text fontWeight="bold" mb={3}>
+                  To register, send an email to Pål Oskar with 3 race brackets that fit your schedule.
+                </Text>
+                <List spacing={2}>
+                  <ListItem>✅ Choose 3 time slots that work for you to maximize your chances</ListItem>
+                  <ListItem>✅ Registration open until all 32 spots are filled</ListItem>
+                  <ListItem>✅ Players will be added to brackets as registrations are received</ListItem>
+                  <ListItem>
+                    ✅ <strong>Follow the bracket page for updates on the schedule</strong>
+                  </ListItem>
+                  <ListItem>
+                    ✅ <strong>Info meeting will be held once all racers are signed up</strong>
+                  </ListItem>
+                </List>
+                <Text mt={3} fontStyle="italic">
+                  Don't wait too long - spots will fill up fast!
                 </Text>
               </Box>
 
@@ -249,7 +261,7 @@ function App() {
                   <ListItem>✅ Daily races at 11:30 AM</ListItem>
                   <ListItem>✅ Pre-selected circuits and CC classes</ListItem>
                   <ListItem>✅ Prizes for the podium</ListItem>
-                  <ListItem>✅ Register at the info meeting - BE THERE!</ListItem>
+                  <ListItem>✅ Email Pål Oskar with your 3 preferred time slots to register!</ListItem>
                 </List>
               </Box>
 
