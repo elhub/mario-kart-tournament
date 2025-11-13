@@ -309,7 +309,7 @@ export const round1: Round = {
         },
         {
           id: "p22",
-          name: "Player 22", // male
+          name: "Mike", // male
           description:
             "The Wall - {name}'s defensive mastery and position holding make overtaking him an exercise in frustration for rivals.",
           attributes: [
