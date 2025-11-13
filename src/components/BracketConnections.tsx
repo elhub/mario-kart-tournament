@@ -75,13 +75,9 @@ export const BracketConnections = () => {
 
         // Iterate through all source matches
         Object.entries(matchConnections).forEach(([sourceRaceId, targetRaceId]) => {
-          // Check if source match is finished
+          // Get source and target elements
           const sourceElement = document.getElementById(sourceRaceId);
           if (!sourceElement) return;
-
-          // Check if match has finished flag
-          const finishedFlag = sourceElement.querySelector(".finished-flag");
-          if (!finishedFlag) return;
 
           const targetElement = document.getElementById(targetRaceId);
           if (!targetElement) return;
