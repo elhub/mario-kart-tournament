@@ -15,7 +15,7 @@ export const round1: Round = {
       players: [
         {
           id: "p1",
-          name: "Sander",
+          name: "Sander", // male
           description:
             "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
           attributes: [
@@ -27,7 +27,7 @@ export const round1: Round = {
         },
         {
           id: "p2",
-          name: "Hedda",
+          name: "Hedda", // female
           description:
             "Queen of Speed - {name}'s lightning-fast reflexes and tactical item usage leave opponents eating her dust on the straights.",
           attributes: [
@@ -51,7 +51,7 @@ export const round1: Round = {
         },
         {
           id: "p4",
-          name: "Player 4",
+          name: "Player 4", // male
           description:
             "Master of Chaos - {name} thrives in the mayhem, turning red shells and banana peels into opportunities for spectacular comebacks.",
           attributes: [
@@ -74,7 +74,7 @@ export const round1: Round = {
       players: [
         {
           id: "p5",
-          name: "Christoffer S.",
+          name: "Christoffer S.", // male
           description:
             "The Comeback Kid - {name} never gives up, using every mushroom and star to claw back from impossible positions.",
           attributes: [
@@ -86,7 +86,7 @@ export const round1: Round = {
         },
         {
           id: "p6",
-          name: "Henrik",
+          name: "Henrik", // male
           description:
             "Rainbow Road Royalty - {name} navigates treacherous tracks with grace, making hairpin turns look effortless while others fall behind.",
           attributes: [
@@ -110,7 +110,7 @@ export const round1: Round = {
         },
         {
           id: "p8",
-          name: "Player 8",
+          name: "Player 8", // male
           description:
             "Shell Shock Specialist - {name}'s uncanny ability to land triple red shells with surgical precision has earned him legendary status.",
           attributes: [
@@ -133,7 +133,7 @@ export const round1: Round = {
       players: [
         {
           id: "p9",
-          name: "Pål Oskar",
+          name: "Pål Oskar", // male
           description:
             "The Guardian - {name}'s defensive driving and strategic banana placement make him an impenetrable wall on the track.",
           attributes: [
@@ -144,7 +144,7 @@ export const round1: Round = {
         },
         {
           id: "p10",
-          name: "Player 10",
+          name: "Player 10", // male
           description:
             "Boost Master - {name}'s mastery of mushroom chains and turbo slides propels him to victory with explosive acceleration.",
           attributes: [
@@ -199,7 +199,7 @@ export const round1: Round = {
         },
         {
           id: "p14",
-          name: "Player 14",
+          name: "Player 14", // male
           description:
             "Precision Pilot - {name}'s pixel-perfect drifts and calculated risks make him a master of high-speed technical circuits.",
           attributes: [
@@ -221,7 +221,7 @@ export const round1: Round = {
         },
         {
           id: "p16",
-          name: "Player 16",
+          name: "Player 16", // male
           description:
             "Ice in His Veins - {name} stays cool under pressure, turning close finishes into victories with nerves of steel.",
           attributes: [
@@ -243,7 +243,7 @@ export const round1: Round = {
       players: [
         {
           id: "p17",
-          name: "Sergio",
+          name: "Sergio", // male
           description:
             "The Thunder - {name}'s explosive starts and dominant leads make him a lightning bolt on wheels that's impossible to catch.",
           attributes: [
@@ -254,7 +254,7 @@ export const round1: Round = {
         },
         {
           id: "p18",
-          name: "Player 18",
+          name: "Player 18", // male
           description:
             "Rising Star - {name}'s natural talent and fearless approach to rainbow roads mark him as the future champion in the making.",
           attributes: [
@@ -276,7 +276,7 @@ export const round1: Round = {
         },
         {
           id: "p20",
-          name: "Player 20",
+          name: "Player 20", // female
           description:
             "Valkyrie of Victory - {name} charges through the pack with warrior-like determination, claiming podiums as her birthright.",
           attributes: [
@@ -309,7 +309,7 @@ export const round1: Round = {
         },
         {
           id: "p22",
-          name: "Player 22",
+          name: "Player 22", // male
           description:
             "The Wall - {name}'s defensive mastery and position holding make overtaking him an exercise in frustration for rivals.",
           attributes: [
@@ -364,7 +364,7 @@ export const round1: Round = {
         },
         {
           id: "p26",
-          name: "Frode",
+          name: "Frode", // male
           description:
             "Consistency King - {name}'s reliable performances and steady hands guarantee podium finishes race after race without fail.",
           attributes: [
@@ -375,7 +375,7 @@ export const round1: Round = {
         },
         {
           id: "p27",
-          name: "Player 27",
+          name: "Player 27", // female
           description:
             "The Huntress - {name} stalks her prey with patience, then strikes with devastating speed when the moment is right.",
           attributes: [
@@ -386,7 +386,7 @@ export const round1: Round = {
         },
         {
           id: "p28",
-          name: "Player 28",
+          name: "Player 28", // male
           description:
             "Gravity Defier - {name} makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory.",
           attributes: [
@@ -408,7 +408,7 @@ export const round1: Round = {
       players: [
         {
           id: "p29",
-          name: "Markus B.",
+          name: "Markus B.", // male
           description:
             "The Anchor - {name}'s unshakeable focus and ironclad nerves keep him steady when chaos erupts around every corner.",
           attributes: [
@@ -419,7 +419,7 @@ export const round1: Round = {
         },
         {
           id: "p30",
-          name: "Player 30",
+          name: "Player 30", // female
           description:
             "Nitro Queen - {name}'s perfect mushroom timing and boost chains create acceleration bursts that leave rivals in the dust.",
           attributes: [
