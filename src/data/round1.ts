@@ -15,7 +15,7 @@ export const round1: Round = {
       players: [
         {
           id: "p1",
-          name: "Player 1",
+          name: "Sander",
           description:
             "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
           attributes: [
@@ -74,7 +74,7 @@ export const round1: Round = {
       players: [
         {
           id: "p5",
-          name: "Player 5",
+          name: "Christoffer S.",
           description:
             "The Comeback Kid - {name} never gives up, using every mushroom and star to claw back from impossible positions.",
           attributes: [
@@ -133,7 +133,7 @@ export const round1: Round = {
       players: [
         {
           id: "p9",
-          name: "Player 9",
+          name: "Pål Oskar",
           description:
             "The Guardian - {name}'s defensive driving and strategic banana placement make him an impenetrable wall on the track.",
           attributes: [
@@ -188,7 +188,7 @@ export const round1: Round = {
       players: [
         {
           id: "p13",
-          name: "Player 13",
+          name: "Alexander",
           description:
             "The Intimidator - {name}'s aggressive racing style and fearless overtakes leave opponents second-guessing every move.",
           attributes: [
@@ -243,7 +243,7 @@ export const round1: Round = {
       players: [
         {
           id: "p17",
-          name: "Player 17",
+          name: "Sergio",
           description:
             "The Thunder - {name}'s explosive starts and dominant leads make him a lightning bolt on wheels that's impossible to catch.",
           attributes: [
@@ -298,7 +298,7 @@ export const round1: Round = {
       players: [
         {
           id: "p21",
-          name: "Player 21",
+          name: "Pratik",
           description:
             "Speed Demon - {name}'s throttle control and boost optimization create blistering lap times that shatter records.",
           attributes: [
@@ -353,7 +353,7 @@ export const round1: Round = {
       players: [
         {
           id: "p25",
-          name: "Player 25",
+          name: "Ingvar",
           description:
             "The Innovator - {name} discovers new racing lines and unconventional strategies that revolutionize how the game is played.",
           attributes: [
@@ -408,7 +408,7 @@ export const round1: Round = {
       players: [
         {
           id: "p29",
-          name: "Player 29",
+          name: "Markus B.",
           description:
             "The Anchor - {name}'s unshakeable focus and ironclad nerves keep him steady when chaos erupts around every corner.",
           attributes: [
