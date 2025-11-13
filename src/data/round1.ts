@@ -27,7 +27,7 @@ export const round1: Round = {
         },
         {
           id: "p2",
-          name: "Player 2",
+          name: "Hedda",
           description:
             "Queen of Speed - {name}'s lightning-fast reflexes and tactical item usage leave opponents eating her dust on the straights.",
           attributes: [
@@ -364,7 +364,7 @@ export const round1: Round = {
         },
         {
           id: "p26",
-          name: "Player 26",
+          name: "Frode",
           description:
             "Consistency King - {name}'s reliable performances and steady hands guarantee podium finishes race after race without fail.",
           attributes: [
