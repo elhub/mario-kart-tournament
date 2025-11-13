@@ -39,7 +39,7 @@ export const round1: Round = {
         },
         {
           id: "p3",
-          name: "Player 3",
+          name: "Ole Kristian",
           description:
             "The Strategist - {name} calculates every shortcut and boost pad with mathematical precision, turning races into perfectly executed symphonies.",
           attributes: [
@@ -86,7 +86,7 @@ export const round1: Round = {
         },
         {
           id: "p6",
-          name: "Player 6",
+          name: "Henrik",
           description:
             "Rainbow Road Royalty - {name} navigates treacherous tracks with grace, making hairpin turns look effortless while others fall behind.",
           attributes: [
