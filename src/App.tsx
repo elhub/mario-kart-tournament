@@ -20,6 +20,7 @@ import {
 import type { Tournament } from "@/types";
 import { Round } from "@/components/Round";
 import { BracketConnections } from "@/components/BracketConnections";
+import { RegistrationBadge } from "@/components/RegistrationBadge";
 import { round1 } from "@/data/round1";
 import { round2 } from "@/data/round2";
 import { round3 } from "@/data/round3";
@@ -93,21 +94,14 @@ function App() {
         pointerEvents: "none",
       }}
     >
-      {/* Rules Button */}
-      <Button
-        position="fixed"
-        top="75%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        zIndex={10}
-        colorScheme="blue"
-        size="lg"
-        onClick={onOpen}
-        leftIcon={<Text>📋</Text>}
-        boxShadow="xl"
-      >
-        Tournament Rules
-      </Button>
+      {/* Registration Badge & Rules Button Container */}
+      <VStack position="fixed" top="75%" left="50%" transform="translate(-50%, -50%)" zIndex={10} spacing={6}>
+        <RegistrationBadge tournament={tournament} />
+
+        <Button colorScheme="blue" size="lg" onClick={onOpen} leftIcon={<Text>📋</Text>} boxShadow="xl">
+          Tournament Rules
+        </Button>
+      </VStack>
 
       {/* Rules Modal */}
       <Modal isOpen={isOpen} onClose={onClose} size="2xl" scrollBehavior="inside">
