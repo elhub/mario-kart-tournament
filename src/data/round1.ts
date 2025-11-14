@@ -254,7 +254,7 @@ export const round1: Round = {
         },
         {
           id: "p18",
-          name: "Player 18", // male
+          name: "Tor Magnus", // male
           description:
             "Rising Star - {name}'s natural talent and fearless approach to rainbow roads mark him as the future champion in the making.",
           attributes: [
