@@ -199,7 +199,7 @@ export const round1: Round = {
         },
         {
           id: "p14",
-          name: "Player 14", // male
+          name: "Vebjørn", // male
           description:
             "Precision Pilot - {name}'s pixel-perfect drifts and calculated risks make him a master of high-speed technical circuits.",
           attributes: [
