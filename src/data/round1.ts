@@ -210,7 +210,7 @@ export const round1: Round = {
         },
         {
           id: "p15",
-          name: "Player 15",
+          name: "Brynhildur",
           description:
             "The Phoenix - {name} rises from last place with devastating comebacks, fueled by bullet bills and pure determination.",
           attributes: [
@@ -276,7 +276,7 @@ export const round1: Round = {
         },
         {
           id: "p20",
-          name: "Player 20", // female
+          name: "Mari", // female
           description:
             "Valkyrie of Victory - {name} charges through the pack with warrior-like determination, claiming podiums as her birthright.",
           attributes: [
