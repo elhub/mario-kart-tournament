@@ -7,7 +7,7 @@ export const round1: Round = {
     {
       id: "m1",
       date: "Monday, December 1st 2025",
-      time: "11:30 AM",
+      time: "12:00 PM",
       circuit: "Mushroom Cup",
       cc: "50cc",
       location: "Huben",
