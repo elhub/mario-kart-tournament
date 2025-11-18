@@ -110,7 +110,7 @@ export const round1: Round = {
         },
         {
           id: "p8",
-          name: "Player 8", // male
+          name: "Gard", // male
           description:
             "Shell Shock Specialist - {name}'s uncanny ability to land triple red shells with surgical precision has earned him legendary status.",
           attributes: [
@@ -430,7 +430,7 @@ export const round1: Round = {
         },
         {
           id: "p31",
-          name: "Player 31",
+          name: "Joachim",
           description:
             "The Underdog - {name}'s tenacity and refusal to accept defeat fuel miraculous victories against all odds and expectations.",
           attributes: [
