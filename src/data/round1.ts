@@ -419,7 +419,7 @@ export const round1: Round = {
         },
         {
           id: "p30",
-          name: "Player 30", // female
+          name: "Caroline",
           description:
             "Nitro Queen - {name}'s perfect mushroom timing and boost chains create acceleration bursts that leave rivals in the dust.",
           attributes: [
