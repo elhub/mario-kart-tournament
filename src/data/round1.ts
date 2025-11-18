@@ -15,7 +15,7 @@ export const round1: Round = {
       players: [
         {
           id: "p1",
-          name: "Sander", // male
+          name: "Sander",
           description:
             "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
           attributes: [
@@ -51,7 +51,7 @@ export const round1: Round = {
         },
         {
           id: "p4",
-          name: "Per Kristian", // male
+          name: "Per Kristian",
           description:
             "Master of Chaos - {name} thrives in the mayhem, turning red shells and banana peels into opportunities for spectacular comebacks.",
           attributes: [
@@ -74,7 +74,7 @@ export const round1: Round = {
       players: [
         {
           id: "p5",
-          name: "Christoffer S.", // male
+          name: "Christoffer S.",
           description:
             "The Comeback Kid - {name} never gives up, using every mushroom and star to claw back from impossible positions.",
           attributes: [
@@ -86,7 +86,7 @@ export const round1: Round = {
         },
         {
           id: "p6",
-          name: "Henrik", // male
+          name: "Henrik",
           description:
             "Rainbow Road Royalty - {name} navigates treacherous tracks with grace, making hairpin turns look effortless while others fall behind.",
           attributes: [
@@ -110,7 +110,7 @@ export const round1: Round = {
         },
         {
           id: "p8",
-          name: "Gard", // male
+          name: "Gard",
           description:
             "Shell Shock Specialist - {name}'s uncanny ability to land triple red shells with surgical precision has earned him legendary status.",
           attributes: [
@@ -133,7 +133,7 @@ export const round1: Round = {
       players: [
         {
           id: "p9",
-          name: "Pål Oskar", // male
+          name: "Pål Oskar",
           description:
             "The Guardian - {name}'s defensive driving and strategic banana placement make him an impenetrable wall on the track.",
           attributes: [
@@ -144,7 +144,7 @@ export const round1: Round = {
         },
         {
           id: "p10",
-          name: "Player 10", // male
+          name: "Fredrik",
           description:
             "Boost Master - {name}'s mastery of mushroom chains and turbo slides propels him to victory with explosive acceleration.",
           attributes: [
@@ -199,7 +199,7 @@ export const round1: Round = {
         },
         {
           id: "p14",
-          name: "Vebjørn", // male
+          name: "Vebjørn",
           description:
             "Precision Pilot - {name}'s pixel-perfect drifts and calculated risks make him a master of high-speed technical circuits.",
           attributes: [
@@ -243,7 +243,7 @@ export const round1: Round = {
       players: [
         {
           id: "p17",
-          name: "Sergio", // male
+          name: "Sergio",
           description:
             "The Thunder - {name}'s explosive starts and dominant leads make him a lightning bolt on wheels that's impossible to catch.",
           attributes: [
@@ -254,7 +254,7 @@ export const round1: Round = {
         },
         {
           id: "p18",
-          name: "Tor Magnus", // male
+          name: "Tor Magnus",
           description:
             "Rising Star - {name}'s natural talent and fearless approach to rainbow roads mark him as the future champion in the making.",
           attributes: [
@@ -309,7 +309,7 @@ export const round1: Round = {
         },
         {
           id: "p22",
-          name: "Mike", // male
+          name: "Mike",
           description:
             "The Wall - {name}'s defensive mastery and position holding make overtaking him an exercise in frustration for rivals.",
           attributes: [
@@ -364,7 +364,7 @@ export const round1: Round = {
         },
         {
           id: "p26",
-          name: "Frode", // male
+          name: "Frode",
           description:
             "Consistency King - {name}'s reliable performances and steady hands guarantee podium finishes race after race without fail.",
           attributes: [
@@ -408,7 +408,7 @@ export const round1: Round = {
       players: [
         {
           id: "p29",
-          name: "Markus B.", // male
+          name: "Markus B.",
           description:
             "The Anchor - {name}'s unshakeable focus and ironclad nerves keep him steady when chaos erupts around every corner.",
           attributes: [
