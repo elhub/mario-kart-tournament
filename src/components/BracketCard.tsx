@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import type { Race, Player } from "@/types";
+import { preRaceProspects } from "@/data/preRaceProspects";
 
 export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; roundName: string; rowIndex: number }) => {
   const bg = useColorModeValue("white", "gray.700");
@@ -24,6 +25,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
   const footerBg = useColorModeValue("gray.50", "gray.800");
   const labelColor = useColorModeValue("gray.600", "gray.400");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isProspectOpen, onOpen: onProspectOpen, onClose: onProspectClose } = useDisclosure();
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 
   // Extract match number from id (e.g., "m1" -> "1")
@@ -36,6 +38,26 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
     }
     setSelectedPlayer(player);
     onOpen();
+  };
+
+  // Check if all players have real names (not placeholder "Player X")
+  const allPlayersAssigned = match.players.every((p) => !p.name.match(/^Player \d+$/));
+
+  // Handle card click for pre-race prospect modal
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Only show prospect modal if:
+    // 1. All players are assigned
+    // 2. Click is on the card itself (not on players)
+    // 3. Round is "Round of Sixteen"
+    // 4. Race is not finished yet
+    if (
+      allPlayersAssigned &&
+      roundName === "Round of Sixteen" &&
+      !match.isFinished &&
+      !(e.target as HTMLElement).closest("[data-player-id]")
+    ) {
+      onProspectOpen();
+    }
   };
 
   // Helper function to get position emoji
@@ -90,6 +112,18 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         bg={bg}
         boxShadow="2xl"
         overflow="hidden"
+        onClick={handleCardClick}
+        cursor={allPlayersAssigned && roundName === "Round of Sixteen" && !match.isFinished ? "pointer" : "default"}
+        transition="all 0.2s"
+        _hover={
+          allPlayersAssigned && roundName === "Round of Sixteen" && !match.isFinished
+            ? {
+                transform: "scale(1.02)",
+                boxShadow: "2xl",
+                borderColor: useColorModeValue("blue.400", "blue.500"),
+              }
+            : {}
+        }
       >
         {/* Finished Race Flag */}
         {match.isFinished && (
@@ -221,6 +255,98 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                     ))}
                   </HStack>
                 )}
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+
+        {/* Pre-Race Prospect Modal */}
+        <Modal isOpen={isProspectOpen} onClose={onProspectClose} size="xl" isCentered>
+          <ModalOverlay backdropFilter="blur(4px)" />
+          <ModalContent bg={useColorModeValue("white", "gray.800")} borderRadius="2xl" boxShadow="2xl" mx={4}>
+            <ModalHeader bg={useColorModeValue("purple.500", "purple.600")} color="white" borderTopRadius="2xl" py={6}>
+              <VStack align="start" spacing={2}>
+                <HStack>
+                  <Text fontSize="3xl">🔮</Text>
+                  <Heading size="lg">Pre-Race Prospects</Heading>
+                </HStack>
+                <Badge colorScheme="yellow" fontSize="sm" px={3} py={1} borderRadius="full">
+                  Race {matchNumber} - {match.circuit}
+                </Badge>
+              </VStack>
+            </ModalHeader>
+            <ModalCloseButton color="white" size="lg" />
+            <ModalBody py={8} px={6}>
+              <VStack spacing={6} align="stretch">
+                {/* Race Info Banner */}
+                <HStack
+                  bg={useColorModeValue("purple.50", "purple.900")}
+                  p={4}
+                  borderRadius="lg"
+                  justify="space-between"
+                  flexWrap="wrap"
+                  spacing={4}
+                >
+                  <VStack align="start" spacing={0}>
+                    <Text fontSize="xs" color={labelColor} fontWeight="bold">
+                      DATE & TIME
+                    </Text>
+                    <Text fontSize="sm" fontWeight="semibold">
+                      {match.date}
+                    </Text>
+                    <Text fontSize="sm">{match.time}</Text>
+                  </VStack>
+                  <VStack align="end" spacing={0}>
+                    <Text fontSize="xs" color={labelColor} fontWeight="bold">
+                      LOCATION
+                    </Text>
+                    <Text fontSize="sm" fontWeight="semibold">
+                      {match.location}
+                    </Text>
+                    <Text fontSize="sm">{match.cc}</Text>
+                  </VStack>
+                </HStack>
+
+                {/* Competitors */}
+                <Box>
+                  <HStack mb={3}>
+                    <Text fontSize="2xl">🏁</Text>
+                    <Heading size="sm" color={useColorModeValue("purple.700", "purple.300")}>
+                      The Competitors
+                    </Heading>
+                  </HStack>
+                  <HStack spacing={3} flexWrap="wrap" justify="center">
+                    {match.players.map((player) => (
+                      <Badge key={player.id} colorScheme="purple" fontSize="sm" px={3} py={1} borderRadius="full">
+                        {player.name}
+                      </Badge>
+                    ))}
+                  </HStack>
+                </Box>
+
+                {/* Pre-Race Analysis */}
+                <Box
+                  bg={useColorModeValue("orange.50", "orange.900")}
+                  p={6}
+                  borderRadius="xl"
+                  borderLeft="4px solid"
+                  borderColor="orange.500"
+                >
+                  <HStack mb={3}>
+                    <Text fontSize="2xl">📊</Text>
+                    <Heading size="sm" color={useColorModeValue("orange.700", "orange.300")}>
+                      Race Analysis
+                    </Heading>
+                  </HStack>
+                  <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
+                    {preRaceProspects[match.id] || "The race is about to begin! May the best racer win!"}
+                  </Text>
+                </Box>
+
+                {/* Fun disclaimer */}
+                <Text fontSize="xs" color={labelColor} textAlign="center" fontStyle="italic" pt={2}>
+                  ⚠️ Predictions are for entertainment purposes only. Banana peels and blue shells may alter outcomes.
+                </Text>
               </VStack>
             </ModalBody>
           </ModalContent>
