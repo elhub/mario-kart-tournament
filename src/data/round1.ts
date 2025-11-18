@@ -27,7 +27,7 @@ export const round1: Round = {
         },
         {
           id: "p2",
-          name: "Hedda", // female
+          name: "Hedda",
           description:
             "Queen of Speed - {name}'s lightning-fast reflexes and tactical item usage leave opponents eating her dust on the straights.",
           attributes: [
@@ -51,7 +51,7 @@ export const round1: Round = {
         },
         {
           id: "p4",
-          name: "Player 4", // male
+          name: "Per Kristian", // male
           description:
             "Master of Chaos - {name} thrives in the mayhem, turning red shells and banana peels into opportunities for spectacular comebacks.",
           attributes: [
@@ -155,13 +155,13 @@ export const round1: Round = {
         },
         {
           id: "p11",
-          name: "Player 11",
+          name: "Sandra",
           description:
-            "The Veteran - {name}'s years of experience shine through clutch plays and knowing exactly when to unleash that star power.",
+            "The Huntress - {name} stalks her prey with patience, then strikes with devastating speed when the moment is right.",
           attributes: [
-            { emoji: "⭐", label: "Star Power" },
-            { emoji: "🎖️", label: "Veteran" },
-            { emoji: "🧙", label: "Wise" },
+            { emoji: "🏹", label: "Huntress" },
+            { emoji: "🦅", label: "Predator" },
+            { emoji: "⚡", label: "Strike Speed" },
           ],
         },
         {
@@ -276,7 +276,7 @@ export const round1: Round = {
         },
         {
           id: "p20",
-          name: "Mari", // female
+          name: "Mari",
           description:
             "Valkyrie of Victory - {name} charges through the pack with warrior-like determination, claiming podiums as her birthright.",
           attributes: [
@@ -375,13 +375,13 @@ export const round1: Round = {
         },
         {
           id: "p27",
-          name: "Player 27", // female
+          name: "Player 27",
           description:
-            "The Huntress - {name} stalks her prey with patience, then strikes with devastating speed when the moment is right.",
+            "The Veteran - {name}'s years of experience shine through clutch plays and knowing exactly when to unleash that star power.",
           attributes: [
-            { emoji: "🏹", label: "Huntress" },
-            { emoji: "🦅", label: "Predator" },
-            { emoji: "⚡", label: "Strike Speed" },
+            { emoji: "⭐", label: "Star Power" },
+            { emoji: "🎖️", label: "Veteran" },
+            { emoji: "🧙", label: "Wise" },
           ],
         },
         {
