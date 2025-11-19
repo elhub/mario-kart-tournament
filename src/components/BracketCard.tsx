@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import type { Race, Player } from "@/types";
-import { preRaceProspects } from "@/data/preRaceProspects";
+import { generateProspect } from "@/utils/prospectUtils";
 
 export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; roundName: string; rowIndex: number }) => {
   const bg = useColorModeValue("white", "gray.700");
@@ -339,7 +339,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                     </Heading>
                   </HStack>
                   <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
-                    {preRaceProspects[match.id] || "The race is about to begin! May the best racer win!"}
+                    {generateProspect(match)}
                   </Text>
                 </Box>
 

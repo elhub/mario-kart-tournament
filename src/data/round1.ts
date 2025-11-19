@@ -12,6 +12,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "The Mushroom Cup opens with an absolutely thrilling clash of styles! {p2}, the Queen of Speed, brings her lightning-fast reflexes and tactical genius to the track, making her the odds-on favorite. But don't count out {p1}, the Drift King, whose precision cornering could prove devastating on these technical circuits. {p3}'s mathematical approach means he's already calculated every shortcut twice over, while {p4}'s chaos-loving nature could turn this entire race on its head with one perfectly timed red shell. Expect fireworks as speed meets precision meets strategy meets pure mayhem - and with {p2}'s tactical prowess against {p1}'s defensive capabilities, the battle for first could come down to the final corner of the final track!",
       players: [
         {
           id: "p1",
@@ -71,6 +73,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "The Flower Cup promises to be a masterclass in contrasts! {p6}, the Rainbow Road Royalty, glides into this race as the frontrunner with his graceful navigation of even the most treacherous tracks. But lurking just behind is the enigmatic {p7}, whose flawless mini-turbos and perfect racing lines could create unstoppable momentum. {p5}, the Comeback Kid, thrives on adversity - count on him to use every mushroom to mount spectacular comebacks that'll keep everyone on edge. Meanwhile, {p8}'s surgical precision with triple red shells means no lead is safe. This race could see {p6}'s grace tested by {p7}'s perfection, while {p5} waits for that perfect moment to strike from behind, and {p8} plays sniper from whatever position he finds himself in!",
       players: [
         {
           id: "p5",
@@ -130,6 +134,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "Lightning Cup lives up to its name with this electrifying quartet! {p10}, the Boost Master, enters with explosive acceleration that could see him rocket into an early lead with his mastery of mushroom chains. But can he hold off {p11}, the Huntress, who stalks her prey with patience before striking with devastating speed? {p9}'s defensive prowess makes him an impenetrable wall - his strategic banana placement could completely shut down certain sections of the track. And then there's {p12}, the Track Whisperer, who knows shortcuts the others can only dream of discovering. This race could unfold like a chess match: {p10} surges ahead, {p11} waits for the perfect moment, {p9} builds his fortress, and {p12} might just disappear down a secret path and emerge victorious!",
       players: [
         {
           id: "p9",
@@ -185,6 +191,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "Shell Cup brings together four fierce competitors with wildly different approaches! {p13}, the Intimidator, will use aggressive overtakes to assert dominance early, putting psychological pressure on everyone. {p14}'s pixel-perfect drifts make him a master of technical circuits - expect him to nail every apex with calculated precision. {p15}, the Phoenix, specializes in devastating comebacks from last place, fueled by bullet bills and pure determination. {p16} keeps ice in his veins, staying calm under pressure and turning close finishes into victories. The battle here could see {p13}'s aggression clash with {p14}'s technical mastery, while {p15} lurks ominously in the pack, waiting to rise from the ashes, and {p16} bides his time for that perfect final-lap strike!",
       players: [
         {
           id: "p13",
@@ -240,6 +248,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "Banana Cup serves up an explosive cocktail of talent! {p17}, The Thunder, brings explosive starts and dominant leads - he's a lightning bolt on wheels that's nearly impossible to catch once he gets ahead. {p18}, the Rising Star, combines natural talent with a fearless approach to Rainbow Roads, marking him as a future champion who might just announce his arrival today. {p19}'s tactical mind games and strategic item hoarding could break opponents' spirits before the first lap is done, while {p20}, the Valkyrie of Victory, charges through packs with warrior-like determination, treating podiums as her birthright. Expect {p17} to burst into the lead, {p18} to fearlessly challenge him, {p19} to orchestrate chaos from the middle, and {p20} to fight tooth and nail for every position!",
       players: [
         {
           id: "p17",
@@ -295,6 +305,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "Leaf Cup presents a fascinating tactical puzzle! {p21}, the Speed Demon, enters with throttle control and boost optimization that creates blistering lap times - he's here to shatter records. {p22}, The Wall, makes overtaking an exercise in frustration with his defensive mastery and position holding. {p23} brings old school techniques and timeless strategies that prove experience can trump youth, while {p24}, The Showman, plans to entertain with flashy tricks and spectacular jumps while devastating opponents with style. This race could see {p21} set a blistering pace from the front, {p22} lock down second position like Fort Knox, {p23} use veteran wisdom to exploit any mistakes, and {p24} attempt something spectacular that either launches him to victory or sends him tumbling down the standings!",
       players: [
         {
           id: "p21",
@@ -350,6 +362,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "Star Cup shines with innovation and consistency! {p25}, The Innovator, has discovered new racing lines and unconventional strategies that could revolutionize this race - expect the unexpected. {p26}, the Consistency King, brings reliable performances and steady hands that guarantee he'll be there at the end, lurking on the podium. {p27}'s years of experience mean clutch plays and perfect star power timing, while {p28}, the Gravity Defier, makes impossible jumps look routine, turning vertical shortcuts into personal highways. Watch for {p25} to try something wild that either pays off brilliantly or spectacularly fails, {p26} to steadily accumulate points through pure consistency, {p27} to make veteran moves at crucial moments, and {p28} to attempt aerial shortcuts that could change everything!",
       players: [
         {
           id: "p25",
@@ -405,6 +419,8 @@ export const round1: Round = {
       cc: "50cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "The second Mushroom Cup race brings together determination and flow! {p29}, The Anchor, provides unshakeable focus and ironclad nerves that keep him steady when chaos erupts. {p30}, the Nitro Queen, has perfect mushroom timing and boost chains that create acceleration bursts leaving rivals in the dust. {p31}, The Underdog, refuses to accept defeat, fueling miraculous victories against all odds, while {p32}, the Master of Momentum, flows through tracks like water, maintaining perfect speed while others brake and stumble. This could be a race where {p30} bursts into an early lead with her nitro mastery, {p29} stays unshakeably in contention, {p31} mounts an improbable challenge from behind, and {p32} simply flows past everyone when they least expect it. Expect the unexpected!",
       players: [
         {
           id: "p29",
