@@ -86,7 +86,7 @@ export const round1: Round = {
         },
         {
           id: "p6",
-          name: "Henrik",
+          name: "Henrik S.",
           description:
             "Rainbow Road Royalty - {name} navigates treacherous tracks with grace, making hairpin turns look effortless while others fall behind.",
           attributes: [
@@ -166,7 +166,7 @@ export const round1: Round = {
         },
         {
           id: "p12",
-          name: "Player 12",
+          name: "Henrik H.",
           description:
             "Track Whisperer - {name} knows every shortcut, every jump, every hidden path that others can only dream of discovering.",
           attributes: [
