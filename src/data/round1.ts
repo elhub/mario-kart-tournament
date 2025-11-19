@@ -400,7 +400,7 @@ export const round1: Round = {
         },
         {
           id: "p28",
-          name: "Player 28", // male
+          name: "Enzo",
           description:
             "Gravity Defier - {name} makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory.",
           attributes: [
