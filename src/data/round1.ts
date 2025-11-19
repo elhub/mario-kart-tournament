@@ -332,7 +332,7 @@ export const round1: Round = {
         },
         {
           id: "p23",
-          name: "Player 23",
+          name: "Per Erik",
           description:
             "Old School Legend - {name}'s classic racing techniques and timeless strategies prove that experience beats youth every time.",
           attributes: [
