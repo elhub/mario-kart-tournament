@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import type { Race, Player } from "@/types";
-import { generateProspect } from "@/utils/prospectUtils";
+import { generateProspectElements, type ProspectElement } from "@/utils/prospectUtils";
 
 export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; roundName: string; rowIndex: number }) => {
   const bg = useColorModeValue("white", "gray.700");
@@ -36,6 +36,14 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
     if (!player.description || player.name.match(/^Player \d+$/)) {
       return;
     }
+    setSelectedPlayer(player);
+    onOpen();
+  };
+
+  // Handle player click from prospect text
+  const handleProspectPlayerClick = (player: Player) => {
+    // Don't close the prospect modal - keep it open in the background
+    // Just open the player modal with the selected player
     setSelectedPlayer(player);
     onOpen();
   };
@@ -317,7 +325,17 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                   </HStack>
                   <HStack spacing={3} flexWrap="wrap" justify="center">
                     {match.players.map((player) => (
-                      <Badge key={player.id} colorScheme="purple" fontSize="sm" px={3} py={1} borderRadius="full">
+                      <Badge
+                        key={player.id}
+                        colorScheme="purple"
+                        fontSize="sm"
+                        px={3}
+                        py={1}
+                        borderRadius="full"
+                        cursor="pointer"
+                        _hover={{ transform: "scale(1.05)", boxShadow: "md" }}
+                        onClick={() => handleProspectPlayerClick(player)}
+                      >
                         {player.name}
                       </Badge>
                     ))}
@@ -339,7 +357,29 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                     </Heading>
                   </HStack>
                   <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
-                    {generateProspect(match)}
+                    {generateProspectElements(match, handleProspectPlayerClick).map((element, index) => {
+                      if (typeof element === "string") {
+                        return element;
+                      }
+                      // It's a player element
+                      return (
+                        <Text
+                          as="span"
+                          key={element.key}
+                          color={useColorModeValue("blue.600", "blue.300")}
+                          fontWeight="bold"
+                          textDecoration="underline"
+                          cursor="pointer"
+                          _hover={{
+                            color: useColorModeValue("blue.700", "blue.200"),
+                            textDecoration: "underline",
+                          }}
+                          onClick={element.onClick}
+                        >
+                          {element.player.name}
+                        </Text>
+                      );
+                    })}
                   </Text>
                 </Box>
 
