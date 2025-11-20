@@ -275,7 +275,7 @@ export const round1: Round = {
         },
         {
           id: "p19",
-          name: "Player 19",
+          name: "Markus E.",
           description:
             "The Tactician - {name}'s mind games and strategic item hoarding create psychological warfare that breaks opponents' spirits.",
           attributes: [
