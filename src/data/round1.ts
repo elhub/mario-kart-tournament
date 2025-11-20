@@ -229,13 +229,13 @@ export const round1: Round = {
         },
         {
           id: "p16",
-          name: "Player 16", // male
+          name: "Enzo",
           description:
-            "Ice in His Veins - {name} stays cool under pressure, turning close finishes into victories with nerves of steel.",
+            "Gravity Defier - {name} makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory.",
           attributes: [
-            { emoji: "❄️", label: "Ice Cold" },
-            { emoji: "🧊", label: "Calm" },
-            { emoji: "🔩", label: "Nerves of Steel" },
+            { emoji: "🪂", label: "Gravity Defier" },
+            { emoji: "🦘", label: "Jump Master" },
+            { emoji: "🌌", label: "Sky Walker" },
           ],
         },
       ],
@@ -400,13 +400,13 @@ export const round1: Round = {
         },
         {
           id: "p28",
-          name: "Enzo",
+          name: "Player 16", // male
           description:
-            "Gravity Defier - {name} makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory.",
+            "Ice in His Veins - {name} stays cool under pressure, turning close finishes into victories with nerves of steel.",
           attributes: [
-            { emoji: "🪂", label: "Gravity Defier" },
-            { emoji: "🦘", label: "Jump Master" },
-            { emoji: "🌌", label: "Sky Walker" },
+            { emoji: "❄️", label: "Ice Cold" },
+            { emoji: "🧊", label: "Calm" },
+            { emoji: "🔩", label: "Nerves of Steel" },
           ],
         },
       ],
