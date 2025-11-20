@@ -457,7 +457,7 @@ export const round1: Round = {
         },
         {
           id: "p32",
-          name: "Player 32",
+          name: "Johanna",
           description:
             "Master of Momentum - {name} flows through tracks like water, maintaining perfect speed while others brake and stumble.",
           attributes: [
