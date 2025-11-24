@@ -389,7 +389,7 @@ export const round1: Round = {
         },
         {
           id: "p27",
-          name: "Player 27",
+          name: "Bastian",
           description:
             "The Veteran - {name}'s years of experience shine through clutch plays and knowing exactly when to unleash that star power.",
           attributes: [
