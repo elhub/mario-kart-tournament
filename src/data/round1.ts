@@ -102,7 +102,7 @@ export const round1: Round = {
         },
         {
           id: "p7",
-          name: "Player 7",
+          name: "Lise",
           description:
             "The Perfectionist - {name}'s smooth racing lines and flawless mini-turbos create an unstoppable momentum that rivals fear.",
           attributes: [
