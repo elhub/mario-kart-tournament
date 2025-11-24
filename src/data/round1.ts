@@ -306,7 +306,7 @@ export const round1: Round = {
       location: "Huben",
       // isFinished: true,
       prospect:
-        "Leaf Cup presents a fascinating tactical puzzle! {p21}, the Speed Demon, enters with throttle control and boost optimization that creates blistering lap times - he's here to shatter records. {p22}, The Wall, makes overtaking an exercise in frustration with his defensive mastery and position holding. {p23} brings old school techniques and timeless strategies that prove experience can trump youth, while {p24}, The Showman, plans to entertain with flashy tricks and spectacular jumps while devastating opponents with style. This race could see {p21} set a blistering pace from the front, {p22} lock down second position like Fort Knox, {p23} use veteran wisdom to exploit any mistakes, and {p24} attempt something spectacular that either launches him to victory or sends him tumbling down the standings!",
+        "Leaf Cup presents a fascinating tactical puzzle! {p21}, the Speed Demon, enters with throttle control and boost optimization that creates blistering lap times - he's here to shatter records. {p22}, The Wall, makes overtaking an exercise in frustration with his defensive mastery and position holding. {p23} brings old school techniques and timeless strategies that prove experience can trump youth, while {p24}, The Showgirl, plans to entertain with flashy tricks and spectacular jumps while devastating opponents with style. This race could see {p21} set a blistering pace from the front, {p22} lock down second position like Fort Knox, {p23} use veteran wisdom to exploit any mistakes, and {p24} attempt something spectacular that either launches her to victory or sends her tumbling down the standings!",
       players: [
         {
           id: "p21",
@@ -343,11 +343,11 @@ export const round1: Round = {
         },
         {
           id: "p24",
-          name: "Player 24",
+          name: "Linn Victoria",
           description:
-            "The Showman - {name}'s flashy tricks and spectacular jumps entertain crowds while devastating opponents with style.",
+            "The Showgirl - {name}'s flashy tricks and spectacular jumps entertain crowds while devastating opponents with style.",
           attributes: [
-            { emoji: "🎪", label: "Showman" },
+            { emoji: "🎪", label: "Showgirl" },
             { emoji: "🤸", label: "Acrobatic" },
             { emoji: "✨", label: "Spectacular" },
           ],
