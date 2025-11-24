@@ -400,7 +400,7 @@ export const round1: Round = {
         },
         {
           id: "p28",
-          name: "Player 16", // male
+          name: "Jørgen",
           description:
             "Ice in His Veins - {name} stays cool under pressure, turning close finishes into victories with nerves of steel.",
           attributes: [
