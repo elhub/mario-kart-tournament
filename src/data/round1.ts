@@ -13,17 +13,17 @@ export const round1: Round = {
       location: "Huben",
       // isFinished: true,
       prospect:
-        "The Mushroom Cup opens with an absolutely thrilling clash of styles! {p2}, the Queen of Speed, brings her lightning-fast reflexes and tactical genius to the track, making her the odds-on favorite. But don't count out {p1}, the Drift King, whose precision cornering could prove devastating on these technical circuits. {p3}'s mathematical approach means he's already calculated every shortcut twice over, while {p4}'s chaos-loving nature could turn this entire race on its head with one perfectly timed red shell. Expect fireworks as speed meets precision meets strategy meets pure mayhem - and with {p2}'s tactical prowess against {p1}'s defensive capabilities, the battle for first could come down to the final corner of the final track!",
+        "The Mushroom Cup opens with an absolutely thrilling clash of styles! {p2}, the Queen of Speed, brings her lightning-fast reflexes and tactical genius to the track, making her the odds-on favorite. But don't count out {p1}, the Master of Momentum, whose flowing racing lines and perfect speed maintenance could prove devastating on these technical circuits. {p3}'s mathematical approach means he's already calculated every shortcut twice over, while {p4}'s chaos-loving nature could turn this entire race on its head with one perfectly timed red shell. Expect fireworks as speed meets flow meets strategy meets pure mayhem - and with {p2}'s tactical prowess against {p1}'s momentum mastery, the battle for first could come down to the final corner of the final track!",
       players: [
         {
           id: "p1",
-          name: "Sander",
+          name: "Johanna",
           description:
-            "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
+            "Master of Momentum - {name} flows through tracks like water, maintaining perfect speed while others brake and stumble.",
           attributes: [
-            { emoji: "🎯", label: "Precision" },
-            { emoji: "💨", label: "Drift Master" },
-            { emoji: "🛡️", label: "Defense" },
+            { emoji: "🌊", label: "Flow Master" },
+            { emoji: "💨", label: "Momentum" },
+            { emoji: "🎯", label: "Speed Perfect" },
           ],
           position: 2,
         },
@@ -420,7 +420,7 @@ export const round1: Round = {
       location: "Huben",
       // isFinished: true,
       prospect:
-        "The second Mushroom Cup race brings together determination and flow! {p29}, The Anchor, provides unshakeable focus and ironclad nerves that keep him steady when chaos erupts. {p30}, the Nitro Queen, has perfect mushroom timing and boost chains that create acceleration bursts leaving rivals in the dust. {p31}, The Underdog, refuses to accept defeat, fueling miraculous victories against all odds, while {p32}, the Master of Momentum, flows through tracks like water, maintaining perfect speed while others brake and stumble. This could be a race where {p30} bursts into an early lead with her nitro mastery, {p29} stays unshakeably in contention, {p31} mounts an improbable challenge from behind, and {p32} simply flows past everyone when they least expect it. Expect the unexpected!",
+        "The second Mushroom Cup race brings together determination and precision! {p29}, The Anchor, provides unshakeable focus and ironclad nerves that keep him steady when chaos erupts. {p30}, the Nitro Queen, has perfect mushroom timing and boost chains that create acceleration bursts leaving rivals in the dust. {p31}, The Underdog, refuses to accept defeat, fueling miraculous victories against all odds, while {p32}, the Drift King, masters every corner with precision and fearless blue shell dodges. This could be a race where {p30} bursts into an early lead with her nitro mastery, {p29} stays unshakeably in contention, {p31} mounts an improbable challenge from behind, and {p32} demonstrates flawless cornering when it matters most. Expect the unexpected!",
       players: [
         {
           id: "p29",
@@ -457,13 +457,13 @@ export const round1: Round = {
         },
         {
           id: "p32",
-          name: "Johanna",
+          name: "Sander",
           description:
-            "Master of Momentum - {name} flows through tracks like water, maintaining perfect speed while others brake and stumble.",
+            "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
           attributes: [
-            { emoji: "🌊", label: "Flow Master" },
-            { emoji: "💨", label: "Momentum" },
-            { emoji: "🎯", label: "Speed Perfect" },
+            { emoji: "🎯", label: "Precision" },
+            { emoji: "💨", label: "Drift Master" },
+            { emoji: "🛡️", label: "Defense" },
           ],
         },
       ],
