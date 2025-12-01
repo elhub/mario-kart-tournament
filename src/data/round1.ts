@@ -11,7 +11,7 @@ export const round1: Round = {
       circuit: "Mushroom Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The Mushroom Cup opens with an absolutely thrilling clash of styles! {p2}, the Queen of Speed, brings her lightning-fast reflexes and tactical genius to the track, making her the odds-on favorite. But don't count out {p1}, the Master of Momentum, whose flowing racing lines and perfect speed maintenance could prove devastating on these technical circuits. {p3}'s mathematical approach means he's already calculated every shortcut twice over, while {p4}'s chaos-loving nature could turn this entire race on its head with one perfectly timed red shell. Expect fireworks as speed meets flow meets strategy meets pure mayhem - and with {p2}'s tactical prowess against {p1}'s momentum mastery, the battle for first could come down to the final corner of the final track!",
       players: [
@@ -25,7 +25,7 @@ export const round1: Round = {
             { emoji: "💨", label: "Momentum" },
             { emoji: "🎯", label: "Speed Perfect" },
           ],
-          position: 2,
+          position: 1,
         },
         {
           id: "p2",
@@ -37,7 +37,7 @@ export const round1: Round = {
             { emoji: "👑", label: "Royalty" },
             { emoji: "🎮", label: "Tactical Genius" },
           ],
-          position: 1,
+          position: 4,
         },
         {
           id: "p3",
@@ -61,7 +61,7 @@ export const round1: Round = {
             { emoji: "🎲", label: "Risk Taker" },
             { emoji: "💥", label: "Explosive" },
           ],
-          position: 4,
+          position: 2,
         },
       ],
     },
