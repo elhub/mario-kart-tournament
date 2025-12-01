@@ -52,8 +52,8 @@ export const round1: Round = {
       location: "Huben",
       // isFinished: true,
       prospect:
-        "Shell Cup brings together four fierce competitors with wildly different approaches! {p13}, the Intimidator, will use aggressive overtakes to assert dominance early, putting psychological pressure on everyone. {p14}'s pixel-perfect drifts make him a master of technical circuits - expect him to nail every apex with calculated precision. {p15}, the Phoenix, specializes in devastating comebacks from last place, fueled by bullet bills and pure determination. And then there's {p16}, the Gravity Defier, who makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory. The battle here could see {p13}'s aggression clash with {p14}'s technical mastery, while {p15} waits to rise from the ashes, and {p16} attempts aerial shortcuts that could completely change the race dynamics!",
-      players: [createPlayer("p13"), createPlayer("p14"), createPlayer("p15"), createPlayer("p16")],
+        "Shell Cup brings together four fierce competitors with wildly different approaches! {p13}, the Intimidator, will use aggressive overtakes to assert dominance early, putting psychological pressure on everyone. {p18}, the Rising Star, combines natural talent with a fearless approach that could mark this as his breakout moment. {p15}, the Phoenix, specializes in devastating comebacks from last place, fueled by bullet bills and pure determination. And then there's {p16}, the Gravity Defier, who makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory. The battle here could see {p13}'s aggression clash with {p18}'s fearless natural talent, while {p15} waits to rise from the ashes, and {p16} attempts aerial shortcuts that could completely change the race dynamics!",
+      players: [createPlayer("p13"), createPlayer("p18"), createPlayer("p15"), createPlayer("p16")],
     },
     {
       id: "m5",
@@ -64,8 +64,8 @@ export const round1: Round = {
       location: "Huben",
       // isFinished: true,
       prospect:
-        "Banana Cup serves up an explosive cocktail of talent! {p17}, The Thunder, brings explosive starts and dominant leads - he's a lightning bolt on wheels that's nearly impossible to catch once he gets ahead. {p18}, the Rising Star, combines natural talent with a fearless approach to Rainbow Roads, marking him as a future champion who might just announce his arrival today. {p19}'s tactical mind games and strategic item hoarding could break opponents' spirits before the first lap is done, while {p20}, the Valkyrie of Victory, charges through packs with warrior-like determination, treating podiums as her birthright. Expect {p17} to burst into the lead, {p18} to fearlessly challenge him, {p19} to orchestrate chaos from the middle, and {p20} to fight tooth and nail for every position!",
-      players: [createPlayer("p17"), createPlayer("p18"), createPlayer("p19"), createPlayer("p20")],
+        "Banana Cup serves up an explosive cocktail of talent! {p17}, The Thunder, brings explosive starts and dominant leads - he's a lightning bolt on wheels that's nearly impossible to catch once he gets ahead. {p14}, the Precision Pilot, brings pixel-perfect drifts and calculated risks that make him a master of high-speed technical circuits. {p19}'s tactical mind games and strategic item hoarding could break opponents' spirits before the first lap is done, while {p20}, the Valkyrie of Victory, charges through packs with warrior-like determination, treating podiums as her birthright. Expect {p17} to burst into the lead, {p14} to challenge with surgical precision on technical sections, {p19} to orchestrate chaos from the middle, and {p20} to fight tooth and nail for every position!",
+      players: [createPlayer("p17"), createPlayer("p14"), createPlayer("p19"), createPlayer("p20")],
     },
     {
       id: "m6",
