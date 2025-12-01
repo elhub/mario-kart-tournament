@@ -13,9 +13,29 @@ export const round2: Round = {
       location: "Huben",
       // isFinished: true,
       players: [
-        { id: "p33", name: "Winner of Race 1", description: "" },
+        {
+          id: "p1",
+          name: "Johanna",
+          description:
+            "Master of Momentum - {name} flows through tracks like water, maintaining perfect speed while others brake and stumble.",
+          attributes: [
+            { emoji: "🌊", label: "Flow Master" },
+            { emoji: "💨", label: "Momentum" },
+            { emoji: "🎯", label: "Speed Perfect" },
+          ],
+        },
         { id: "p34", name: "Winner of Race 2", description: "" },
-        { id: "p35", name: "2nd Place of Race 1", description: "" },
+        {
+          id: "p4",
+          name: "Per Kristian",
+          description:
+            "Master of Chaos - {name} thrives in the mayhem, turning red shells and banana peels into opportunities for spectacular comebacks.",
+          attributes: [
+            { emoji: "🔥", label: "Chaos King" },
+            { emoji: "🎲", label: "Risk Taker" },
+            { emoji: "💥", label: "Explosive" },
+          ],
+        },
         { id: "p36", name: "2nd Place of Race 2", description: "" },
       ],
     },
