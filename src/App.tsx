@@ -96,9 +96,17 @@ function App() {
     >
       {/* Registration Badge & Rules Button Container */}
       <VStack position="fixed" top="75%" left="50%" transform="translate(-50%, -50%)" zIndex={10} spacing={6}>
-        <RegistrationBadge tournament={tournament} />
+        <Box display={{ base: "none", md: "block" }}>
+          <RegistrationBadge tournament={tournament} />
+        </Box>
 
-        <Button colorScheme="blue" size="lg" onClick={onOpen} leftIcon={<Text>📋</Text>} boxShadow="xl">
+        <Button
+          colorScheme="blue"
+          size={{ base: "md", md: "lg" }}
+          onClick={onOpen}
+          leftIcon={<Text>📋</Text>}
+          boxShadow="xl"
+        >
           Tournament Rules
         </Button>
       </VStack>
