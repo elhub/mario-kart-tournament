@@ -22,6 +22,7 @@ export type Race = {
   winnerId?: string;
   isFinished?: boolean; // Whether the race is finished
   prospect?: string; // Pre-race prospect template with {p1}, {p2}, {p3}, {p4} placeholders for player names
+  summary?: string; // Post-race summary template with {p1}, {p2}, {p3}, {p4} placeholders for player names
 };
 
 export type Round = {

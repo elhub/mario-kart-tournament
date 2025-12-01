@@ -14,6 +14,8 @@ export const round1: Round = {
       isFinished: true,
       prospect:
         "The Mushroom Cup opens with an absolutely thrilling clash of styles! {p2}, the Queen of Speed, brings her lightning-fast reflexes and tactical genius to the track, making her the odds-on favorite. But don't count out {p1}, the Master of Momentum, whose flowing racing lines and perfect speed maintenance could prove devastating on these technical circuits. {p3}'s mathematical approach means he's already calculated every shortcut twice over, while {p4}'s chaos-loving nature could turn this entire race on its head with one perfectly timed red shell. Expect fireworks as speed meets flow meets strategy meets pure mayhem - and with {p2}'s tactical prowess against {p1}'s momentum mastery, the battle for first could come down to the final corner of the final track!",
+      summary:
+        "What a race! {p1} dominated from start to finish, showing why she's called the Master of Momentum with her flowing racing lines that kept her ahead of the pack. The battle for second was intense, with {p4} using his chaos mastery perfectly to claim the silver position with a perfectly timed red shell on the final lap! {p3} showed his strategic prowess by securing third place with mathematical precision, while {p2}, despite being the pre-race favorite, had to settle for fourth after an unfortunate banana peel incident on Rainbow Road. Both {p1} and {p4} advance to the quarterfinals in what was an absolutely electric opening to the tournament!",
       players: [
         {
           id: "p1",
