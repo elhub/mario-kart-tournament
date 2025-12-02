@@ -12,9 +12,9 @@ export function generateProspect(match: Race): string {
 
   let prospect = match.prospect;
 
-  // Replace {p1}, {p2}, {p3}, {p4} with actual player names
-  match.players.forEach((player, index) => {
-    const placeholder = `{p${player.id.replace("p", "")}}`;
+  // Replace {player-slug} with actual player names
+  match.players.forEach((player) => {
+    const placeholder = `{${player.id}}`;
     prospect = prospect.replaceAll(placeholder, player.name);
   });
 
@@ -48,14 +48,14 @@ export function generateProspectElements(match: Race, onPlayerClick: (player: Pl
   // Create a map of player IDs to player objects for quick lookup
   const playerMap = new Map(match.players.map((p) => [p.id, p]));
 
-  // Find all player placeholders and their positions
-  const placeholderRegex = /\{p\d+\}/g;
+  // Find all player placeholders and their positions (matches {slug} pattern)
+  const placeholderRegex = /\{([a-z0-9-]+)\}/g;
   const matches = Array.from(prospect.matchAll(placeholderRegex));
 
   matches.forEach((match, index) => {
     const placeholder = match[0];
     const matchIndex = match.index!;
-    const playerId = `p${placeholder.match(/\d+/)![0]}`;
+    const playerId = match[1]; // The captured slug (e.g., "johanna", "per-kristian")
     const player = playerMap.get(playerId);
 
     // Add text before the placeholder
