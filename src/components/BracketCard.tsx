@@ -51,13 +51,16 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
   // Check if all players have real names (not placeholder "Player X")
   const allPlayersAssigned = match.players.every((p) => !p.name.match(/^Player \d+$/));
 
+  // Check if race has prospect/summary content to show
+  const hasRaceContent = !!match.prospect || !!match.summary;
+
   // Handle card click for race modal
   const handleCardClick = (e: React.MouseEvent) => {
     // Only show race modal if:
     // 1. All players are assigned
     // 2. Click is on the card itself (not on players)
-    // 3. Round is "Round of Sixteen"
-    if (allPlayersAssigned && roundName === "Round of Sixteen" && !(e.target as HTMLElement).closest("[data-player-id]")) {
+    // 3. Race has prospect or summary to show
+    if (allPlayersAssigned && hasRaceContent && !(e.target as HTMLElement).closest("[data-player-id]")) {
       onRaceModalOpen();
     }
   };
@@ -115,10 +118,10 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         boxShadow="2xl"
         overflow="hidden"
         onClick={handleCardClick}
-        cursor={allPlayersAssigned && roundName === "Round of Sixteen" ? "pointer" : "default"}
+        cursor={allPlayersAssigned && hasRaceContent ? "pointer" : "default"}
         transition="all 0.2s"
         _hover={
-          allPlayersAssigned && roundName === "Round of Sixteen"
+          allPlayersAssigned && hasRaceContent
             ? {
                 transform: "scale(1.02)",
                 boxShadow: "2xl",
