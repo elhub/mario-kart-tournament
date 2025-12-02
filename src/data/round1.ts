@@ -31,12 +31,14 @@ export const round1: Round = {
       circuit: "Flower Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The Flower Cup promises to be a masterclass in contrasts! {henrik-s}, the Rainbow Road Royalty, glides into this race as the frontrunner with his graceful navigation of even the most treacherous tracks. But lurking just behind is the enigmatic {lise}, whose flawless mini-turbos and perfect racing lines could create unstoppable momentum. {christoffer-s}, the Comeback Kid, thrives on adversity - count on him to use every mushroom to mount spectacular comebacks that'll keep everyone on edge. Meanwhile, {gard}'s surgical precision with triple red shells means no lead is safe. This race could see {henrik-s}'s grace tested by {lise}'s perfection, while {christoffer-s} waits for that perfect moment to strike from behind, and {gard} plays sniper from whatever position he finds himself in!",
+      summary:
+        "Incredible! {christoffer-s}, the Comeback Kid, lived up to his reputation spectacularly! After falling to last place early on, his mushroom mastery propelled him through the field in a comeback for the ages, claiming first place with pure determination! {lise} demonstrated why she's called the Perfectionist, maintaining flawless racing lines and smooth mini-turbos throughout to secure a well-deserved second place. {henrik-s}, despite his graceful Rainbow Road expertise, had to settle for third after a fierce battle on the technical sections. {gard}, the Shell Shock Specialist, couldn't quite land his signature triple red shells when it mattered most and finished fourth. {christoffer-s} and {lise} advance to the quarterfinals, proving that comebacks and perfection both have their place at the top!",
       players: [
-        createPlayer("christoffer-s", 3),
-        createPlayer("henrik-s", 1),
+        createPlayer("christoffer-s", 1),
+        createPlayer("henrik-s", 3),
         createPlayer("lise", 2),
         createPlayer("gard", 4),
       ],
