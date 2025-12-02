@@ -89,7 +89,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
       return isHovered ? useColorModeValue("yellow.300", "yellow.700") : useColorModeValue("yellow.200", "yellow.800");
     }
     if (player.position === 2) {
-      return isHovered ? useColorModeValue("blue.300", "blue.700") : useColorModeValue("blue.200", "blue.800");
+      return isHovered ? useColorModeValue("yellow.300", "yellow.700") : useColorModeValue("yellow.200", "yellow.800");
     }
 
     // 3rd and 4th place remain normal

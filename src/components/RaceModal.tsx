@@ -212,7 +212,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
                                   player.position === 1
                                     ? useColorModeValue("yellow.100", "yellow.900")
                                     : player.position === 2
-                                    ? useColorModeValue("blue.100", "blue.900")
+                                    ? useColorModeValue("yellow.100", "yellow.900")
                                     : useColorModeValue("gray.50", "gray.700")
                                 }
                                 p={4}
@@ -220,7 +220,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
                                 justify="space-between"
                                 borderLeft="4px solid"
                                 borderColor={
-                                  player.position === 1 ? "yellow.500" : player.position === 2 ? "blue.500" : "gray.300"
+                                  player.position === 1 ? "yellow.500" : player.position === 2 ? "yellow.500" : "gray.300"
                                 }
                                 cursor="pointer"
                                 _hover={{ transform: "scale(1.02)", boxShadow: "md" }}
