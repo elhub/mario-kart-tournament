@@ -2,8 +2,8 @@ import type { Player } from "@/types";
 
 // Player profiles without position data (position is race-specific)
 export const playerProfiles: Record<string, Omit<Player, "position">> = {
-  p1: {
-    id: "p1",
+  johanna: {
+    id: "johanna",
     name: "Johanna",
     description:
       "Master of Momentum - {name} flows through tracks like water, maintaining perfect speed while others brake and stumble.",
@@ -13,8 +13,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🎯", label: "Speed Perfect" },
     ],
   },
-  p2: {
-    id: "p2",
+  hedda: {
+    id: "hedda",
     name: "Hedda",
     description:
       "Queen of Speed - {name}'s lightning-fast reflexes and tactical item usage leave opponents eating her dust on the straights.",
@@ -24,8 +24,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🎮", label: "Tactical Genius" },
     ],
   },
-  p3: {
-    id: "p3",
+  "ole-kristian": {
+    id: "ole-kristian",
     name: "Ole Kristian",
     description:
       "The Strategist - {name} calculates every shortcut and boost pad with mathematical precision, turning races into perfectly executed symphonies.",
@@ -35,8 +35,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🔬", label: "Analyst" },
     ],
   },
-  p4: {
-    id: "p4",
+  "per-kristian": {
+    id: "per-kristian",
     name: "Per Kristian",
     description:
       "Master of Chaos - {name} thrives in the mayhem, turning red shells and banana peels into opportunities for spectacular comebacks.",
@@ -46,8 +46,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "💥", label: "Explosive" },
     ],
   },
-  p5: {
-    id: "p5",
+  "christoffer-s": {
+    id: "christoffer-s",
     name: "Christoffer S.",
     description:
       "The Comeback Kid - {name} never gives up, using every mushroom and star to claw back from impossible positions.",
@@ -57,8 +57,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🔄", label: "Comeback King" },
     ],
   },
-  p6: {
-    id: "p6",
+  "henrik-s": {
+    id: "henrik-s",
     name: "Henrik S.",
     description:
       "Rainbow Road Royalty - {name} navigates treacherous tracks with grace, making hairpin turns look effortless while others fall behind.",
@@ -68,8 +68,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏔️", label: "Peak Performance" },
     ],
   },
-  p7: {
-    id: "p7",
+  lise: {
+    id: "lise",
     name: "Lise",
     description:
       "The Perfectionist - {name}'s smooth racing lines and flawless mini-turbos create an unstoppable momentum that rivals fear.",
@@ -79,8 +79,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "⚙️", label: "Optimized" },
     ],
   },
-  p8: {
-    id: "p8",
+  gard: {
+    id: "gard",
     name: "Gard",
     description:
       "Shell Shock Specialist - {name}'s uncanny ability to land triple red shells with surgical precision has earned him legendary status.",
@@ -90,8 +90,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏆", label: "Legendary" },
     ],
   },
-  p9: {
-    id: "p9",
+  "pal-oskar": {
+    id: "pal-oskar",
     name: "Pål Oskar",
     description:
       "The Guardian - {name}'s defensive driving and strategic banana placement make him an impenetrable wall on the track.",
@@ -101,8 +101,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏰", label: "Fortress" },
     ],
   },
-  p10: {
-    id: "p10",
+  fredrik: {
+    id: "fredrik",
     name: "Fredrik",
     description:
       "Boost Master - {name}'s mastery of mushroom chains and turbo slides propels him to victory with explosive acceleration.",
@@ -112,8 +112,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "💨", label: "Speed Demon" },
     ],
   },
-  p11: {
-    id: "p11",
+  sandra: {
+    id: "sandra",
     name: "Sandra",
     description:
       "The Huntress - {name} stalks her prey with patience, then strikes with devastating speed when the moment is right.",
@@ -123,8 +123,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "⚡", label: "Strike Speed" },
     ],
   },
-  p12: {
-    id: "p12",
+  "henrik-h": {
+    id: "henrik-h",
     name: "Henrik H.",
     description:
       "Track Whisperer - {name} knows every shortcut, every jump, every hidden path that others can only dream of discovering.",
@@ -134,8 +134,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🌟", label: "Secret Master" },
     ],
   },
-  p13: {
-    id: "p13",
+  alexander: {
+    id: "alexander",
     name: "Alexander",
     description:
       "The Intimidator - {name}'s aggressive racing style and fearless overtakes leave opponents second-guessing every move.",
@@ -145,8 +145,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "💢", label: "Fearless" },
     ],
   },
-  p14: {
-    id: "p14",
+  vebjorn: {
+    id: "vebjorn",
     name: "Vebjørn",
     description:
       "Precision Pilot - {name}'s pixel-perfect drifts and calculated risks make him a master of high-speed technical circuits.",
@@ -156,8 +156,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "📐", label: "Calculated" },
     ],
   },
-  p15: {
-    id: "p15",
+  brynhildur: {
+    id: "brynhildur",
     name: "Brynhildur",
     description:
       "The Phoenix - {name} rises from last place with devastating comebacks, fueled by bullet bills and pure determination.",
@@ -167,8 +167,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "💎", label: "Determined" },
     ],
   },
-  p16: {
-    id: "p16",
+  enzo: {
+    id: "enzo",
     name: "Enzo",
     description:
       "Gravity Defier - {name} makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory.",
@@ -178,8 +178,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🌌", label: "Sky Walker" },
     ],
   },
-  p17: {
-    id: "p17",
+  sergio: {
+    id: "sergio",
     name: "Sergio",
     description:
       "The Thunder - {name}'s explosive starts and dominant leads make him a lightning bolt on wheels that's impossible to catch.",
@@ -189,8 +189,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "👑", label: "Dominant" },
     ],
   },
-  p18: {
-    id: "p18",
+  "tor-magnus": {
+    id: "tor-magnus",
     name: "Tor Magnus",
     description:
       "Rising Star - {name}'s natural talent and fearless approach to rainbow roads mark him as the future champion in the making.",
@@ -200,8 +200,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏅", label: "Natural Talent" },
     ],
   },
-  p19: {
-    id: "p19",
+  "markus-e": {
+    id: "markus-e",
     name: "Markus E.",
     description:
       "The Tactician - {name}'s mind games and strategic item hoarding create psychological warfare that breaks opponents' spirits.",
@@ -211,8 +211,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "📦", label: "Item Hoarder" },
     ],
   },
-  p20: {
-    id: "p20",
+  mari: {
+    id: "mari",
     name: "Mari",
     description:
       "Valkyrie of Victory - {name} charges through the pack with warrior-like determination, claiming podiums as her birthright.",
@@ -222,8 +222,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏆", label: "Champion" },
     ],
   },
-  p21: {
-    id: "p21",
+  pratik: {
+    id: "pratik",
     name: "Pratik",
     description:
       "Speed Demon - {name}'s throttle control and boost optimization create blistering lap times that shatter records.",
@@ -233,8 +233,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "📊", label: "Record Breaker" },
     ],
   },
-  p22: {
-    id: "p22",
+  mike: {
+    id: "mike",
     name: "Mike",
     description:
       "The Wall - {name}'s defensive mastery and position holding make overtaking him an exercise in frustration for rivals.",
@@ -244,8 +244,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🔒", label: "Position Lock" },
     ],
   },
-  p23: {
-    id: "p23",
+  "per-erik": {
+    id: "per-erik",
     name: "Per Erik",
     description:
       "Old School Legend - {name}'s classic racing techniques and timeless strategies prove that experience beats youth every time.",
@@ -255,8 +255,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏛️", label: "Legendary" },
     ],
   },
-  p24: {
-    id: "p24",
+  "linn-victoria": {
+    id: "linn-victoria",
     name: "Linn Victoria",
     description:
       "The Showgirl - {name}'s flashy tricks and spectacular jumps entertain crowds while devastating opponents with style.",
@@ -266,8 +266,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "✨", label: "Spectacular" },
     ],
   },
-  p25: {
-    id: "p25",
+  ingvar: {
+    id: "ingvar",
     name: "Ingvar",
     description:
       "The Innovator - {name} discovers new racing lines and unconventional strategies that revolutionize how the game is played.",
@@ -277,8 +277,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🚀", label: "Revolutionary" },
     ],
   },
-  p26: {
-    id: "p26",
+  frode: {
+    id: "frode",
     name: "Frode",
     description:
       "Consistency King - {name}'s reliable performances and steady hands guarantee podium finishes race after race without fail.",
@@ -288,8 +288,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🏅", label: "Podium Regular" },
     ],
   },
-  p27: {
-    id: "p27",
+  bastian: {
+    id: "bastian",
     name: "Bastian",
     description:
       "The Veteran - {name}'s years of experience shine through clutch plays and knowing exactly when to unleash that star power.",
@@ -299,8 +299,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🧙", label: "Wise" },
     ],
   },
-  p28: {
-    id: "p28",
+  jorgen: {
+    id: "jorgen",
     name: "Jørgen",
     description:
       "Ice in His Veins - {name} stays cool under pressure, turning close finishes into victories with nerves of steel.",
@@ -310,8 +310,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🔩", label: "Nerves of Steel" },
     ],
   },
-  p29: {
-    id: "p29",
+  "markus-b": {
+    id: "markus-b",
     name: "Markus B.",
     description:
       "The Anchor - {name}'s unshakeable focus and ironclad nerves keep him steady when chaos erupts around every corner.",
@@ -321,8 +321,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🔩", label: "Ironclad" },
     ],
   },
-  p30: {
-    id: "p30",
+  caroline: {
+    id: "caroline",
     name: "Caroline",
     description:
       "Nitro Queen - {name}'s perfect mushroom timing and boost chains create acceleration bursts that leave rivals in the dust.",
@@ -332,8 +332,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🔗", label: "Boost Chain" },
     ],
   },
-  p31: {
-    id: "p31",
+  joachim: {
+    id: "joachim",
     name: "Joachim",
     description:
       "The Underdog - {name}'s tenacity and refusal to accept defeat fuel miraculous victories against all odds and expectations.",
@@ -343,8 +343,8 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "✨", label: "Miraculous" },
     ],
   },
-  p32: {
-    id: "p32",
+  sander: {
+    id: "sander",
     name: "Sander",
     description:
       "The Drift King - {name}'s precision cornering and fearless blue shell dodges make him a force to reckon with on any track.",
