@@ -50,10 +50,15 @@ export const round1: Round = {
       circuit: "Lightning Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "Lightning Cup lives up to its name with this electrifying quartet! {fredrik}, the Boost Master, enters with explosive acceleration that could see him rocket into an early lead with his mastery of mushroom chains. But can he hold off {sandra}, the Huntress, who stalks her prey with patience before striking with devastating speed? {pal-oskar}'s defensive prowess makes him an impenetrable wall - his strategic banana placement could completely shut down certain sections of the track. And then there's {henrik-h}, the Track Whisperer, who knows shortcuts the others can only dream of discovering. This race could unfold like a chess match: {fredrik} surges ahead, {sandra} waits for the perfect moment, {pal-oskar} builds his fortress, and {henrik-h} might just disappear down a secret path and emerge victorious!",
-      players: [createPlayer("pal-oskar"), createPlayer("fredrik"), createPlayer("sandra"), createPlayer("henrik-h")],
+      players: [
+        createPlayer("pal-oskar", 1),
+        createPlayer("fredrik", 4),
+        createPlayer("sandra", 3),
+        createPlayer("henrik-h", 2),
+      ],
     },
     {
       id: "m4",
