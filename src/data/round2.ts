@@ -25,12 +25,7 @@ export const round2: Round = {
       cc: "100cc",
       location: "Huben",
       // isFinished: true,
-      players: [
-        createPlayer("pal-oskar"),
-        createPlayer("henrik-h"),
-        { id: "winner-race-4", name: "Winner of Race 4", description: "" },
-        { id: "second-race-4", name: "2nd Place of Race 4", description: "" },
-      ],
+      players: [createPlayer("pal-oskar"), createPlayer("alexander"), createPlayer("henrik-h"), createPlayer("tor-magnus")],
     },
     {
       id: "m11",
