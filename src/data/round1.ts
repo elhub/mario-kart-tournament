@@ -69,10 +69,15 @@ export const round1: Round = {
       circuit: "Shell Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "Shell Cup brings together four fierce competitors with wildly different approaches! {alexander}, the Intimidator, will use aggressive overtakes to assert dominance early, putting psychological pressure on everyone. {tor-magnus}, the Rising Star, combines natural talent with a fearless approach that could mark this as his breakout moment. {brynhildur}, the Phoenix, specializes in devastating comebacks from last place, fueled by bullet bills and pure determination. And then there's {enzo}, the Gravity Defier, who makes impossible jumps look routine, turning vertical shortcuts into his personal highways to victory. The battle here could see {alexander}'s aggression clash with {tor-magnus}'s fearless natural talent, while {brynhildur} waits to rise from the ashes, and {enzo} attempts aerial shortcuts that could completely change the race dynamics!",
-      players: [createPlayer("alexander"), createPlayer("tor-magnus"), createPlayer("brynhildur"), createPlayer("enzo")],
+      players: [
+        createPlayer("alexander", 1),
+        createPlayer("tor-magnus", 2),
+        createPlayer("brynhildur", 4),
+        createPlayer("enzo", 3),
+      ],
     },
     {
       id: "m5",
