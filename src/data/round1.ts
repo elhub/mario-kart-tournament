@@ -88,10 +88,10 @@ export const round1: Round = {
       circuit: "Banana Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "Banana Cup serves up an explosive cocktail of talent! {sergio}, The Thunder, brings explosive starts and dominant leads - he's a lightning bolt on wheels that's nearly impossible to catch once he gets ahead. {vebjorn}, the Precision Pilot, brings pixel-perfect drifts and calculated risks that make him a master of high-speed technical circuits. {markus-e}'s tactical mind games and strategic item hoarding could break opponents' spirits before the first lap is done, while {mari}, the Valkyrie of Victory, charges through packs with warrior-like determination, treating podiums as her birthright. Expect {sergio} to burst into the lead, {vebjorn} to challenge with surgical precision on technical sections, {markus-e} to orchestrate chaos from the middle, and {mari} to fight tooth and nail for every position!",
-      players: [createPlayer("sergio"), createPlayer("vebjorn"), createPlayer("markus-e"), createPlayer("mari")],
+      players: [createPlayer("sergio", 1), createPlayer("vebjorn", 2), createPlayer("markus-e", 3), createPlayer("mari", 4)],
     },
     {
       id: "m6",
