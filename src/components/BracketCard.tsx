@@ -160,7 +160,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         <VStack spacing={0} /* py={2} */ align="stretch" borderY="1px solid" borderColor={border}>
           {match.players.map((p, index) => {
             const [isHovered, setIsHovered] = useState(false);
-            const isPlaceholder = p.name.match(/^Player \d+$/);
+            const isPlaceholder = Boolean(p.name.match(/^Player \d+$/));
             const isClickable = p.description && !isPlaceholder;
 
             return (
