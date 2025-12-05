@@ -20,7 +20,6 @@ import {
 import type { Tournament } from "@/types";
 import { Round } from "@/components/Round";
 import { BracketConnections } from "@/components/BracketConnections";
-import { RegistrationBadge } from "@/components/RegistrationBadge";
 import { StandInsBadge } from "@/components/StandInsBadge";
 import { round1 } from "@/data/round1";
 import { round2 } from "@/data/round2";
@@ -240,7 +239,7 @@ function App() {
                   plan your path to victory. Click on player names to see their unique abilities and racing styles!
                 </Text>
               </Box>
-
+{/*
               <Divider />
 
               <Box bg={useColorModeValue("red.50", "red.900")} p={4} borderRadius="md" borderLeft="4px solid red">
@@ -268,7 +267,7 @@ function App() {
                   Don't wait too long - spots will fill up fast!
                 </Text>
               </Box>
-
+*/}
               <Divider />
 
               <Box>
@@ -280,7 +279,6 @@ function App() {
                   <ListItem>✅ Daily races at 11:30 AM</ListItem>
                   <ListItem>✅ Pre-selected circuits and CC classes</ListItem>
                   <ListItem>✅ Prizes for the podium</ListItem>
-                  <ListItem>✅ Email Pål Oskar with your 3 preferred time slots to register!</ListItem>
                 </List>
               </Box>
 
