@@ -354,7 +354,43 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
       { emoji: "🛡️", label: "Defense" },
     ],
   },
+  cecilie: {
+    id: "cecilie",
+    name: "Cecilie",
+    description:
+      "The Shadow Racer - {name} appears from nowhere to fill empty spots, bringing mysterious speed and clutch defensive plays when needed most.",
+    attributes: [
+      { emoji: "🌙", label: "Shadow Racer" },
+      { emoji: "🎭", label: "Mysterious" },
+      { emoji: "🛡️", label: "Clutch Defense" },
+    ],
+  },
+  supriya: {
+    id: "supriya",
+    name: "Supriya",
+    description:
+      "The Wildcard - {name}'s unpredictable racing style and mastery of item timing make her a dangerous substitute who can upset any bracket.",
+    attributes: [
+      { emoji: "🃏", label: "Wildcard" },
+      { emoji: "🎲", label: "Unpredictable" },
+      { emoji: "⏰", label: "Perfect Timing" },
+    ],
+  },
+  august: {
+    id: "august",
+    name: "August",
+    description:
+      "The Closer - {name} specializes in finishing what others started, using raw speed and fearless shortcuts to secure victories as a stand-in.",
+    attributes: [
+      { emoji: "🦁", label: "The Closer" },
+      { emoji: "⚡", label: "Raw Speed" },
+      { emoji: "🗺️", label: "Shortcut Master" },
+    ],
+  },
 };
+
+// Stand-in player IDs for easy reference
+export const standInPlayerIds = ["cecilie", "supriya", "august"];
 
 // Helper function to create a player with position
 export function createPlayer(playerId: string, position?: number): Player {

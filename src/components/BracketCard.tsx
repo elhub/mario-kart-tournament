@@ -13,6 +13,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import type { Race, Player } from "@/types";
@@ -163,29 +164,60 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
             const isClickable = p.description && !isPlaceholder;
 
             return (
-              <Box
+              <Tooltip
                 key={p.id}
-                w="full"
-                py={0}
-                px={3}
-                borderBottom={index < match.players.length - 1 ? "1px solid" : "none"}
-                borderColor={border}
-                bg={getPlayerBg(p, isHovered)}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                cursor={isClickable ? "pointer" : "default"}
-                transition="background 0.2s"
-                onClick={() => handlePlayerClick(p)}
-                data-player-id={p.id}
-                data-position={p.position}
+                label={
+                  p.description && !isPlaceholder ? (
+                    <Box p={2}>
+                      <Text fontWeight="bold" mb={1}>
+                        {p.name}
+                      </Text>
+                      <Text fontSize="sm" mb={2}>
+                        {p.description.replace("{name}", p.name)}
+                      </Text>
+                      <HStack spacing={2} flexWrap="wrap">
+                        {p.attributes?.map((attr, idx) => (
+                          <Badge key={idx} colorScheme="blue" fontSize="xs">
+                            {attr.emoji} {attr.label}
+                          </Badge>
+                        ))}
+                      </HStack>
+                    </Box>
+                  ) : (
+                    ""
+                  )
+                }
+                placement="right"
+                hasArrow
+                bg={useColorModeValue("gray.700", "gray.900")}
+                color="white"
+                p={3}
+                borderRadius="md"
+                isDisabled={isPlaceholder || !p.description}
               >
-                <HStack justify="space-between" w="full">
-                  <Text fontWeight="semibold" fontSize="sm">
-                    {p.name}
-                  </Text>
-                  {match.isFinished && p.position && <Text fontSize="lg">{getPositionEmoji(p.position)}</Text>}
-                </HStack>
-              </Box>
+                <Box
+                  w="full"
+                  py={0}
+                  px={3}
+                  borderBottom={index < match.players.length - 1 ? "1px solid" : "none"}
+                  borderColor={border}
+                  bg={getPlayerBg(p, isHovered)}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                  cursor={isClickable ? "pointer" : "default"}
+                  transition="background 0.2s"
+                  onClick={() => handlePlayerClick(p)}
+                  data-player-id={p.id}
+                  data-position={p.position}
+                >
+                  <HStack justify="space-between" w="full">
+                    <Text fontWeight="semibold" fontSize="sm">
+                      {p.name}
+                    </Text>
+                    {match.isFinished && p.position && <Text fontSize="lg">{getPositionEmoji(p.position)}</Text>}
+                  </HStack>
+                </Box>
+              </Tooltip>
             );
           })}
         </VStack>

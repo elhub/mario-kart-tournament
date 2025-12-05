@@ -21,6 +21,7 @@ import type { Tournament } from "@/types";
 import { Round } from "@/components/Round";
 import { BracketConnections } from "@/components/BracketConnections";
 import { RegistrationBadge } from "@/components/RegistrationBadge";
+import { StandInsBadge } from "@/components/StandInsBadge";
 import { round1 } from "@/data/round1";
 import { round2 } from "@/data/round2";
 import { round3 } from "@/data/round3";
@@ -94,10 +95,26 @@ function App() {
         pointerEvents: "none",
       }}
     >
-      {/* Registration Badge & Rules Button Container */}
+      {/* Registration Badge - Top Middle */}
+      {/*       <Box
+        position="fixed"
+        top="20px"
+        left="50%"
+        transform="translateX(-50%)"
+        zIndex={10}
+        display={{ base: "none", md: "block" }}
+      >
+        <RegistrationBadge tournament={tournament} />
+      </Box> */}
+
+      {/* Stand-Ins Badge & Rules Button Container */}
       <VStack position="fixed" top="75%" left="50%" transform="translate(-50%, -50%)" zIndex={10} spacing={6}>
-        <Box display={{ base: "none", md: "block" }}>
+        {/* <Box display={{ base: "none", md: "block" }}>
           <RegistrationBadge tournament={tournament} />
+        </Box> */}
+
+        <Box display={{ base: "none", md: "block" }}>
+          <StandInsBadge />
         </Box>
 
         <Button
