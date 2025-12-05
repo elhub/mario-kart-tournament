@@ -1,4 +1,5 @@
 import type { Race, Player } from "@/types";
+import { playerProfiles } from "@/data/players";
 
 /**
  * Generates a pre-race prospect with player names dynamically injected
@@ -45,8 +46,15 @@ export function generateProspectElements(match: Race, onPlayerClick: (player: Pl
   const elements: ProspectElement[] = [];
   let lastIndex = 0;
 
-  // Create a map of player IDs to player objects for quick lookup
+  // Create a map that includes both race players AND all player profiles
   const playerMap = new Map(match.players.map((p) => [p.id, p]));
+
+  // Add all player profiles to the map (converting to Player type with position undefined)
+  Object.entries(playerProfiles).forEach(([id, profile]) => {
+    if (!playerMap.has(id)) {
+      playerMap.set(id, { ...profile, position: undefined });
+    }
+  });
 
   // Find all player placeholders and their positions (matches {slug} pattern)
   const placeholderRegex = /\{([a-z0-9-]+)\}/g;
