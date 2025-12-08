@@ -102,10 +102,15 @@ export const round1: Round = {
       circuit: "Leaf Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "Leaf Cup presents a fascinating tactical puzzle! {pratik}, the Speed Demon, enters with throttle control and boost optimization that creates blistering lap times - he's here to shatter records. {mike}, The Wall, makes overtaking an exercise in frustration with his defensive mastery and position holding. {per-erik} brings old school techniques and timeless strategies that prove experience can trump youth, while {linn-victoria}, The Showgirl, plans to entertain with flashy tricks and spectacular jumps while devastating opponents with style. This race could see {pratik} set a blistering pace from the front, {mike} lock down second position like Fort Knox, {per-erik} use veteran wisdom to exploit any mistakes, and {linn-victoria} attempt something spectacular that either launches her to victory or sends her tumbling down the standings!",
-      players: [createPlayer("pratik"), createPlayer("mike"), createPlayer("per-erik"), createPlayer("linn-victoria")],
+      players: [
+        createPlayer("pratik", 2),
+        createPlayer("mike", 4),
+        createPlayer("per-erik", 1),
+        createPlayer("linn-victoria", 3),
+      ],
     },
     {
       id: "m7",
