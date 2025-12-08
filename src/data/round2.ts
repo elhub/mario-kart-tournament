@@ -37,6 +37,8 @@ export const round2: Round = {
       cc: "100cc",
       location: "Huben",
       // isFinished: true,
+      prospect:
+        "The third Quarterfinal brings explosive speed to the Shell Cup! {sergio}, The Thunder, won Race 5 after rocketing to an early lead and surviving a relentless challenge in a photo-finish - his lightning-bolt acceleration is legendary. {per-erik}, the Old School Legend, claimed victory in Race 6 with veteran wisdom and timeless techniques, proving experience reigns supreme. {vebjorn}, the Precision Pilot, secured second in Race 5 with pixel-perfect drifts and calculated risks through technical sections. {pratik}, the Speed Demon, finished second in Race 6 after pushing Per Erik to the absolute limit with blistering throttle control and boost optimization. The Shell Cup features Mushroom Bridge, Dry Dry Desert, Bowser's Castle, and Yoshi Circuit - a mix demanding both raw speed and technical mastery. At 100cc, {sergio}'s explosive starts face {pratik}'s record-shattering pace, while {per-erik}'s wisdom battles {vebjorn}'s surgical precision. Two dominant winners meet two fierce challengers who nearly claimed victory. Who emerges victorious from this quarterfinal clash?",
       players: [createPlayer("sergio"), createPlayer("per-erik"), createPlayer("vebjorn"), createPlayer("pratik")],
     },
     {
