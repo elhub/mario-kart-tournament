@@ -50,9 +50,9 @@ export const round2: Round = {
       location: "Huben",
       // isFinished: true,
       players: [
-        { id: "winner-race-7", name: "Winner of Race 7", description: "" },
+        createPlayer("jorgen"),
+        createPlayer("bastian"),
         { id: "winner-race-8", name: "Winner of Race 8", description: "" },
-        { id: "second-race-7", name: "2nd Place of Race 7", description: "" },
         { id: "second-race-8", name: "2nd Place of Race 8", description: "" },
       ],
     },
