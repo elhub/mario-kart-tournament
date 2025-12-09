@@ -75,8 +75,6 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         return "🥈";
       case 3:
         return "🥉";
-      case 4:
-        return "4️⃣";
       default:
         return null;
     }
