@@ -121,10 +121,10 @@ export const round1: Round = {
       circuit: "Star Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "Star Cup shines with innovation and consistency! {ingvar}, The Innovator, has discovered new racing lines and unconventional strategies that could revolutionize this race - expect the unexpected. {frode}, the Consistency King, brings reliable performances and steady hands that guarantee he'll be there at the end, lurking on the podium. {bastian}'s years of experience mean clutch plays and perfect star power timing, while {jorgen} keeps ice in his veins, staying cool under pressure and turning close finishes into victories with nerves of steel. Watch for {ingvar} to try something wild that either pays off brilliantly or spectacularly fails, {frode} to steadily accumulate points through pure consistency, {bastian} to make veteran moves at crucial moments, and {jorgen} to maintain his composure when others crack under pressure!",
-      players: [createPlayer("ingvar"), createPlayer("frode"), createPlayer("bastian"), createPlayer("jorgen")],
+      players: [createPlayer("ingvar", 4), createPlayer("frode", 3), createPlayer("bastian", 2), createPlayer("jorgen", 1)],
     },
     {
       id: "m8",
