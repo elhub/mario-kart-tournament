@@ -135,10 +135,15 @@ export const round1: Round = {
       circuit: "Mushroom Cup",
       cc: "50cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The second Mushroom Cup race brings together determination and precision! {markus-b}, The Anchor, provides unshakeable focus and ironclad nerves that keep him steady when chaos erupts. {caroline}, the Nitro Queen, has perfect mushroom timing and boost chains that create acceleration bursts leaving rivals in the dust. {joachim}, The Underdog, refuses to accept defeat, fueling miraculous victories against all odds, while {sander}, the Drift King, masters every corner with precision and fearless blue shell dodges. This could be a race where {caroline} bursts into an early lead with her nitro mastery, {markus-b} stays unshakeably in contention, {joachim} mounts an improbable challenge from behind, and {sander} demonstrates flawless cornering when it matters most. Expect the unexpected!",
-      players: [createPlayer("markus-b"), createPlayer("caroline"), createPlayer("joachim"), createPlayer("sander")],
+      players: [
+        createPlayer("markus-b", 2),
+        createPlayer("caroline", 4),
+        createPlayer("joachim", 3),
+        createPlayer("sander", 1),
+      ],
     },
   ],
 };
