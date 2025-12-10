@@ -138,6 +138,8 @@ export const round1: Round = {
       isFinished: true,
       prospect:
         "The second Mushroom Cup race brings together determination and precision! {markus-b}, The Anchor, provides unshakeable focus and ironclad nerves that keep him steady when chaos erupts. {caroline}, the Nitro Queen, has perfect mushroom timing and boost chains that create acceleration bursts leaving rivals in the dust. {joachim}, The Underdog, refuses to accept defeat, fueling miraculous victories against all odds, while {sander}, the Drift King, masters every corner with precision and fearless blue shell dodges. This could be a race where {caroline} bursts into an early lead with her nitro mastery, {markus-b} stays unshakeably in contention, {joachim} mounts an improbable challenge from behind, and {sander} demonstrates flawless cornering when it matters most. Expect the unexpected!",
+      summary:
+        "Stunning Mushroom Cup finale! {sander}, the Drift King, mastered every corner with absolute precision to claim first place, his flawless cornering technique proving decisive throughout the race. {markus-b}, The Anchor, demonstrated exactly why he's called that - his unshakeable focus and ironclad nerves kept him steady through all the chaos to secure second place. {joachim}, The Underdog, lived up to his never-give-up spirit by fighting for third place against all odds. {caroline}, the Nitro Queen, finished fourth despite her perfect mushroom timing and boost chain mastery. {sander} and {markus-b} advance to the quarterfinals, completing the Round of Sixteen!",
       players: [
         createPlayer("markus-b", 2),
         createPlayer("caroline", 4),
