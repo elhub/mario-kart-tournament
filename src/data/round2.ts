@@ -12,10 +12,15 @@ export const round2: Round = {
       circuit: "Star Cup",
       cc: "100cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The Quarterfinals bring an elite showdown on the Star Cup! {johanna}, the Master of Momentum, arrives fresh off her first-place finish in Race 1, her flowing racing lines and perfect speed maintenance making her a formidable force. {alexander}, the Intimidator, won Race 2 with his mushroom mastery and determination - his resilience under pressure is legendary. {per-kristian}, the Master of Chaos, secured second in Race 1 with his ability to turn mayhem into opportunity at crucial moments. {lise}, the Perfectionist, earned second in Race 2 through flawless mini-turbos and surgical precision. The Star Cup features Wario Shipyard, Maple Treeway, Mushroom Gorge, and Grumble Volcano - technical tracks where one mistake can be costly. At 100cc speeds, {johanna}'s momentum mastery could dominate the flow-based tracks, while {lise}'s perfect execution might shine on technical sections. {alexander}'s resilience and {per-kristian}'s chaos tactics add wild cards to this championship-caliber matchup. Two race winners clash with two proven contenders - who advances to the semifinals?",
-      players: [createPlayer("johanna"), createPlayer("alexander"), createPlayer("per-kristian"), createPlayer("lise")],
+      players: [
+        createPlayer("johanna", 1),
+        createPlayer("alexander", 4),
+        createPlayer("per-kristian", 2),
+        createPlayer("lise", 3),
+      ],
     },
     {
       id: "m10",
