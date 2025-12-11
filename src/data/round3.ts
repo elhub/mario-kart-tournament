@@ -1,4 +1,5 @@
 import type { Round } from "@/types";
+import { createPlayer } from "./players";
 
 export const round3: Round = {
   id: "r3",
@@ -13,9 +14,9 @@ export const round3: Round = {
       location: "Huben",
       // isFinished: true,
       players: [
-        { id: "winner-race-9", name: "Winner of Race 9", description: "" },
+        createPlayer("johanna"),
+        createPlayer("per-kristian"),
         { id: "winner-race-10", name: "Winner of Race 10", description: "" },
-        { id: "second-race-9", name: "2nd Place of Race 9", description: "" },
         { id: "second-race-10", name: "2nd Place of Race 10", description: "" },
       ],
     },
