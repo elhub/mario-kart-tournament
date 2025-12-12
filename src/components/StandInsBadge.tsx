@@ -23,7 +23,7 @@ export function StandInsBadge() {
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-3 border-purple-500 dark:border-purple-300 overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-3 border-purple-500 dark:border-purple-300 overflow-hidden max-w-md">
         <div className="flex flex-col space-y-0">
           {/* Header */}
           <div className="bg-purple-600 dark:bg-purple-400 w-full px-6 py-2 text-center">
@@ -39,7 +39,7 @@ export function StandInsBadge() {
             </p>
 
             <TooltipProvider>
-              <div className="flex flex-wrap gap-3 justify-center">
+              <div className="flex gap-3 justify-center">
                 {standIns.map((standIn) => (
                   <Tooltip key={standIn.id} delayDuration={300}>
                     <TooltipTrigger asChild>
@@ -77,7 +77,7 @@ export function StandInsBadge() {
 
       {/* Player Details Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-lg mx-4 p-0 gap-0">
+        <DialogContent className="max-w-md mx-4 p-0 gap-0">
           <DialogHeader className="bg-purple-500 dark:bg-purple-600 text-white p-6 rounded-t-2xl">
             <div className="flex flex-col space-y-2">
               <div className="flex items-center gap-2">

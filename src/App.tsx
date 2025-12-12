@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div
-      className="h-screen w-screen pt-8 pb-8 relative overflow-auto bg-cover bg-center bg-no-repeat bg-fixed"
+      className="h-screen w-screen pt-4 md:pt-8 pb-4 md:pb-8 relative overflow-x-auto overflow-y-auto bg-cover bg-center bg-no-repeat bg-fixed"
       style={{
         backgroundImage: "url('/mario-kart-tournament/emkwt-bg-4.jpg')",
       }}
@@ -69,7 +69,7 @@ function App() {
       <div className="fixed inset-0 bg-white/70 dark:bg-black/70 z-0 pointer-events-none" />
 
       {/* Stand-Ins Badge & Rules Button Container */}
-      <div className="fixed top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
+      <div className="fixed top-4 right-4 md:top-[75%] md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center gap-2 md:gap-6 md:max-w-md md:w-full md:px-4">
         <div className="hidden md:block">
           <StandInsBadge />
         </div>
@@ -77,16 +77,16 @@ function App() {
         <Button
           size="lg"
           onClick={() => setIsOpen(true)}
-          className="shadow-xl"
+          className="shadow-xl text-xs md:text-base px-3 md:px-4 md:w-full"
         >
-          <span className="mr-2">📋</span>
-          Tournament Rules
+          <span className="mr-1 md:mr-2">📋</span>
+          <span className="hidden md:inline">Tournament </span>Rules
         </Button>
       </div>
 
       {/* Rules Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto mx-4 p-0 gap-0">
+        <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto mx-4 p-0 gap-0">
           <DialogHeader className="bg-blue-500 dark:bg-blue-600 text-white p-6 rounded-t-2xl">
             <DialogTitle className="text-2xl text-white">
               🏁 ELHUB MARIO KART WORLD CHRISTMAS TOURNAMENT 2025 🏆
@@ -165,7 +165,7 @@ function App() {
       <BracketConnections />
       <div
         id="bracket-grid"
-        className="grid grid-cols-7 grid-rows-4 w-full gap-8 my-8 mx-8 relative z-[1]"
+        className="grid grid-cols-7 grid-rows-4 min-w-[1600px] gap-4 md:gap-8 my-4 md:my-8 mx-4 md:mx-8 relative z-[1]"
       >
         {/* === Column 1 (4 small boxes) === */}
         <Round round={roundOfSixteenPart1} columnId={1} />
