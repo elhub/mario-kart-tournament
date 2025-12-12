@@ -421,3 +421,131 @@ prospect:
 **Response format:**
 
 After adding the prospect, provide brief confirmation noting the race and the players involved.
+
+### Action: Generate Post-Race Announcement
+
+**Trigger phrase:** "execute post-race announcement" or "generate post race announcement" or "generate race completion message"
+
+**Purpose:** Generate a fun and engaging Microsoft Teams message to announce that today's race is complete and results are published.
+
+**Steps to execute:**
+
+1. **Identify today's completed race:**
+
+   - Use the current date to find the matching race in the appropriate round file (`src/data/round1.ts`, `round2.ts`, `round3.ts`, or `round4.ts`)
+   - Verify the race has `isFinished: true` and `summary` is defined
+   - Extract: race ID (e.g., "m1"), circuit name, date, and all player positions from the `players` array
+
+2. **Get player information:**
+
+   - Look up each player ID in `src/data/players.ts` (`playerProfiles`)
+   - Extract: name and ability title (text before the dash in description)
+   - Identify 1st and 2nd place finishers (they advance)
+
+3. **Determine race context:**
+
+   - Round 1 races (m1-m8): "Round of Sixteen" races
+   - Round 2 races (m9-m12): "Quarterfinals"
+   - Round 3 races (m13-m14): "Semifinals"
+   - Round 4 race (m15): "Finals"
+   - Extract next race information for advancing players (date and race number)
+
+4. **Generate the message with this format:**
+
+[Circuit Emoji] **RACE [NUMBER] COMPLETE - [CIRCUIT NAME] [VERB]!** [Themed Emoji]
+
+[Exciting opening line related to the race outcome!] [Fire/Trophy Emoji]
+
+**[1st Place Name]**, [ability title], [victory description] to claim **1ST PLACE** 🥇! **[2nd Place Name]**, [ability title], [achievement description] to secure **2ND PLACE** 🥈!
+
+[Optional: Additional drama/details about 3rd/4th place or close finishes - 1-2 sentences if noteworthy]
+
+Both [1st Place Name] and [2nd Place Name] advance to the [Next Round Name] ([Next Race Number]) on [Next Race Date]! 🎯
+
+📊 **[Results description] now live!**
+👉 https://elhub.github.io/mario-kart-tournament/
+
+[Teaser for next race]: [Next Circuit/Round Name] [action verb]! [Emoji]
+
+**CRITICAL Formatting requirements:**
+
+- Output ONLY the message text (do NOT wrap in code blocks or markdown fences)
+- Use **text** for bold (player names, placements, key phrases)
+- Match the energy and tone to the race outcome (close finish = more excitement, dominant win = different tone)
+- Include emojis throughout for visual appeal
+- Keep it concise but exciting (5-8 lines total)
+- Always include the tournament brackets link
+- Always mention both advancing players and their next race details
+
+5. **Circuit emoji and verb suggestions:**
+
+   - Mushroom Cup: 🍄 "DELIVERS", "CONCLUDES", "FINISHES"
+   - Flower Cup: 🌸 "DELIVERS DRAMA", "FINISHES"
+   - Lightning Cup: ⚡ "ELECTRIFIES", "DELIVERS"
+   - Shell Cup: 🐚 "DELIVERS DRAMA", "FINISHES"
+   - Banana Cup: 🍌 "DELIVERS A PHOTO FINISH", "CONCLUDES"
+   - Leaf Cup: 🍃 "DELIVERS DOUBLE PHOTO FINISH", "FINISHES"
+   - Star Cup: ⭐ "DELIVERS ICE-COLD VICTORY", "SHINES"
+
+6. **Special cases to include:**
+
+   - If race summary mentions stand-in players, include a humorous note about it
+   - If race summary mentions close finishes/photo finishes, emphasize the drama
+   - If it's the last race of a round, mention that the round is complete
+   - For quarterfinals onward, note the increased CC (100cc or 150cc)
+   - If race summary mentions specific dramatic moments, reference them briefly
+
+7. **Example messages:**
+
+**Example 1 (Dominant win):**
+
+🍄 **RACE 1 COMPLETE - MUSHROOM CUP OPENS!** 🏁
+
+MOMENTUM MASTERS TAKE COMMAND! 🔥
+
+**Johanna**, the Master of Momentum, dominated from start to finish with flowing racing lines to claim **1ST PLACE** 🥇! **Per Kristian**, the Master of Chaos, turned mayhem into opportunity with a perfectly timed red shell for **2ND PLACE** 🥈!
+
+Both advance to the Quarterfinals (Race 9) on December 11th! 🎯
+
+📊 **Race results & summary now live!**
+👉 https://elhub.github.io/mario-kart-tournament/
+
+Tomorrow: Flower Cup brings contrasting styles! 🌸💨
+
+**Example 2 (Close finish with special notes):**
+
+🐚 **RACE 4 COMPLETE - SHELL CUP DELIVERS DRAMA!** 🏆
+
+Tactical brilliance and a SUPER CLOSE FINISH! 🔥
+
+**Alexander**, the Intimidator, dominated with psychological warfare and aggressive racing to claim **1ST PLACE** 🥇 (with Hedda as stand-in - tactical genius or unfair advantage? 🤔). In an absolutely nail-biting finish, **Tor Magnus**, the Rising Star, edged out Enzo by the narrowest of margins to secure **2ND PLACE** 🥈!
+
+**Enzo**, the Gravity Defier, finished 3rd and is reportedly considering filing a formal complaint with the tournament committee... 📝⚖️
+
+Both Alexander and Tor Magnus advance to the Quarterfinals (Race 10) on December 12th! 🎯
+
+📊 **Race results & summary now live!**
+👉 https://elhub.github.io/mario-kart-tournament/
+
+Tomorrow: Banana Cup brings explosive action! 🍌💨
+
+**Example 3 (Round completion):**
+
+🍄 **RACE 8 COMPLETE - ROUND OF SIXTEEN CONCLUDES!** 🏁
+
+THE DRIFT KING REIGNS SUPREME! 👑
+
+**Sander**, the Drift King, dominated every corner with absolutely flawless technique to claim **1ST PLACE** 🥇! **Markus B.**, The Anchor, stayed unshakeably steady through all the chaos with ironclad nerves to secure **2ND PLACE** 🥈!
+
+Both advance to the Quarterfinals (Race 12) on December 16th! 🎯
+
+🎉 **ROUND OF SIXTEEN IS COMPLETE!** All 16 qualifiers are set for the Quarterfinals!
+
+📊 **Full race results & the final Round 1 summary now live!**
+👉 https://elhub.github.io/mario-kart-tournament/
+
+Tomorrow: The Quarterfinals begin with Race 9 at 100cc! 🔥💨
+
+**Response format:**
+
+Output the complete message ready to paste into Teams (no code blocks, no additional commentary).
