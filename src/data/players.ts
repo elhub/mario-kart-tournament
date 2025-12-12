@@ -390,7 +390,7 @@ export const playerProfiles: Record<string, Omit<Player, "position">> = {
 };
 
 // Stand-in player IDs for easy reference
-export const standInPlayerIds = ["cecilie", "supriya", "august"];
+export const standInPlayerIds = ["cecilie", "supriya", "august", "mike"];
 
 // Helper function to create a player with position
 export function createPlayer(playerId: string, position?: number): Player {
