@@ -1,52 +1,40 @@
-import {
-  Box,
-  VStack,
-  Text,
-  useColorModeValue,
-  Heading,
-  HStack,
-  Badge,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Tooltip,
-} from "@chakra-ui/react";
 import { useState } from "react";
 import type { Race, Player } from "@/types";
 import { RaceModal } from "./RaceModal";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; roundName: string; rowIndex: number }) => {
-  const bg = useColorModeValue("white", "gray.700");
-  const border = useColorModeValue("gray.400", "gray.700");
-  const headerBg = useColorModeValue("blue.50", "blue.900");
-  const footerBg = useColorModeValue("gray.50", "gray.800");
-  const labelColor = useColorModeValue("gray.600", "gray.400");
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpen: isRaceModalOpen, onOpen: onRaceModalOpen, onClose: onRaceModalClose } = useDisclosure();
+  const [isPlayerModalOpen, setIsPlayerModalOpen] = useState(false);
+  const [isRaceModalOpen, setIsRaceModalOpen] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 
   // Extract match number from id (e.g., "m1" -> "1")
   const matchNumber = match.id.replace(/\D/g, "");
 
-  const handlePlayerClick = (player: Player) => {
+  const handlePlayerClick = (player: Player, e: React.MouseEvent) => {
+    e.stopPropagation();
     // Don't open modal for placeholder players (Player X format) or players without description
     if (!player.description || player.name.match(/^Player \d+$/)) {
       return;
     }
     setSelectedPlayer(player);
-    onOpen();
+    setIsPlayerModalOpen(true);
   };
 
   // Handle player click from race modal
   const handleRaceModalPlayerClick = (player: Player) => {
-    // Don't close the race modal - keep it open in the background
     // Just open the player modal with the selected player
     setSelectedPlayer(player);
-    onOpen();
+    setIsPlayerModalOpen(true);
   };
 
   // Check if all players have real names (not placeholder "Player X")
@@ -57,12 +45,9 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
 
   // Handle card click for race modal
   const handleCardClick = (e: React.MouseEvent) => {
-    // Only show race modal if:
-    // 1. All players are assigned
-    // 2. Click is on the card itself (not on players)
-    // 3. Race has prospect or summary to show
+    // Only show race modal if all players are assigned and click is on the card itself
     if (allPlayersAssigned && hasRaceContent && !(e.target as HTMLElement).closest("[data-player-id]")) {
-      onRaceModalOpen();
+      setIsRaceModalOpen(true);
     }
   };
 
@@ -81,228 +66,183 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
   };
 
   // Helper function to get background color for qualified players
-  const getPlayerBg = (player: Player, isHovered: boolean) => {
+  const getPlayerBgClass = (player: Player) => {
     if (!match.isFinished || !player.position) {
-      return isHovered ? useColorModeValue("gray.50", "gray.600") : "transparent";
+      return "hover:bg-muted/50";
     }
 
     // 1st and 2nd place get highlighted backgrounds
-    if (player.position === 1) {
-      return isHovered ? useColorModeValue("yellow.300", "yellow.700") : useColorModeValue("yellow.200", "yellow.800");
-    }
-    if (player.position === 2) {
-      return isHovered ? useColorModeValue("yellow.300", "yellow.700") : useColorModeValue("yellow.200", "yellow.800");
+    if (player.position === 1 || player.position === 2) {
+      return "bg-yellow-200 dark:bg-yellow-800 hover:bg-yellow-300 dark:hover:bg-yellow-700";
     }
 
     // 3rd and 4th place remain normal
-    return isHovered ? useColorModeValue("gray.50", "gray.600") : "transparent";
+    return "hover:bg-muted/50";
   };
 
   return (
-    <Box position="relative" my="auto">
+    <div className="relative my-auto">
       {rowIndex === 0 && (
-        <Heading position="absolute" top="-35px" w="210px" size="md" color="gray.700" textAlign="center">
+        <h2 className="absolute -top-9 w-[210px] text-center text-xl font-semibold text-gray-700 dark:text-gray-300">
           {roundName}
-        </Heading>
+        </h2>
       )}
-      <Box
-        position="relative"
+      <Card
         id={match.id}
-        w="210px"
-        /* h="fit-content" */
-        borderWidth="1px"
-        borderColor={border}
-        borderRadius="lg"
-        bg={bg}
-        boxShadow="2xl"
-        overflow="hidden"
+        className={cn(
+          "relative w-[210px] overflow-hidden shadow-2xl transition-all duration-200",
+          allPlayersAssigned && hasRaceContent && "cursor-pointer hover:scale-105 hover:border-blue-400 dark:hover:border-blue-500"
+        )}
         onClick={handleCardClick}
-        cursor={allPlayersAssigned && hasRaceContent ? "pointer" : "default"}
-        transition="all 0.2s"
-        _hover={
-          allPlayersAssigned && hasRaceContent
-            ? {
-                transform: "scale(1.02)",
-                boxShadow: "2xl",
-                borderColor: useColorModeValue("blue.400", "blue.500"),
-              }
-            : {}
-        }
       >
         {/* Finished Race Flag */}
         {match.isFinished && (
-          <Box position="absolute" top={0} right={1} fontSize="xl" zIndex={1} className="finished-flag">
+          <div className="absolute top-0 right-1 text-xl z-10">
             🏁
-          </Box>
+          </div>
         )}
 
         {/* Header Section - Race Info */}
-        <Box bg={headerBg} px={3} py={2} borderBottom="1px solid" borderColor={border}>
-          <VStack spacing={0} align="start">
-            <Text fontSize="xs" fontWeight="bold" color={labelColor}>
+        <div className="bg-blue-50 dark:bg-blue-900 px-3 py-2 border-b">
+          <div className="flex flex-col space-y-0">
+            <span className="text-xs font-bold text-muted-foreground">
               Race {matchNumber}
-            </Text>
-            <Text fontSize="xs" fontWeight="medium">
+            </span>
+            <span className="text-xs font-medium">
               {match.date}
-            </Text>
-            <Text fontSize="xs" color={labelColor}>
+            </span>
+            <span className="text-xs text-muted-foreground">
               {match.time}
-            </Text>
-            <Text fontSize="xs" fontWeight="medium">
+            </span>
+            <span className="text-xs font-medium">
               @{match.location}
-            </Text>
-          </VStack>
-        </Box>
+            </span>
+          </div>
+        </div>
 
         {/* Players Section */}
-        <VStack spacing={0} /* py={2} */ align="stretch" borderY="1px solid" borderColor={border}>
-          {match.players.map((p, index) => {
-            const [isHovered, setIsHovered] = useState(false);
-            const isPlaceholder = Boolean(p.name.match(/^Player \d+$/));
-            const isClickable = p.description && !isPlaceholder;
+        <div className="flex flex-col border-y">
+          <TooltipProvider delayDuration={300}>
+            {match.players.map((p, index) => {
+              const isPlaceholder = Boolean(p.name.match(/^Player \d+$/));
+              const isClickable = p.description && !isPlaceholder;
 
-            return (
-              <Tooltip
-                key={p.id}
-                label={
-                  p.description && !isPlaceholder ? (
-                    <Box p={2}>
-                      <Text fontWeight="bold" mb={1}>
-                        {p.name}
-                      </Text>
-                      <Text fontSize="sm" mb={2}>
-                        {p.description.replace("{name}", p.name)}
-                      </Text>
-                      <HStack spacing={2} flexWrap="wrap">
-                        {p.attributes?.map((attr, idx) => (
-                          <Badge key={idx} colorScheme="blue" fontSize="xs">
-                            {attr.emoji} {attr.label}
-                          </Badge>
-                        ))}
-                      </HStack>
-                    </Box>
-                  ) : (
-                    ""
-                  )
-                }
-                placement="right"
-                hasArrow
-                bg={useColorModeValue("gray.700", "gray.900")}
-                color="white"
-                p={3}
-                borderRadius="md"
-                isDisabled={isPlaceholder || !p.description}
-              >
-                <Box
-                  w="full"
-                  py={0}
-                  px={3}
-                  borderBottom={index < match.players.length - 1 ? "1px solid" : "none"}
-                  borderColor={border}
-                  bg={getPlayerBg(p, isHovered)}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  cursor={isClickable ? "pointer" : "default"}
-                  transition="background 0.2s"
-                  onClick={() => handlePlayerClick(p)}
-                  data-player-id={p.id}
-                  data-position={p.position}
-                >
-                  <HStack justify="space-between" w="full">
-                    <Text fontWeight="semibold" fontSize="sm">
-                      {p.name}
-                    </Text>
-                    {match.isFinished && p.position && <Text fontSize="lg">{getPositionEmoji(p.position)}</Text>}
-                  </HStack>
-                </Box>
-              </Tooltip>
-            );
-          })}
-        </VStack>
+              return (
+                <Tooltip key={p.id}>
+                  <TooltipTrigger asChild>
+                    <div
+                      className={cn(
+                        "w-full py-0 px-3 transition-colors min-h-[28px] flex items-center",
+                        index < match.players.length - 1 && "border-b",
+                        getPlayerBgClass(p),
+                        isClickable && "cursor-pointer"
+                      )}
+                      onClick={(e) => handlePlayerClick(p, e)}
+                      data-player-id={p.id}
+                      data-position={p.position}
+                    >
+                      <div className="flex justify-between items-center w-full">
+                        <span className="font-semibold text-sm leading-tight">
+                          {p.name}
+                        </span>
+                        {match.isFinished && p.position && (
+                          <span className="text-lg">{getPositionEmoji(p.position)}</span>
+                        )}
+                      </div>
+                    </div>
+                  </TooltipTrigger>
+                  {p.description && !isPlaceholder && (
+                    <TooltipContent side="right" className="max-w-xs" sideOffset={8}>
+                      <div className="space-y-2">
+                        <p className="font-bold text-white">{p.name}</p>
+                        <p className="text-sm text-white leading-relaxed">
+                          {p.description.replace("{name}", p.name)}
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-1">
+                          {p.attributes?.map((attr, idx) => (
+                            <Badge key={idx} variant="blue" className="text-xs">
+                              {attr.emoji} {attr.label}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </TooltipContent>
+                  )}
+                </Tooltip>
+              );
+            })}
+          </TooltipProvider>
+        </div>
 
         {/* Footer Section - Circuit & CC */}
-        <Box bg={footerBg} px={3} py={2} borderTop="1px solid" borderColor={border}>
-          <HStack justify="space-between" spacing={2}>
-            <VStack align="start" spacing={0} flex={1}>
-              <Text fontSize="xs" color={labelColor}>
-                Circuit
-              </Text>
-              <Badge colorScheme="purple" fontSize="2xs">
+        <div className="bg-muted px-3 py-2 border-t">
+          <div className="flex justify-between gap-2">
+            <div className="flex flex-col flex-1">
+              <span className="text-xs text-muted-foreground">Circuit</span>
+              <Badge variant="purple" className="text-[10px] w-fit">
                 {match.circuit}
               </Badge>
-            </VStack>
-            <VStack align="end" spacing={0} flex={1}>
-              <Text fontSize="xs" color={labelColor}>
-                CC
-              </Text>
-              <Badge colorScheme="green" fontSize="2xs">
+            </div>
+            <div className="flex flex-col items-end flex-1">
+              <span className="text-xs text-muted-foreground">CC</span>
+              <Badge variant="green" className="text-[10px] w-fit">
                 {match.cc}
               </Badge>
-            </VStack>
-          </HStack>
-        </Box>
+            </div>
+          </div>
+        </div>
 
         {/* Player Info Modal */}
-        <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
-          <ModalOverlay backdropFilter="blur(4px)" />
-          <ModalContent bg={useColorModeValue("white", "gray.800")} borderRadius="2xl" boxShadow="2xl" mx={4}>
-            <ModalHeader bg={useColorModeValue("blue.500", "blue.600")} color="white" borderTopRadius="2xl" py={6}>
-              <VStack align="start" spacing={2}>
-                <HStack>
-                  <Text fontSize="3xl">🏎️</Text>
-                  <Heading size="lg">{selectedPlayer?.name}</Heading>
-                </HStack>
-                <Badge colorScheme="yellow" fontSize="sm" px={3} py={1} borderRadius="full">
+        <Dialog open={isPlayerModalOpen} onOpenChange={setIsPlayerModalOpen}>
+          <DialogContent className="max-w-lg mx-4 p-0 gap-0">
+            <DialogHeader className="bg-blue-500 dark:bg-blue-600 text-white p-6 rounded-t-2xl">
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl">🏎️</span>
+                  <DialogTitle className="text-2xl text-white">{selectedPlayer?.name}</DialogTitle>
+                </div>
+                <Badge variant="yellow" className="w-fit px-3 py-1">
                   Mario Kart Champion
                 </Badge>
-              </VStack>
-            </ModalHeader>
-            <ModalCloseButton color="white" size="lg" />
-            <ModalBody py={8} px={6}>
-              <VStack spacing={6} align="stretch">
-                <Box
-                  bg={useColorModeValue("blue.50", "blue.900")}
-                  p={6}
-                  borderRadius="xl"
-                  borderLeft="4px solid"
-                  borderColor="blue.500"
-                >
-                  <HStack mb={3}>
-                    <Text fontSize="2xl">⚡</Text>
-                    <Heading size="sm" color={useColorModeValue("blue.700", "blue.300")}>
-                      Unique Abilities
-                    </Heading>
-                  </HStack>
-                  <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
-                    {selectedPlayer?.description?.replace(/\{name\}/g, selectedPlayer.name)}
-                  </Text>
-                </Box>
+              </div>
+            </DialogHeader>
+            <div className="py-6 px-6 space-y-6">
+              <div className="bg-blue-50 dark:bg-blue-900 p-6 rounded-xl border-l-4 border-blue-500">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-2xl">⚡</span>
+                  <h3 className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+                    Unique Abilities
+                  </h3>
+                </div>
+                <p className="text-md leading-relaxed">
+                  {selectedPlayer?.description?.replace(/\{name\}/g, selectedPlayer.name)}
+                </p>
+              </div>
 
-                {selectedPlayer?.attributes && selectedPlayer.attributes.length > 0 && (
-                  <HStack justify="center" spacing={4} pt={2} flexWrap="wrap">
-                    {selectedPlayer.attributes.map((attr, index) => (
-                      <VStack key={index}>
-                        <Text fontSize="3xl">{attr.emoji}</Text>
-                        <Text fontSize="xs" color={labelColor} textAlign="center">
-                          {attr.label}
-                        </Text>
-                      </VStack>
-                    ))}
-                  </HStack>
-                )}
-              </VStack>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+              {selectedPlayer?.attributes && selectedPlayer.attributes.length > 0 && (
+                <div className="flex justify-center gap-4 pt-2 flex-wrap">
+                  {selectedPlayer.attributes.map((attr, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                      <span className="text-3xl">{attr.emoji}</span>
+                      <span className="text-xs text-muted-foreground text-center">
+                        {attr.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Race Modal (Pre-Race Prospects & Results) */}
         <RaceModal
           isOpen={isRaceModalOpen}
-          onClose={onRaceModalClose}
+          onClose={() => setIsRaceModalOpen(false)}
           match={match}
           onPlayerClick={handleRaceModalPlayerClick}
         />
-      </Box>
-    </Box>
+      </Card>
+    </div>
   );
 };

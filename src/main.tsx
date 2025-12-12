@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import App from "@/App";
 import RootLayout from "@/components/layout/RootLayout";
 import Error from "@/pages/error";
+import "@/index.css";
 
 const root = document.getElementById("root");
 
