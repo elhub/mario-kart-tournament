@@ -1,22 +1,4 @@
-import {
-  Box,
-  Grid,
-  Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  VStack,
-  Text,
-  Heading,
-  Divider,
-  List,
-  ListItem,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { useState } from "react";
 import type { Tournament } from "@/types";
 import { Round } from "@/components/Round";
 import { BracketConnections } from "@/components/BracketConnections";
@@ -25,6 +7,13 @@ import { round1 } from "@/data/round1";
 import { round2 } from "@/data/round2";
 import { round3 } from "@/data/round3";
 import { round4 } from "@/data/round4";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const tournament: Tournament = {
   id: "t1",
@@ -32,7 +21,7 @@ const tournament: Tournament = {
 };
 
 function App() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
 
   const roundOfSixteenPart1 = {
     ...tournament.rounds[0],
@@ -70,244 +59,113 @@ function App() {
   };
 
   return (
-    <Box
-      h="100vh"
-      w="100vw"
-      pt={8}
-      pb={8}
-      position="relative"
-      overflow="auto"
-      backgroundImage="url('/mario-kart-tournament/emkwt-bg-4.jpg')"
-      backgroundSize="cover"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundAttachment="fixed"
-      _before={{
-        content: '""',
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(255, 255, 255, 0.7)",
-        zIndex: 0,
-        pointerEvents: "none",
+    <div
+      className="h-screen w-screen pt-8 pb-8 relative overflow-auto bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{
+        backgroundImage: "url('/mario-kart-tournament/emkwt-bg-4.jpg')",
       }}
     >
-      {/* Registration Badge - Top Middle */}
-      {/*       <Box
-        position="fixed"
-        top="20px"
-        left="50%"
-        transform="translateX(-50%)"
-        zIndex={10}
-        display={{ base: "none", md: "block" }}
-      >
-        <RegistrationBadge tournament={tournament} />
-      </Box> */}
+      {/* Background overlay */}
+      <div className="fixed inset-0 bg-white/70 dark:bg-black/70 z-0 pointer-events-none" />
 
       {/* Stand-Ins Badge & Rules Button Container */}
-      <VStack position="fixed" top="75%" left="50%" transform="translate(-50%, -50%)" zIndex={10} spacing={6}>
-        {/* <Box display={{ base: "none", md: "block" }}>
-          <RegistrationBadge tournament={tournament} />
-        </Box> */}
-
-        <Box display={{ base: "none", md: "block" }}>
+      <div className="fixed top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col gap-6">
+        <div className="hidden md:block">
           <StandInsBadge />
-        </Box>
+        </div>
 
         <Button
-          colorScheme="blue"
-          size={{ base: "md", md: "lg" }}
-          onClick={onOpen}
-          leftIcon={<Text>📋</Text>}
-          boxShadow="xl"
+          size="lg"
+          onClick={() => setIsOpen(true)}
+          className="shadow-xl"
         >
+          <span className="mr-2">📋</span>
           Tournament Rules
         </Button>
-      </VStack>
+      </div>
 
       {/* Rules Modal */}
-      <Modal isOpen={isOpen} onClose={onClose} size="2xl" scrollBehavior="inside">
-        <ModalOverlay backdropFilter="blur(4px)" />
-        <ModalContent bg={useColorModeValue("white", "gray.800")} maxH="90vh">
-          <ModalHeader bg={useColorModeValue("blue.500", "blue.600")} color="white" borderTopRadius="md">
-            <VStack align="start" spacing={1}>
-              <Heading size="lg">🏁 ELHUB MARIO KART WORLD CHRISTMAS TOURNAMENT 2025 🏆</Heading>
-            </VStack>
-          </ModalHeader>
-          <ModalCloseButton color="white" />
-          <ModalBody py={6}>
-            <VStack align="stretch" spacing={6}>
-              <Box>
-                <Text fontSize="lg" fontWeight="bold" mb={2}>
-                  Hey Elhub Racers! 🎮
-                </Text>
-                <Text>
-                  Get ready to put your driving skills to the ultimate test! We're excited to announce the{" "}
-                  <strong>Elhub Mario Kart World Christmas Tournament</strong> - where 32 of Elhub's finest racers will go
-                  head-to-head in an epic battle for glory!
-                </Text>
-              </Box>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto mx-4 p-0 gap-0">
+          <DialogHeader className="bg-blue-500 dark:bg-blue-600 text-white p-6 rounded-t-2xl">
+            <DialogTitle className="text-2xl text-white">
+              🏁 ELHUB MARIO KART WORLD CHRISTMAS TOURNAMENT 2025 🏆
+            </DialogTitle>
+          </DialogHeader>
+          <div className="py-6 px-6 space-y-6">
+            <div>
+              <p className="text-lg font-bold mb-2">Hey Elhub Racers! 🎮</p>
+              <p>
+                Get ready to put your driving skills to the ultimate test! We're excited to announce the{" "}
+                <strong>Elhub Mario Kart World Christmas Tournament</strong> - where 32 of Elhub's finest racers will go
+                head-to-head in an epic battle for glory!
+              </p>
+            </div>
 
-              <Divider />
+            <div className="border-t pt-6">
+              <h3 className="text-xl font-semibold mb-3">🎯 What's at Stake?</h3>
+              <ul className="space-y-2">
+                <li>✅ Only <strong>32 spots available</strong> - first come, first served!</li>
+                <li>✅ Showcase your unique racing abilities and special skills</li>
+                <li>✅ <strong>Podium prizes</strong> for our top champions</li>
+                <li>✅ Bragging rights that'll last well into 2026!</li>
+              </ul>
+            </div>
 
-              <Box>
-                <Heading size="md" mb={3}>
-                  🎯 What's at Stake?
-                </Heading>
-                <List spacing={2}>
-                  <ListItem>
-                    <Text>
-                      ✅ Only <strong>32 spots available</strong> - first come, first served!
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>✅ Showcase your unique racing abilities and special skills</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>
-                      ✅ <strong>Podium prizes</strong> for our top champions
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>✅ Bragging rights that'll last well into 2026!</Text>
-                  </ListItem>
-                </List>
-              </Box>
+            <div className="border-t pt-6">
+              <h3 className="text-xl font-semibold mb-3">📅 Tournament Schedule</h3>
+              <ul className="space-y-2">
+                <li>📍 <strong>One race per day</strong>, every weekday</li>
+                <li>📍 December 1st - December 19th</li>
+                <li>📍 <strong>Time:</strong> 11:30 AM sharp (don't be late!)</li>
+                <li>📍 <strong>Location:</strong> Huben</li>
+              </ul>
+            </div>
 
-              <Divider />
+            <div className="border-t pt-6">
+              <h3 className="text-xl font-semibold mb-3">🏎️ Tournament Format</h3>
+              <ul className="space-y-2">
+                <li>🏁 Single elimination bracket</li>
+                <li>🏁 <strong>Top 2 finishers</strong> from each race advance to the next round</li>
+                <li>🏁 Circuits and CC classes have been pre-selected for each race</li>
+                <li>🏁 Choose your in-game character wisely - it could make all the difference!</li>
+              </ul>
+            </div>
 
-              <Box>
-                <Heading size="md" mb={3}>
-                  📅 Tournament Schedule
-                </Heading>
-                <List spacing={2}>
-                  <ListItem>
-                    <Text>
-                      📍 <strong>One race per day</strong>, every weekday
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>📍 December 1st - December 19th</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>
-                      📍 <strong>Time:</strong> 11:30 AM sharp (don't be late!)
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>
-                      📍 <strong>Location:</strong> Huben
-                    </Text>
-                  </ListItem>
-                </List>
-              </Box>
+            <div className="border-t pt-6">
+              <h3 className="text-xl font-semibold mb-3">📊 Check Out the Brackets!</h3>
+              <p>
+                You're already viewing the full tournament bracket! Explore the matchups, track your favorite racers, and
+                plan your path to victory. Click on player names to see their unique abilities and racing styles!
+              </p>
+            </div>
 
-              <Divider />
+            <div className="border-t pt-6">
+              <h3 className="text-xl font-semibold mb-3">⚡ Quick Facts</h3>
+              <ul className="space-y-2">
+                <li>✅ 32 racers enter, 1 champion emerges</li>
+                <li>✅ Daily races at 11:30 AM</li>
+                <li>✅ Pre-selected circuits and CC classes</li>
+                <li>✅ Prizes for the podium</li>
+              </ul>
+            </div>
 
-              <Box>
-                <Heading size="md" mb={3}>
-                  🏎️ Tournament Format
-                </Heading>
-                <List spacing={2}>
-                  <ListItem>
-                    <Text>🏁 Single elimination bracket</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>
-                      🏁 <strong>Top 2 finishers</strong> from each race advance to the next round
-                    </Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>🏁 Circuits and CC classes have been pre-selected for each race</Text>
-                  </ListItem>
-                  <ListItem>
-                    <Text>🏁 Choose your in-game character wisely - it could make all the difference!</Text>
-                  </ListItem>
-                </List>
-              </Box>
-
-              <Divider />
-
-              <Box>
-                <Heading size="md" mb={3}>
-                  📊 Check Out the Brackets!
-                </Heading>
-                <Text>
-                  You're already viewing the full tournament bracket! Explore the matchups, track your favorite racers, and
-                  plan your path to victory. Click on player names to see their unique abilities and racing styles!
-                </Text>
-              </Box>
-{/*
-              <Divider />
-
-              <Box bg={useColorModeValue("red.50", "red.900")} p={4} borderRadius="md" borderLeft="4px solid red">
-                <Heading size="md" mb={3} color={useColorModeValue("red.700", "red.300")}>
-                  ⚠️ MOST IMPORTANT: HOW TO REGISTER
-                </Heading>
-                <Text fontWeight="bold" mb={2}>
-                  Registration is now OPEN - First come, first served!
-                </Text>
-                <Text fontWeight="bold" mb={3}>
-                  To register, send an email to Pål Oskar with 3 race brackets that fit your schedule.
-                </Text>
-                <List spacing={2}>
-                  <ListItem>✅ Choose 3 time slots that work for you to maximize your chances</ListItem>
-                  <ListItem>✅ Registration open until all 32 spots are filled</ListItem>
-                  <ListItem>✅ Players will be added to brackets as registrations are received</ListItem>
-                  <ListItem>
-                    ✅ <strong>Follow the bracket page for updates on the schedule</strong>
-                  </ListItem>
-                  <ListItem>
-                    ✅ <strong>Info meeting will be held once all racers are signed up</strong>
-                  </ListItem>
-                </List>
-                <Text mt={3} fontStyle="italic">
-                  Don't wait too long - spots will fill up fast!
-                </Text>
-              </Box>
-*/}
-              <Divider />
-
-              <Box>
-                <Heading size="md" mb={3}>
-                  ⚡ Quick Facts
-                </Heading>
-                <List spacing={2}>
-                  <ListItem>✅ 32 racers enter, 1 champion emerges</ListItem>
-                  <ListItem>✅ Daily races at 11:30 AM</ListItem>
-                  <ListItem>✅ Pre-selected circuits and CC classes</ListItem>
-                  <ListItem>✅ Prizes for the podium</ListItem>
-                </List>
-              </Box>
-
-              <Box textAlign="center" py={4}>
-                <Text fontSize="xl" fontWeight="bold">
-                  May the blue shells be ever in your favor! 🐢💨
-                </Text>
-                <Text fontSize="sm" color={useColorModeValue("gray.600", "gray.400")} mt={2}>
-                  See you on the track,
-                  <br />
-                  <strong>The Tournament Committee</strong>
-                </Text>
-              </Box>
-            </VStack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+            <div className="text-center py-4 border-t">
+              <p className="text-xl font-bold">May the blue shells be ever in your favor! 🐢💨</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                See you on the track,
+                <br />
+                <strong>The Tournament Committee</strong>
+              </p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <BracketConnections />
-      <Grid
+      <div
         id="bracket-grid"
-        templateColumns="repeat(7, 1fr)"
-        templateRows="repeat(4, 1fr)"
-        w="full"
-        gap={8}
-        my={8}
-        mx={8}
-        position="relative"
-        zIndex={1}
+        className="grid grid-cols-7 grid-rows-4 w-full gap-8 my-8 mx-8 relative z-[1]"
       >
         {/* === Column 1 (4 small boxes) === */}
         <Round round={roundOfSixteenPart1} columnId={1} />
@@ -325,8 +183,8 @@ function App() {
 
         {/* === Column 7 (4 small boxes) === */}
         <Round round={roundOfSixteenPart2} columnId={7} />
-      </Grid>
-    </Box>
+      </div>
+    </div>
   );
 }
 

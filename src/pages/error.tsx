@@ -1,7 +1,5 @@
-import { Text } from "@chakra-ui/react";
-
 const Error = () => {
-  return <Text>Error</Text>;
+  return <div className="text-foreground">Error</div>;
 };
 
 export default Error;

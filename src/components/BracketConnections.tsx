@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Box } from "@chakra-ui/react";
 import p5 from "p5";
 
 export const BracketConnections = () => {
@@ -132,6 +131,6 @@ export const BracketConnections = () => {
   }, []);
 
   return (
-    <Box ref={canvasRef} position="absolute" top={0} left={0} width="1px" height="1px" pointerEvents="none" zIndex={0} />
+    <div ref={canvasRef} className="absolute top-0 left-0 w-px h-px pointer-events-none z-0" />
   );
 };

@@ -1,25 +1,13 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  VStack,
-  HStack,
-  Text,
-  Heading,
-  Badge,
-  Box,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  useColorModeValue,
-} from "@chakra-ui/react";
 import type { Race, Player } from "@/types";
 import { generateProspectElements } from "@/utils/prospectUtils";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface RaceModalProps {
   isOpen: boolean;
@@ -29,7 +17,6 @@ interface RaceModalProps {
 }
 
 export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalProps) => {
-  const labelColor = useColorModeValue("gray.600", "gray.400");
   const matchNumber = match.id.replace(/\D/g, "");
 
   // Helper function to get position emoji
@@ -48,252 +35,188 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
     }
   };
 
-  // Determine default tab index based on race status
-  const defaultIndex = match.isFinished && match.summary ? 1 : 0;
+  // Determine default tab based on race status
+  const defaultTab = match.isFinished && match.summary ? "results" : "prospects";
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
-      <ModalOverlay backdropFilter="blur(4px)" />
-      <ModalContent bg={useColorModeValue("white", "gray.800")} borderRadius="2xl" boxShadow="2xl" mx={4}>
-        <ModalHeader bg={useColorModeValue("purple.500", "purple.600")} color="white" borderTopRadius="2xl" py={6}>
-          <VStack align="start" spacing={2}>
-            <HStack>
-              <Text fontSize="3xl">{match.isFinished ? "🏁" : "🔮"}</Text>
-              <Heading size="lg">{match.isFinished ? "Race Complete" : "Pre-Race Prospects"}</Heading>
-            </HStack>
-            <Badge colorScheme="yellow" fontSize="sm" px={3} py={1} borderRadius="full">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl mx-4 p-0 gap-0 max-h-[90vh] overflow-y-auto">
+        <DialogHeader className="bg-purple-500 dark:bg-purple-600 text-white p-6 rounded-t-2xl">
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl">{match.isFinished ? "🏁" : "🔮"}</span>
+              <DialogTitle className="text-2xl text-white">
+                {match.isFinished ? "Race Complete" : "Pre-Race Prospects"}
+              </DialogTitle>
+            </div>
+            <Badge variant="yellow" className="w-fit px-3 py-1">
               Race {matchNumber} - {match.circuit}
             </Badge>
-          </VStack>
-        </ModalHeader>
-        <ModalCloseButton color="white" size="lg" />
-        <ModalBody py={8} px={6}>
-          <VStack spacing={6} align="stretch">
-            {/* Race Info Banner */}
-            <HStack
-              bg={useColorModeValue("purple.50", "purple.900")}
-              p={4}
-              borderRadius="lg"
-              justify="space-between"
-              flexWrap="wrap"
-              spacing={4}
-            >
-              <VStack align="start" spacing={0}>
-                <Text fontSize="xs" color={labelColor} fontWeight="bold">
-                  DATE & TIME
-                </Text>
-                <Text fontSize="sm" fontWeight="semibold">
-                  {match.date}
-                </Text>
-                <Text fontSize="sm">{match.time}</Text>
-              </VStack>
-              <VStack align="end" spacing={0}>
-                <Text fontSize="xs" color={labelColor} fontWeight="bold">
-                  LOCATION
-                </Text>
-                <Text fontSize="sm" fontWeight="semibold">
-                  {match.location}
-                </Text>
-                <Text fontSize="sm">{match.cc}</Text>
-              </VStack>
-            </HStack>
+          </div>
+        </DialogHeader>
 
-            {/* Tabs for Pre-Race and Results */}
-            <Tabs defaultIndex={defaultIndex} colorScheme="purple">
-              <TabList>
-                <Tab isDisabled={match.isFinished && match.summary ? false : false}>Pre-Race Prospects</Tab>
-                <Tab isDisabled={!match.isFinished || !match.summary}>Race Results & Summary</Tab>
-              </TabList>
+        <div className="py-6 px-6 space-y-6">
+          {/* Race Info Banner */}
+          <div className="bg-purple-50 dark:bg-purple-900 p-4 rounded-lg flex justify-between flex-wrap gap-4">
+            <div className="flex flex-col space-y-0">
+              <span className="text-xs text-muted-foreground font-bold">DATE & TIME</span>
+              <span className="text-sm font-semibold">{match.date}</span>
+              <span className="text-sm">{match.time}</span>
+            </div>
+            <div className="flex flex-col items-end space-y-0">
+              <span className="text-xs text-muted-foreground font-bold">LOCATION</span>
+              <span className="text-sm font-semibold">{match.location}</span>
+              <span className="text-sm">{match.cc}</span>
+            </div>
+          </div>
 
-              <TabPanels>
-                {/* Pre-Race Prospects Tab */}
-                <TabPanel px={0} pt={6}>
-                  <VStack spacing={4} align="stretch">
-                    {/* Competitors */}
-                    <Box>
-                      <HStack mb={3}>
-                        <Text fontSize="2xl">🏁</Text>
-                        <Heading size="sm" color={useColorModeValue("purple.700", "purple.300")}>
-                          The Competitors
-                        </Heading>
-                      </HStack>
-                      <HStack spacing={3} flexWrap="wrap" justify="center">
-                        {match.players.map((player) => (
-                          <Badge
-                            key={player.id}
-                            colorScheme="purple"
-                            fontSize="sm"
-                            px={3}
-                            py={1}
-                            borderRadius="full"
-                            cursor="pointer"
-                            _hover={{ transform: "scale(1.05)", boxShadow: "md" }}
-                            onClick={() => onPlayerClick(player)}
-                          >
-                            {player.name}
-                          </Badge>
-                        ))}
-                      </HStack>
-                    </Box>
+          {/* Tabs for Pre-Race and Results */}
+          <Tabs defaultValue={defaultTab}>
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="prospects">Pre-Race Prospects</TabsTrigger>
+              <TabsTrigger value="results" disabled={!match.isFinished || !match.summary}>
+                Race Results & Summary
+              </TabsTrigger>
+            </TabsList>
 
-                    {/* Pre-Race Analysis */}
-                    {match.prospect && (
-                      <Box
-                        bg={useColorModeValue("orange.50", "orange.900")}
-                        p={6}
-                        borderRadius="xl"
-                        borderLeft="4px solid"
-                        borderColor="orange.500"
-                      >
-                        <HStack mb={3}>
-                          <Text fontSize="2xl">📊</Text>
-                          <Heading size="sm" color={useColorModeValue("orange.700", "orange.300")}>
-                            Race Analysis
-                          </Heading>
-                        </HStack>
-                        <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
-                          {generateProspectElements(match, onPlayerClick).map((element) => {
-                            if (typeof element === "string") {
-                              return element;
-                            }
-                            // It's a player element
-                            return (
-                              <Text
-                                as="span"
-                                key={element.key}
-                                color={useColorModeValue("blue.600", "blue.300")}
-                                fontWeight="bold"
-                                textDecoration="underline"
-                                cursor="pointer"
-                                _hover={{
-                                  color: useColorModeValue("blue.700", "blue.200"),
-                                  textDecoration: "underline",
-                                }}
-                                onClick={element.onClick}
-                              >
-                                {element.player.name}
-                              </Text>
-                            );
-                          })}
-                        </Text>
-                      </Box>
-                    )}
+            {/* Pre-Race Prospects Tab */}
+            <TabsContent value="prospects" className="space-y-4 mt-6">
+              {/* Competitors */}
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-2xl">🏁</span>
+                  <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">
+                    The Competitors
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {match.players.map((player) => (
+                    <Badge
+                      key={player.id}
+                      variant="default"
+                      className="px-3 py-1 cursor-pointer hover:scale-105 transition-transform"
+                      onClick={() => onPlayerClick(player)}
+                    >
+                      {player.name}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
 
-                    {/* Fun disclaimer */}
-                    <Text fontSize="xs" color={labelColor} textAlign="center" fontStyle="italic" pt={2}>
-                      ⚠️ Predictions are for entertainment purposes only. Banana peels and blue shells may alter outcomes.
-                    </Text>
-                  </VStack>
-                </TabPanel>
+              {/* Pre-Race Analysis */}
+              {match.prospect && (
+                <div className="bg-orange-50 dark:bg-orange-900 p-6 rounded-xl border-l-4 border-orange-500">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl">📊</span>
+                    <h3 className="text-sm font-semibold text-orange-700 dark:text-orange-300">
+                      Race Analysis
+                    </h3>
+                  </div>
+                  <p className="text-md leading-relaxed">
+                    {generateProspectElements(match, onPlayerClick).map((element) => {
+                      if (typeof element === "string") {
+                        return element;
+                      }
+                      // It's a player element
+                      return (
+                        <span
+                          key={element.key}
+                          className="text-blue-600 dark:text-blue-300 font-bold underline cursor-pointer hover:text-blue-700 dark:hover:text-blue-200"
+                          onClick={element.onClick}
+                        >
+                          {element.player.name}
+                        </span>
+                      );
+                    })}
+                  </p>
+                </div>
+              )}
 
-                {/* Race Results & Summary Tab */}
-                <TabPanel px={0} pt={6}>
-                  <VStack spacing={4} align="stretch">
-                    {/* Results Podium */}
-                    <Box>
-                      <HStack mb={3}>
-                        <Text fontSize="2xl">🏆</Text>
-                        <Heading size="sm" color={useColorModeValue("purple.700", "purple.300")}>
-                          Final Results
-                        </Heading>
-                      </HStack>
-                      <VStack spacing={3} align="stretch">
-                        {match.players
-                          .slice()
-                          .sort((a, b) => (a.position || 0) - (b.position || 0))
-                          .map((player) => {
-                            const positionEmoji = getPositionEmoji(player.position);
-                            const isQualified = player.position && player.position <= 2;
+              {/* Fun disclaimer */}
+              <p className="text-xs text-muted-foreground text-center italic pt-2">
+                ⚠️ Predictions are for entertainment purposes only. Banana peels and blue shells may alter outcomes.
+              </p>
+            </TabsContent>
 
-                            return (
-                              <HStack
-                                key={player.id}
-                                bg={
-                                  player.position === 1
-                                    ? useColorModeValue("yellow.100", "yellow.900")
-                                    : player.position === 2
-                                    ? useColorModeValue("yellow.100", "yellow.900")
-                                    : useColorModeValue("gray.50", "gray.700")
-                                }
-                                p={4}
-                                borderRadius="lg"
-                                justify="space-between"
-                                borderLeft="4px solid"
-                                borderColor={
-                                  player.position === 1 ? "yellow.500" : player.position === 2 ? "yellow.500" : "gray.300"
-                                }
-                                cursor="pointer"
-                                _hover={{ transform: "scale(1.02)", boxShadow: "md" }}
-                                onClick={() => onPlayerClick(player)}
-                              >
-                                <HStack spacing={3}>
-                                  <Text fontSize="2xl">{positionEmoji}</Text>
-                                  <VStack align="start" spacing={0}>
-                                    <Text fontWeight="bold" fontSize="lg">
-                                      {player.name}
-                                    </Text>
-                                    {isQualified && (
-                                      <Badge colorScheme="green" fontSize="xs">
-                                        ✅ Qualified
-                                      </Badge>
-                                    )}
-                                  </VStack>
-                                </HStack>
-                              </HStack>
-                            );
-                          })}
-                      </VStack>
-                    </Box>
+            {/* Race Results & Summary Tab */}
+            <TabsContent value="results" className="space-y-4 mt-6">
+              {/* Results Podium */}
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-2xl">🏆</span>
+                  <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">
+                    Final Results
+                  </h3>
+                </div>
+                <div className="space-y-3">
+                  {match.players
+                    .slice()
+                    .sort((a, b) => (a.position || 0) - (b.position || 0))
+                    .map((player) => {
+                      const positionEmoji = getPositionEmoji(player.position);
+                      const isQualified = player.position && player.position <= 2;
 
-                    {/* Race Summary */}
-                    {match.summary && (
-                      <Box
-                        bg={useColorModeValue("green.50", "green.900")}
-                        p={6}
-                        borderRadius="xl"
-                        borderLeft="4px solid"
-                        borderColor="green.500"
-                      >
-                        <HStack mb={3}>
-                          <Text fontSize="2xl">📝</Text>
-                          <Heading size="sm" color={useColorModeValue("green.700", "green.300")}>
-                            Race Summary
-                          </Heading>
-                        </HStack>
-                        <Text fontSize="md" lineHeight="tall" color={useColorModeValue("gray.700", "gray.200")}>
-                          {generateProspectElements({ ...match, prospect: match.summary }, onPlayerClick).map((element) => {
-                            if (typeof element === "string") {
-                              return element;
-                            }
-                            // It's a player element
-                            return (
-                              <Text
-                                as="span"
-                                key={element.key}
-                                color={useColorModeValue("blue.600", "blue.300")}
-                                fontWeight="bold"
-                                textDecoration="underline"
-                                cursor="pointer"
-                                _hover={{
-                                  color: useColorModeValue("blue.700", "blue.200"),
-                                  textDecoration: "underline",
-                                }}
-                                onClick={element.onClick}
-                              >
-                                {element.player.name}
-                              </Text>
-                            );
-                          })}
-                        </Text>
-                      </Box>
-                    )}
-                  </VStack>
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </VStack>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+                      return (
+                        <div
+                          key={player.id}
+                          className={`p-4 rounded-lg flex justify-between items-center border-l-4 cursor-pointer hover:scale-[1.02] transition-transform ${
+                            player.position === 1
+                              ? "bg-yellow-100 dark:bg-yellow-900 border-yellow-500"
+                              : player.position === 2
+                              ? "bg-yellow-100 dark:bg-yellow-900 border-yellow-500"
+                              : "bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+                          }`}
+                          onClick={() => onPlayerClick(player)}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{positionEmoji}</span>
+                            <div className="flex flex-col space-y-0">
+                              <span className="font-bold text-lg">{player.name}</span>
+                              {isQualified && (
+                                <Badge variant="green" className="w-fit text-xs">
+                                  ✅ Qualified
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+
+              {/* Race Summary */}
+              {match.summary && (
+                <div className="bg-green-50 dark:bg-green-900 p-6 rounded-xl border-l-4 border-green-500">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl">📝</span>
+                    <h3 className="text-sm font-semibold text-green-700 dark:text-green-300">
+                      Race Summary
+                    </h3>
+                  </div>
+                  <p className="text-md leading-relaxed">
+                    {generateProspectElements({ ...match, prospect: match.summary }, onPlayerClick).map((element) => {
+                      if (typeof element === "string") {
+                        return element;
+                      }
+                      // It's a player element
+                      return (
+                        <span
+                          key={element.key}
+                          className="text-blue-600 dark:text-blue-300 font-bold underline cursor-pointer hover:text-blue-700 dark:hover:text-blue-200"
+                          onClick={element.onClick}
+                        >
+                          {element.player.name}
+                        </span>
+                      );
+                    })}
+                  </p>
+                </div>
+              )}
+            </TabsContent>
+          </Tabs>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
