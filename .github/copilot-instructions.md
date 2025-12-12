@@ -133,3 +133,68 @@ const border = useColorModeValue("gray.400", "gray.700");
 - **p5.js**: Canvas rendering for bracket connection lines
 - **nuqs**: Type-safe URL state (React Router v7 adapter)
 - **Framer Motion**: Animation library (used by Chakra internally)
+
+## Reusable Actions
+
+### Action: Generate Race Day Announcement
+
+**Trigger phrase:** "execute race day announcement" or "generate race day message"
+
+**Purpose:** Generate a Microsoft Teams-formatted message to announce today's race to all participants.
+
+**Steps to execute:**
+
+1. **Determine today's race:**
+
+   - Use the current date to find the matching race in `src/data/round1.ts` or `src/data/round2.ts`
+   - Extract: date, time, circuit, cc, location, and player IDs
+
+2. **Get player information:**
+
+   - Look up each player ID in `src/data/players.ts` (`playerProfiles`)
+   - Extract: name, emoji (first attribute), and ability title (text before the dash in description)
+
+3. **Generate the message with this exact format:**
+
+🏁 **RACE DAY - [Full Date]!** 🏁
+
+Hey racers! [circuit-emoji]
+
+The [ordinal number] race of our Mario Kart Tournament is happening **TODAY at [TIME]** in [LOCATION]!
+
+**Today's Competitors - [Circuit Name] ([CC]):**
+
+[emoji] **[Player Name]** - _[Ability Title]_
+[emoji] **[Player Name]** - _[Ability Title]_
+[emoji] **[Player Name]** - _[Ability Title]_
+[emoji] **[Player Name]** - _[Ability Title]_
+
+[1-2 sentences of exciting commentary mentioning **player names in bold** and their abilities to create anticipation]
+
+📊 **Check the full tournament brackets:** https://elhub.github.io/mario-kart-tournament/
+
+Good luck to all participants! 🎮
+
+---
+
+_Reminder: Race starts at [TIME] sharp in [LOCATION]. Don't be late!_
+
+**CRITICAL Formatting requirements:**
+
+- Output ONLY the message text (do NOT wrap in code blocks, markdown fences, or ``` marks)
+- Use **text** for bold (including ALL player names mentioned anywhere in the message)
+- Use _text_ for italic (for ability titles only)
+- Include exactly ONE blank line between sections
+- NO extra spacing, indentation, or line breaks beyond what's in the template
+- Ability title = text before the dash in player description (e.g., "Master of Momentum" from "Master of Momentum - {name} flows through...")
+
+**Special cases:**
+
+- For quarterfinals/semifinals/finals: Replace "The [ordinal] race" with "The [ordinal] quarterfinal/semifinal/final"
+- For Round 2+: Add this line after the competitors list with one blank line before and after: "Only the top 2 advance to the [next round name]!"
+- Use appropriate circuit emoji: 🍄 (Mushroom), 🌸 (Flower), ⚡ (Lightning), 🐚 (Shell), 🍌 (Banana), 🍃 (Leaf), ⭐ (Star)
+
+**Example ability title extraction:**
+
+- Description: "Master of Momentum - {name} flows through tracks..."
+- Ability title: "Master of Momentum"
