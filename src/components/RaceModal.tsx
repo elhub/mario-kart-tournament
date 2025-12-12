@@ -41,7 +41,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl mx-4 p-0 gap-0 max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="bg-purple-500 dark:bg-purple-600 text-white p-6 rounded-t-2xl">
+        <DialogHeader className="bg-teal-600 dark:bg-teal-700 text-white p-6 rounded-t-2xl">
           <div className="flex flex-col space-y-2">
             <div className="flex items-center gap-2">
               <span className="text-3xl">{match.isFinished ? "🏁" : "🔮"}</span>
@@ -57,7 +57,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
 
         <div className="py-6 px-6 space-y-6">
           {/* Race Info Banner */}
-          <div className="bg-purple-50 dark:bg-purple-900 p-5 rounded-lg flex justify-between flex-wrap gap-4">
+          <div className="bg-teal-50 dark:bg-teal-900 p-5 rounded-lg flex justify-between flex-wrap gap-4">
             <div className="flex flex-col gap-1">
               <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">DATE & TIME</span>
               <span className="text-sm font-semibold leading-tight">{match.date}</span>

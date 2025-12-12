@@ -23,10 +23,10 @@ export function StandInsBadge() {
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-3 border-purple-500 dark:border-purple-300 overflow-hidden max-w-md">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-3 border-teal-500 dark:border-teal-400 overflow-hidden w-full">
         <div className="flex flex-col">
           {/* Header */}
-          <div className="bg-purple-600 dark:bg-purple-400 w-full px-6 py-3 text-center">
+          <div className="bg-teal-600 dark:bg-teal-500 w-full px-6 py-3 text-center">
             <span className="text-white font-bold text-base tracking-wide">
               🏃 AVAILABLE STAND-INS 🏃
             </span>
@@ -44,10 +44,10 @@ export function StandInsBadge() {
                   <Tooltip key={standIn.id} delayDuration={300}>
                     <TooltipTrigger asChild>
                       <div
-                        className="bg-purple-50 dark:bg-purple-900 px-4 py-2.5 rounded-lg border-2 border-purple-200 dark:border-purple-700 cursor-pointer transition-all hover:scale-105 hover:border-purple-600 dark:hover:border-purple-400 hover:shadow-lg"
+                        className="bg-teal-50 dark:bg-teal-900 px-4 py-2.5 rounded-lg border-2 border-teal-200 dark:border-teal-700 cursor-pointer transition-all hover:scale-105 hover:border-teal-600 dark:hover:border-teal-400 hover:shadow-lg"
                         onClick={() => handlePlayerClick(standIn)}
                       >
-                        <span className="font-semibold text-sm text-purple-800 dark:text-purple-200">
+                        <span className="font-semibold text-sm text-teal-800 dark:text-teal-200">
                           {standIn.name}
                         </span>
                       </div>
@@ -78,7 +78,7 @@ export function StandInsBadge() {
       {/* Player Details Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-md mx-4 p-0 gap-0">
-          <DialogHeader className="bg-purple-500 dark:bg-purple-600 text-white p-6 rounded-t-2xl">
+          <DialogHeader className="bg-teal-600 dark:bg-teal-700 text-white p-6 rounded-t-2xl">
             <div className="flex flex-col space-y-2">
               <div className="flex items-center gap-2">
                 <span className="text-3xl">🏎️</span>
@@ -90,10 +90,10 @@ export function StandInsBadge() {
             </div>
           </DialogHeader>
           <div className="py-6 px-6 space-y-6">
-            <div className="bg-purple-50 dark:bg-purple-900 p-6 rounded-xl border-l-4 border-purple-500">
+            <div className="bg-teal-50 dark:bg-teal-900 p-6 rounded-xl border-l-4 border-teal-600">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-2xl">⚡</span>
-                <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">
+                <h3 className="text-sm font-semibold text-teal-700 dark:text-teal-300">
                   Unique Abilities
                 </h3>
               </div>

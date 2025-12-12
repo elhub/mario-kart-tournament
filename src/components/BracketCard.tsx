@@ -91,7 +91,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         id={match.id}
         className={cn(
           "relative w-[210px] overflow-hidden shadow-2xl transition-all duration-200",
-          allPlayersAssigned && hasRaceContent && "cursor-pointer hover:scale-105 hover:border-blue-400 dark:hover:border-blue-500"
+          allPlayersAssigned && hasRaceContent && "cursor-pointer hover:scale-105 hover:border-teal-500 dark:hover:border-teal-400"
         )}
         onClick={handleCardClick}
       >
@@ -103,7 +103,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         )}
 
         {/* Header Section - Race Info */}
-        <div className="bg-blue-50 dark:bg-blue-900 px-3 py-2.5 border-b">
+        <div className="bg-teal-50 dark:bg-teal-900 px-3 py-2.5 border-b">
           <div className="flex flex-col space-y-0.5">
             <span className="text-xs font-bold text-muted-foreground leading-tight">
               Race {matchNumber}
@@ -195,7 +195,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         {/* Player Info Modal */}
         <Dialog open={isPlayerModalOpen} onOpenChange={setIsPlayerModalOpen}>
           <DialogContent className="max-w-lg mx-4 p-0 gap-0">
-            <DialogHeader className="bg-blue-500 dark:bg-blue-600 text-white p-6 rounded-t-2xl">
+            <DialogHeader className="bg-teal-600 dark:bg-teal-700 text-white p-6 rounded-t-2xl">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-center gap-2">
                   <span className="text-3xl">🏎️</span>
@@ -207,10 +207,10 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
               </div>
             </DialogHeader>
             <div className="py-6 px-6 space-y-6">
-              <div className="bg-blue-50 dark:bg-blue-900 p-6 rounded-xl border-l-4 border-blue-500">
+              <div className="bg-teal-50 dark:bg-teal-900 p-6 rounded-xl border-l-4 border-teal-600">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">⚡</span>
-                  <h3 className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+                <h3 className="text-sm font-semibold text-teal-700 dark:text-teal-300">
                     Unique Abilities
                   </h3>
                 </div>

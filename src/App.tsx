@@ -69,8 +69,8 @@ function App() {
       <div className="fixed inset-0 bg-white/70 dark:bg-black/70 z-0 pointer-events-none" />
 
       {/* Stand-Ins Badge & Rules Button Container */}
-      <div className="fixed top-4 right-4 md:top-[75%] md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center gap-2 md:gap-6 md:max-w-md md:w-full md:px-4">
-        <div className="hidden md:block">
+      <div className="fixed top-4 right-4 md:top-[75%] md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 flex flex-col items-center gap-2 md:gap-6 w-auto md:w-full md:max-w-md">
+        <div className="hidden md:flex md:w-full">
           <StandInsBadge />
         </div>
 
@@ -80,14 +80,14 @@ function App() {
           className="shadow-xl text-xs md:text-base px-3 md:px-4 md:w-full"
         >
           <span className="mr-1 md:mr-2">📋</span>
-          <span className="hidden md:inline">Tournament </span>Rules
+          <span className="hidden md:inline">Tournament</span>Rules
         </Button>
       </div>
 
       {/* Rules Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto mx-4 p-0 gap-0">
-          <DialogHeader className="bg-blue-500 dark:bg-blue-600 text-white p-6 rounded-t-2xl">
+          <DialogHeader className="bg-teal-600 dark:bg-teal-700 text-white p-6 rounded-t-2xl">
             <DialogTitle className="text-2xl text-white">
               🏁 ELHUB MARIO KART WORLD CHRISTMAS TOURNAMENT 2025 🏆
             </DialogTitle>
