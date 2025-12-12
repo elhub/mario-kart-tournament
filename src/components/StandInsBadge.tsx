@@ -24,17 +24,17 @@ export function StandInsBadge() {
   return (
     <>
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-3 border-purple-500 dark:border-purple-300 overflow-hidden max-w-md">
-        <div className="flex flex-col space-y-0">
+        <div className="flex flex-col">
           {/* Header */}
-          <div className="bg-purple-600 dark:bg-purple-400 w-full px-6 py-2 text-center">
-            <span className="text-white font-bold text-lg tracking-wide">
+          <div className="bg-purple-600 dark:bg-purple-400 w-full px-6 py-3 text-center">
+            <span className="text-white font-bold text-base tracking-wide">
               🏃 AVAILABLE STAND-INS 🏃
             </span>
           </div>
 
           {/* Main Content */}
-          <div className="px-6 py-4 w-full space-y-4">
-            <p className="text-sm text-center font-semibold">
+          <div className="px-6 py-5 w-full space-y-4">
+            <p className="text-sm text-center font-medium text-muted-foreground">
               Need a substitute? These racers are ready to jump in!
             </p>
 
@@ -44,10 +44,10 @@ export function StandInsBadge() {
                   <Tooltip key={standIn.id} delayDuration={300}>
                     <TooltipTrigger asChild>
                       <div
-                        className="bg-purple-50 dark:bg-purple-900 px-4 py-3 rounded-lg border-2 border-purple-200 dark:border-purple-700 cursor-pointer transition-all hover:scale-105 hover:border-purple-600 dark:hover:border-purple-400 hover:shadow-lg"
+                        className="bg-purple-50 dark:bg-purple-900 px-4 py-2.5 rounded-lg border-2 border-purple-200 dark:border-purple-700 cursor-pointer transition-all hover:scale-105 hover:border-purple-600 dark:hover:border-purple-400 hover:shadow-lg"
                         onClick={() => handlePlayerClick(standIn)}
                       >
-                        <span className="font-bold text-purple-800 dark:text-purple-200">
+                        <span className="font-semibold text-sm text-purple-800 dark:text-purple-200">
                           {standIn.name}
                         </span>
                       </div>

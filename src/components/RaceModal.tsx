@@ -57,16 +57,16 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
 
         <div className="py-6 px-6 space-y-6">
           {/* Race Info Banner */}
-          <div className="bg-purple-50 dark:bg-purple-900 p-4 rounded-lg flex justify-between flex-wrap gap-4">
-            <div className="flex flex-col space-y-0">
-              <span className="text-xs text-muted-foreground font-bold">DATE & TIME</span>
-              <span className="text-sm font-semibold">{match.date}</span>
-              <span className="text-sm">{match.time}</span>
+          <div className="bg-purple-50 dark:bg-purple-900 p-5 rounded-lg flex justify-between flex-wrap gap-4">
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">DATE & TIME</span>
+              <span className="text-sm font-semibold leading-tight">{match.date}</span>
+              <span className="text-sm leading-tight">{match.time}</span>
             </div>
-            <div className="flex flex-col items-end space-y-0">
-              <span className="text-xs text-muted-foreground font-bold">LOCATION</span>
-              <span className="text-sm font-semibold">{match.location}</span>
-              <span className="text-sm">{match.cc}</span>
+            <div className="flex flex-col items-end gap-1">
+              <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">LOCATION</span>
+              <span className="text-sm font-semibold leading-tight">{match.location}</span>
+              <span className="text-sm leading-tight">{match.cc}</span>
             </div>
           </div>
 

@@ -103,18 +103,18 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         )}
 
         {/* Header Section - Race Info */}
-        <div className="bg-blue-50 dark:bg-blue-900 px-3 py-2 border-b">
-          <div className="flex flex-col space-y-0">
-            <span className="text-xs font-bold text-muted-foreground">
+        <div className="bg-blue-50 dark:bg-blue-900 px-3 py-2.5 border-b">
+          <div className="flex flex-col space-y-0.5">
+            <span className="text-xs font-bold text-muted-foreground leading-tight">
               Race {matchNumber}
             </span>
-            <span className="text-xs font-medium">
+            <span className="text-xs font-medium leading-tight">
               {match.date}
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground leading-tight">
               {match.time}
             </span>
-            <span className="text-xs font-medium">
+            <span className="text-xs font-medium leading-tight">
               @{match.location}
             </span>
           </div>
@@ -132,7 +132,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                   <TooltipTrigger asChild>
                     <div
                       className={cn(
-                        "w-full py-0 px-3 transition-colors min-h-[28px] flex items-center",
+                        "w-full px-3 transition-colors flex items-center h-[32px]",
                         index < match.players.length - 1 && "border-b",
                         getPlayerBgClass(p),
                         isClickable && "cursor-pointer"
@@ -141,12 +141,12 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                       data-player-id={p.id}
                       data-position={p.position}
                     >
-                      <div className="flex justify-between items-center w-full">
-                        <span className="font-semibold text-sm leading-tight">
+                      <div className="flex justify-between items-center w-full gap-2">
+                        <span className="font-semibold text-sm leading-tight truncate">
                           {p.name}
                         </span>
                         {match.isFinished && p.position && (
-                          <span className="text-lg">{getPositionEmoji(p.position)}</span>
+                          <span className="text-base flex-shrink-0">{getPositionEmoji(p.position)}</span>
                         )}
                       </div>
                     </div>
@@ -175,17 +175,17 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         </div>
 
         {/* Footer Section - Circuit & CC */}
-        <div className="bg-muted px-3 py-2 border-t">
-          <div className="flex justify-between gap-2">
-            <div className="flex flex-col flex-1">
-              <span className="text-xs text-muted-foreground">Circuit</span>
-              <Badge variant="purple" className="text-[10px] w-fit whitespace-nowrap">
+        <div className="bg-muted px-3 py-2.5 border-t">
+          <div className="flex justify-between gap-3">
+            <div className="flex flex-col gap-1 flex-1">
+              <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wide">Circuit</span>
+              <Badge variant="purple" className="text-[10px] w-fit whitespace-nowrap font-medium">
                 {match.circuit}
               </Badge>
             </div>
-            <div className="flex flex-col items-end flex-1">
-              <span className="text-xs text-muted-foreground">CC</span>
-              <Badge variant="green" className="text-[10px] w-fit">
+            <div className="flex flex-col gap-1 items-end flex-1">
+              <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wide">CC</span>
+              <Badge variant="green" className="text-[10px] w-fit font-medium">
                 {match.cc}
               </Badge>
             </div>
