@@ -31,14 +31,14 @@ export const round2: Round = {
       circuit: "Flower Cup",
       cc: "100cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The second Quarterfinal delivers a clash of champions on the Flower Cup! {pal-oskar}, the Guardian, dominated Race 3 with his impenetrable defensive mastery and strategic positioning - his fortress-like composure makes him incredibly difficult to overtake. {christoffer-s}, the Comeback Kid, claimed victory in Race 4 through tactical brilliance and aggressive racing, his psychological warfare capabilities striking fear in opponents. {henrik-h}, the Track Whisperer, secured second in Race 3 by the narrowest of margins, his intimate knowledge of every shortcut and hidden path giving him an edge on unfamiliar circuits. {tor-magnus}, the Rising Star, earned second in Race 4 through fearless natural talent and determination in a super close finish. The Flower Cup features Mario Circuit 3, Daisy Cruiser, DK Mountain, and Luigi Circuit - tracks that reward both defensive positioning and daring shortcuts. At 100cc, {pal-oskar}'s defensive wall meets {christoffer-s}'s aggressive intimidation, while {henrik-h}'s shortcut mastery could unlock hidden advantages and {tor-magnus} aims to prove his rising star status. Two dominant race winners face two hungry second-placers - who punches their ticket to the semifinals?",
       players: [
-        createPlayer("pal-oskar"),
-        createPlayer("christoffer-s"),
-        createPlayer("henrik-h"),
-        createPlayer("tor-magnus"),
+        createPlayer("pal-oskar", 1),
+        createPlayer("christoffer-s", 2),
+        createPlayer("henrik-h", 4),
+        createPlayer("tor-magnus", 3),
       ],
     },
     {
