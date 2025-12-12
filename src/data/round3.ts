@@ -16,8 +16,8 @@ export const round3: Round = {
       players: [
         createPlayer("johanna"),
         createPlayer("per-kristian"),
-        { id: "winner-race-10", name: "Winner of Race 10", description: "" },
-        { id: "second-race-10", name: "2nd Place of Race 10", description: "" },
+        createPlayer("pal-oskar"),
+        createPlayer("christoffer-s"),
       ],
     },
     {

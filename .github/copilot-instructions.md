@@ -198,3 +198,88 @@ _Reminder: Race starts at [TIME] sharp in [LOCATION]. Don't be late!_
 
 - Description: "Master of Momentum - {name} flows through tracks..."
 - Ability title: "Master of Momentum"
+
+### Action: Advance Race Winners
+
+**Trigger phrase:** "execute advance race winners" or "advance winners to next round" or "continue winners to next round"
+
+**Purpose:** After a race is completed, automatically advance the 1st and 2nd place finishers to the next round without adding summaries or generating prospects.
+
+**Steps to execute:**
+
+1. **Identify today's completed race:**
+
+   - Use the current date to find the matching race in the appropriate round file (`src/data/round1.ts`, `round2.ts`, or `round3.ts`)
+   - Verify the race has `isFinished: true`
+   - Extract the player IDs with positions 1 and 2 from the `players` array
+
+2. **Determine the next round file:**
+
+   - Round 1 races (m1-m8) → Advance to Round 2 (`src/data/round2.ts`) quarterfinals
+   - Round 2 races (m9-m12) → Advance to Round 3 (`src/data/round3.ts`) semifinals
+   - Round 3 races (m13-m14) → Advance to Round 4 (`src/data/round4.ts`) finals
+
+3. **Find the correct match in the next round:**
+
+   - Match placeholder player IDs to determine which next-round match receives the winners
+   - Placeholders follow pattern: `{ id: "winner-race-X", name: "Winner of Race X", description: "" }`
+   - Example: Race 3 winners go to the match containing `"winner-race-3"` and `"second-race-3"` placeholders
+
+4. **Update the next round file:**
+
+   - If `createPlayer` import is missing, add it: `import { createPlayer } from "./players";`
+   - Replace placeholder objects with `createPlayer(playerId)` calls (NO position parameter)
+   - Maintain proper player order: 1st place winner, then 2nd place winner
+   - Preserve exact formatting and indentation
+
+5. **Validation rules:**
+
+   - Do NOT add race summaries
+   - Do NOT generate race prospects
+   - Do NOT add position parameters to `createPlayer()` calls in next round
+   - Do NOT mark next round races as finished
+   - Only modify the `players` array in the target match
+
+**Example transformation:**
+
+Before (in round2.ts):
+
+```typescript
+players: [
+  { id: "winner-race-3", name: "Winner of Race 3", description: "" },
+  { id: "winner-race-4", name: "Winner of Race 4", description: "" },
+  { id: "second-race-3", name: "2nd Place of Race 3", description: "" },
+  { id: "second-race-4", name: "2nd Place of Race 4", description: "" },
+],
+```
+
+After (race 3 completed with pal-oskar 1st, henrik-h 2nd):
+
+```typescript
+players: [
+  createPlayer("pal-oskar"),
+  createPlayer("henrik-h"),
+  { id: "winner-race-4", name: "Winner of Race 4", description: "" },
+  { id: "second-race-4", name: "2nd Place of Race 4", description: "" },
+],
+```
+
+**Race-to-Match mapping:**
+
+- Races 1-2 → Match m9 (quarterfinal 1)
+- Races 3-4 → Match m10 (quarterfinal 2)
+- Races 5-6 → Match m11 (quarterfinal 3)
+- Races 7-8 → Match m12 (quarterfinal 4)
+- Races 9-10 → Match m13 (semifinal 1)
+- Races 11-12 → Match m14 (semifinal 2)
+- Races 13-14 → Match m15 (final)
+
+**Response format:**
+
+After completing the update, provide a brief confirmation:
+
+```
+Done! Added the race X winners to [round name] match mY:
+- 1st: **player-name** (Player Title)
+- 2nd: **player-name** (Player Title)
+```
