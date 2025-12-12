@@ -283,3 +283,141 @@ Done! Added the race X winners to [round name] match mY:
 - 1st: **player-name** (Player Title)
 - 2nd: **player-name** (Player Title)
 ```
+
+### Action: Generate Post-Race Summary
+
+**Trigger phrase:** "execute post-race summary" or "write post race summary" or "generate race summary"
+
+**Purpose:** After a race is completed, generate an engaging post-race summary based on actual race results (positions) and player unique abilities.
+
+**Steps to execute:**
+
+1. **Identify today's completed race:**
+
+   - Use the current date to find the matching race in the appropriate round file
+   - Verify the race has `isFinished: true`
+   - Extract all player IDs and their positions from the `players` array
+
+2. **Get player information:**
+
+   - Look up each player ID in `src/data/players.ts` (`playerProfiles`)
+   - Extract: name and description (for ability titles/characteristics)
+   - Note ability titles from descriptions (text before the dash)
+
+3. **Generate the summary:**
+
+   - **CRITICAL**: Only reference actual positions and results - do NOT fabricate specific race incidents
+   - Use player abilities and characteristics to describe HOW they achieved their positions
+   - Reference the circuit/cup being raced
+   - Mention which players advance (1st and 2nd place)
+   - Use engaging, varied language while staying truthful
+
+4. **Content guidelines - DO:**
+
+   - Celebrate actual placements (1st, 2nd, 3rd, 4th)
+   - Reference player abilities and unique characteristics
+   - Mention general racing concepts (momentum, precision, speed, tactics, etc.)
+   - Note the circuit/cup tracks being raced
+   - Use varied, exciting language
+   - Include clickable player name placeholders: `{player-id}`
+
+5. **Content guidelines - DO NOT:**
+
+   - Fabricate specific race incidents (e.g., "fell to last place early", "red shell on final lap")
+   - Make up events that can be proven false
+   - Create detailed narratives about specific moments that didn't happen
+   - Claim positions changed in specific ways during the race
+
+6. **Special considerations:**
+
+   - If user mentions specific details (e.g., "close battle for 2nd", "stand-in player"), incorporate those
+   - If stand-in players are mentioned, include them with placeholder links: `{stand-in-player-id}`
+   - Keep summaries around 4-6 sentences
+   - Use unique phrasing for each summary (avoid repetitive patterns)
+
+7. **Update the race data:**
+
+   - Add the `summary` field to the race object in the appropriate round file
+   - Insert between the `prospect` field and `players` array
+   - Ensure proper indentation and formatting
+
+**Example good summary:**
+
+```typescript
+summary:
+  "Dominant Star Cup quarterfinal! {johanna}, the Master of Momentum, proved unstoppable with her flowing racing lines and perfect speed maintenance, claiming first place through sheer momentum mastery across the technical tracks. {per-kristian}, the Master of Chaos, secured second place by turning mayhem into opportunity at crucial moments, his chaos tactics proving decisive. {lise}, the Perfectionist, earned third with her flawless mini-turbos and surgical precision throughout the demanding circuits. {alexander}, the Intimidator, finished fourth despite his aggressive racing style and psychological warfare. {johanna} and {per-kristian} advance to the semifinals!",
+```
+
+**Response format:**
+
+After adding the summary, provide brief confirmation noting the race and advancing players.
+
+### Action: Generate Pre-Race Prospects
+
+**Trigger phrase:** "execute pre-race prospects" or "generate pre race prospects" or "write race prospects"
+
+**Purpose:** Generate exciting pre-race prospects for an upcoming race based on previous race results and player unique abilities.
+
+**Steps to execute:**
+
+1. **Identify the target race:**
+
+   - User will specify which race needs prospects (usually mentioned as "race X is ready")
+   - Locate the race in the appropriate round file
+   - Identify all players in the race
+
+2. **Research player backgrounds:**
+
+   - For each player, determine their previous race performance:
+     - Which race they came from
+     - What position they finished (1st or 2nd to advance)
+     - Look up the race summary to understand their performance
+   - Look up player abilities from `src/data/players.ts` (`playerProfiles`)
+   - Extract ability titles and characteristics from descriptions
+
+3. **Research circuit information:**
+
+   - Note the circuit/cup being raced
+   - If known, reference actual Mario Kart tracks in that cup
+   - Consider track characteristics (technical, flow-based, etc.)
+
+4. **Generate the prospect:**
+
+   - **CRITICAL**: Only reference actual previous race results - do NOT fabricate race incidents
+   - Mention each player's previous finish (1st or 2nd in their qualifying race)
+   - Reference player abilities and how they might apply to this race
+   - Note the increased CC speed if applicable (50cc → 100cc → 150cc)
+   - Reference actual circuit tracks if known
+   - Create excitement about the matchup without making false claims
+
+5. **Content guidelines - DO:**
+
+   - State actual previous race placements (e.g., "won Race 3", "secured second in Race 5")
+   - Reference player abilities and characteristics
+   - Mention circuit/cup and tracks being raced
+   - Note how abilities might interact with track types
+   - Create strategic matchup narratives (defense vs offense, speed vs precision, etc.)
+   - Use clickable player name placeholders: `{player-id}`
+
+6. **Content guidelines - DO NOT:**
+
+   - Fabricate specific events from previous races
+   - Make up details about HOW they won or got 2nd (unless from actual race summaries)
+   - Create false narratives about past performances
+
+7. **Update the race data:**
+
+   - Add the `prospect` field to the race object
+   - Ensure proper indentation and formatting
+   - Verify all player ID placeholders match exactly
+
+**Example good prospect:**
+
+```typescript
+prospect:
+  "The Quarterfinals bring an elite showdown on the Star Cup! {johanna}, the Master of Momentum, arrives fresh off her first-place finish in Race 1, her flowing racing lines and perfect speed maintenance making her a formidable force. {christoffer-s}, the Comeback Kid, won Race 2 with his mushroom mastery and determination - his resilience under pressure is legendary. {per-kristian}, the Master of Chaos, secured second in Race 1 with his ability to turn mayhem into opportunity at crucial moments. {lise}, the Perfectionist, earned second in Race 2 through flawless mini-turbos and surgical precision. The Star Cup features Wario Shipyard, Maple Treeway, Mushroom Gorge, and Grumble Volcano - technical tracks where one mistake can be costly. At 100cc speeds, {johanna}'s momentum mastery could dominate the flow-based tracks, while {lise}'s perfect execution might shine on technical sections. Two race winners clash with two proven contenders - who advances to the semifinals?",
+```
+
+**Response format:**
+
+After adding the prospect, provide brief confirmation noting the race and the players involved.
