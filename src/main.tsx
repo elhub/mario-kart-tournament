@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { NuqsAdapter } from "nuqs/adapters/react-router/v7";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "@/App";
 import RootLayout from "@/components/layout/RootLayout";
 import Error from "@/pages/error";

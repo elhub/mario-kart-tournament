@@ -179,7 +179,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
           <div className="flex justify-between gap-2">
             <div className="flex flex-col flex-1">
               <span className="text-xs text-muted-foreground">Circuit</span>
-              <Badge variant="purple" className="text-[10px] w-fit">
+              <Badge variant="purple" className="text-[10px] w-fit whitespace-nowrap">
                 {match.circuit}
               </Badge>
             </div>

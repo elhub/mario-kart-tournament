@@ -1,27 +1,6 @@
 import type { Race, Player } from "@/types";
 import { playerProfiles } from "@/data/players";
 
-/**
- * Generates a pre-race prospect with player names dynamically injected
- * @param match - The race match containing players and prospect template
- * @returns The prospect text with player names injected, or a default message
- */
-export function generateProspect(match: Race): string {
-  if (!match.prospect) {
-    return "The race is about to begin! May the best racer win!";
-  }
-
-  let prospect = match.prospect;
-
-  // Replace {player-slug} with actual player names
-  match.players.forEach((player) => {
-    const placeholder = `{${player.id}}`;
-    prospect = prospect.replaceAll(placeholder, player.name);
-  });
-
-  return prospect;
-}
-
 export type ProspectElement =
   | string
   | {

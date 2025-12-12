@@ -4,7 +4,7 @@ import prettierPlugin from "eslint-plugin-prettier";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 
-export default tseslint.config(
+export default [
   { ignores: ["dist"] },
   {
     files: ["**/*.{ts,tsx}"],
@@ -44,5 +44,5 @@ export default tseslint.config(
         version: "detect",
       },
     },
-  }
-);
+  },
+];

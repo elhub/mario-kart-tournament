@@ -17,7 +17,6 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
-    "@types/p5": "^1.7.7",
     "@vitejs/plugin-react": "^4.3.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,8 +29,8 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@types/css": "^0.0.38",
-    "@types/node": "^22.19.0",
+    "@types/node": "^22.19.2",
+    "@types/p5": "^1.7.7",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
@@ -41,7 +40,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "knip": "^5.68.0",
+    "knip": "^5.73.4",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.3",
