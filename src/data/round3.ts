@@ -31,9 +31,9 @@ export const round3: Round = {
       location: "Huben",
       // isFinished: true,
       players: [
-        { id: "winner-race-11", name: "Winner of Race 11", description: "" },
+        createPlayer("vebjorn"),
+        createPlayer("sergio"),
         { id: "winner-race-12", name: "Winner of Race 12", description: "" },
-        { id: "second-race-11", name: "2nd Place of Race 11", description: "" },
         { id: "second-race-12", name: "2nd Place of Race 12", description: "" },
       ],
     },
