@@ -4,6 +4,8 @@
 
 React + TypeScript tournament bracket visualization for a Mario Kart competition. Built with Vite, Chakra UI, and deployed to GitHub Pages at `/mario-kart-tournament/` base path.
 
+**Game Information:** This tournament uses **Nintendo Mario Kart World** on Switch 2. All information about tracks, circuits, in-game characters, items, and game mechanics should reference this specific game.
+
 ## Architecture & Data Model
 
 ### Core Type Hierarchy
