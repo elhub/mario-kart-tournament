@@ -69,10 +69,15 @@ export const round2: Round = {
       circuit: "Banana Cup",
       cc: "100cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The final Quarterfinal delivers high-stakes drama on the Banana Cup! {jorgen} won Race 7 with ice-cold composure and nerves of steel, maintaining absolute control under pressure when victory was on the line. {sander}, the Drift King, claimed Race 8 victory through flawless cornering technique and precision mastery on every turn. {bastian}, The Veteran, secured second in Race 7 with clutch moves at crucial moments, his years of experience shining through. {markus-b}, The Anchor, earned second in Race 8 by staying unshakeably steady through chaos with his ironclad nerves and focus. The Banana Cup features Sherbet Land, Shy Guy Beach, Dino Dino Jungle, and Bowser Castle 3 - demanding tracks where both mental fortitude and technical skill matter. At 100cc speeds, {jorgen}'s cool-under-pressure mentality faces {sander}'s corner-perfect precision, while {bastian}'s veteran wisdom battles {markus-b}'s unshakeable steadiness. Two ice-cold winners meet two rock-solid second-placers - who claims the final semifinal spot?",
-      players: [createPlayer("jorgen"), createPlayer("sander"), createPlayer("bastian"), createPlayer("markus-b")],
+      players: [
+        createPlayer("jorgen", 4),
+        createPlayer("sander", 2),
+        createPlayer("bastian", 3),
+        createPlayer("markus-b", 1),
+      ],
     },
   ],
 };
