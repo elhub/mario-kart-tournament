@@ -31,10 +31,15 @@ export const round3: Round = {
       circuit: "Lightning Cup",
       cc: "150cc",
       location: "Huben",
-      // isFinished: true,
+      isFinished: true,
       prospect:
         "The second Semifinal electrifies with a clash of champions on the Lightning Cup! {johanna}, the Master of Momentum, dominated the Star Cup quarterfinals in first place with unstoppable flowing racing lines and perfect speed maintenance - her momentum mastery has proven devastating throughout the tournament. {markus-b}, The Anchor, won the Banana Cup quarterfinals through unshakeable focus and ironclad nerves, his hours of YouTube pro tip study paying off with championship-caliber performance. {sergio}, The Thunder, secured second in the Shell Cup quarterfinals with explosive acceleration and lightning-bolt speed, his dominant racing style nearly claiming victory. {sander}, The Drift King, earned second in the Banana Cup with fearless precision cornering and flawless technique that required no tutorials - pure natural mastery. Now at blistering 150cc speeds on the Lightning Cup, the intensity skyrockets. Two quarterfinal champions with contrasting styles - {johanna}'s flow versus {markus-b}'s studied precision - face two powerful second-placers in {sergio}'s thunder and {sander}'s surgical drifts. Will YouTube Academy triumph, or does natural talent reign supreme? Only two advance to the finals!",
-      players: [createPlayer("johanna"), createPlayer("sergio"), createPlayer("markus-b"), createPlayer("sander")],
+      players: [
+        createPlayer("johanna", 3),
+        createPlayer("sergio", 3),
+        createPlayer("markus-b", 1),
+        createPlayer("sander", 2),
+      ],
     },
   ],
 };
