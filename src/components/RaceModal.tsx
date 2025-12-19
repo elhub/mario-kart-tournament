@@ -1,11 +1,6 @@
 import type { Race, Player } from "@/types";
 import { generateProspectElements } from "@/utils/prospectUtils";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -14,10 +9,12 @@ interface RaceModalProps {
   onClose: () => void;
   match: Race;
   onPlayerClick: (player: Player) => void;
+  roundName?: string;
 }
 
-export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalProps) => {
+export const RaceModal = ({ isOpen, onClose, match, onPlayerClick, roundName }: RaceModalProps) => {
   const matchNumber = match.id.replace(/\D/g, "");
+  const isFinals = roundName === "Finals";
 
   // Helper function to get position emoji
   const getPositionEmoji = (position?: number) => {
@@ -85,9 +82,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🏁</span>
-                  <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">
-                    The Competitors
-                  </h3>
+                  <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">The Competitors</h3>
                 </div>
                 <div className="flex flex-wrap gap-3 justify-center">
                   {match.players.map((player) => (
@@ -108,9 +103,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
                 <div className="bg-orange-50 dark:bg-orange-900 p-6 rounded-xl border-l-4 border-orange-500">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl">📊</span>
-                    <h3 className="text-sm font-semibold text-orange-700 dark:text-orange-300">
-                      Race Analysis
-                    </h3>
+                    <h3 className="text-sm font-semibold text-orange-700 dark:text-orange-300">Race Analysis</h3>
                   </div>
                   <p className="text-md leading-relaxed">
                     {generateProspectElements(match, onPlayerClick).map((element) => {
@@ -144,9 +137,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🏆</span>
-                  <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">
-                    Final Results
-                  </h3>
+                  <h3 className="text-sm font-semibold text-purple-700 dark:text-purple-300">Final Results</h3>
                 </div>
                 <div className="space-y-3">
                   {match.players
@@ -154,15 +145,18 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
                     .sort((a, b) => (a.position || 0) - (b.position || 0))
                     .map((player) => {
                       const positionEmoji = getPositionEmoji(player.position);
-                      const isQualified = player.position && player.position <= 2;
+                      // In Finals, don't show "Qualified" badge. In other rounds, show for 1st and 2nd
+                      const isQualified = !isFinals && player.position && player.position <= 2;
+                      // In Finals, highlight top 3. In other rounds, highlight top 2
+                      const isHighlighted = isFinals
+                        ? player.position === 1 || player.position === 2 || player.position === 3
+                        : player.position === 1 || player.position === 2;
 
                       return (
                         <div
                           key={player.id}
                           className={`p-4 rounded-lg flex justify-between items-center border-l-4 cursor-pointer hover:scale-[1.02] transition-transform ${
-                            player.position === 1
-                              ? "bg-yellow-100 dark:bg-yellow-900 border-yellow-500"
-                              : player.position === 2
+                            isHighlighted
                               ? "bg-yellow-100 dark:bg-yellow-900 border-yellow-500"
                               : "bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                           }`}
@@ -190,9 +184,7 @@ export const RaceModal = ({ isOpen, onClose, match, onPlayerClick }: RaceModalPr
                 <div className="bg-green-50 dark:bg-green-900 p-6 rounded-xl border-l-4 border-green-500">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-2xl">📝</span>
-                    <h3 className="text-sm font-semibold text-green-700 dark:text-green-300">
-                      Race Summary
-                    </h3>
+                    <h3 className="text-sm font-semibold text-green-700 dark:text-green-300">Race Summary</h3>
                   </div>
                   <p className="text-md leading-relaxed">
                     {generateProspectElements({ ...match, prospect: match.summary }, onPlayerClick).map((element) => {

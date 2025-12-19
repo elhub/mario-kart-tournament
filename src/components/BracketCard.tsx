@@ -4,12 +4,7 @@ import { RaceModal } from "./RaceModal";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; roundName: string; rowIndex: number }) => {
@@ -71,12 +66,23 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
       return "hover:bg-muted/50";
     }
 
-    // 1st and 2nd place get highlighted backgrounds
-    if (player.position === 1 || player.position === 2) {
-      return "bg-yellow-200 dark:bg-yellow-800 hover:bg-yellow-300 dark:hover:bg-yellow-700";
+    // For finals (4 players), highlight top 3 with yellow
+    // For other rounds (also 4 players), only highlight 1st and 2nd who advance
+    const isFinals = roundName === "Finals";
+
+    if (isFinals) {
+      // Finals: 1st, 2nd, and 3rd place get highlighted backgrounds
+      if (player.position === 1 || player.position === 2 || player.position === 3) {
+        return "bg-yellow-200 dark:bg-yellow-800 hover:bg-yellow-300 dark:hover:bg-yellow-700";
+      }
+    } else {
+      // Other rounds: 1st and 2nd place get highlighted backgrounds (they advance)
+      if (player.position === 1 || player.position === 2) {
+        return "bg-yellow-200 dark:bg-yellow-800 hover:bg-yellow-300 dark:hover:bg-yellow-700";
+      }
     }
 
-    // 3rd and 4th place remain normal
+    // 3rd and 4th place remain normal (or 4th in finals)
     return "hover:bg-muted/50";
   };
 
@@ -91,32 +97,22 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         id={match.id}
         className={cn(
           "relative w-[210px] overflow-hidden shadow-2xl transition-all duration-200",
-          allPlayersAssigned && hasRaceContent && "cursor-pointer hover:scale-105 hover:border-teal-500 dark:hover:border-teal-400"
+          allPlayersAssigned &&
+            hasRaceContent &&
+            "cursor-pointer hover:scale-105 hover:border-teal-500 dark:hover:border-teal-400"
         )}
         onClick={handleCardClick}
       >
         {/* Finished Race Flag */}
-        {match.isFinished && (
-          <div className="absolute top-0 right-1 text-xl z-10">
-            🏁
-          </div>
-        )}
+        {match.isFinished && <div className="absolute top-0 right-1 text-xl z-10">🏁</div>}
 
         {/* Header Section - Race Info */}
         <div className="bg-teal-50 dark:bg-teal-900 px-3 py-2.5 border-b">
           <div className="flex flex-col space-y-0.5">
-            <span className="text-xs font-bold text-muted-foreground leading-tight">
-              Race {matchNumber}
-            </span>
-            <span className="text-xs font-medium leading-tight">
-              {match.date}
-            </span>
-            <span className="text-xs text-muted-foreground leading-tight">
-              {match.time}
-            </span>
-            <span className="text-xs font-medium leading-tight">
-              @{match.location}
-            </span>
+            <span className="text-xs font-bold text-muted-foreground leading-tight">Race {matchNumber}</span>
+            <span className="text-xs font-medium leading-tight">{match.date}</span>
+            <span className="text-xs text-muted-foreground leading-tight">{match.time}</span>
+            <span className="text-xs font-medium leading-tight">@{match.location}</span>
           </div>
         </div>
 
@@ -142,9 +138,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                       data-position={p.position}
                     >
                       <div className="flex justify-between items-center w-full gap-2">
-                        <span className="font-semibold text-sm leading-tight truncate">
-                          {p.name}
-                        </span>
+                        <span className="font-semibold text-sm leading-tight truncate">{p.name}</span>
                         {match.isFinished && p.position && (
                           <span className="text-base flex-shrink-0">{getPositionEmoji(p.position)}</span>
                         )}
@@ -155,9 +149,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                     <TooltipContent side="right" className="max-w-xs" sideOffset={8}>
                       <div className="space-y-2">
                         <p className="font-bold text-white">{p.name}</p>
-                        <p className="text-sm text-white leading-relaxed">
-                          {p.description.replace("{name}", p.name)}
-                        </p>
+                        <p className="text-sm text-white leading-relaxed">{p.description.replace("{name}", p.name)}</p>
                         <div className="flex flex-wrap gap-2 pt-1">
                           {p.attributes?.map((attr, idx) => (
                             <Badge key={idx} variant="blue" className="text-xs">
@@ -210,9 +202,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
               <div className="bg-teal-50 dark:bg-teal-900 p-6 rounded-xl border-l-4 border-teal-600">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">⚡</span>
-                <h3 className="text-sm font-semibold text-teal-700 dark:text-teal-300">
-                    Unique Abilities
-                  </h3>
+                  <h3 className="text-sm font-semibold text-teal-700 dark:text-teal-300">Unique Abilities</h3>
                 </div>
                 <p className="text-md leading-relaxed">
                   {selectedPlayer?.description?.replace(/\{name\}/g, selectedPlayer.name)}
@@ -224,9 +214,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                   {selectedPlayer.attributes.map((attr, index) => (
                     <div key={index} className="flex flex-col items-center">
                       <span className="text-3xl">{attr.emoji}</span>
-                      <span className="text-xs text-muted-foreground text-center">
-                        {attr.label}
-                      </span>
+                      <span className="text-xs text-muted-foreground text-center">{attr.label}</span>
                     </div>
                   ))}
                 </div>
@@ -241,6 +229,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
           onClose={() => setIsRaceModalOpen(false)}
           match={match}
           onPlayerClick={handleRaceModalPlayerClick}
+          roundName={roundName}
         />
       </Card>
     </div>
