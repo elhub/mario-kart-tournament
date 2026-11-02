@@ -120,7 +120,7 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
         <div className="flex flex-col border-y">
           <TooltipProvider delayDuration={300}>
             {match.players.map((p, index) => {
-              const isPlaceholder = Boolean(p.name.match(/^Player \d+$/));
+              const isPlaceholder = Boolean(p.name.match(/^Player \d+$/)) || Boolean(p.isPlaceholder);
               const isClickable = p.description && !isPlaceholder;
 
               return (
@@ -138,7 +138,14 @@ export const BracketCard = ({ match, roundName, rowIndex }: { match: Race; round
                       data-position={p.position}
                     >
                       <div className="flex justify-between items-center w-full gap-2">
-                        <span className="font-semibold text-sm leading-tight truncate">{p.name}</span>
+                        <span
+                          className={cn(
+                            "font-semibold text-sm leading-tight truncate",
+                            p.isPlaceholder && "font-normal italic text-muted-foreground"
+                          )}
+                        >
+                          {p.name}
+                        </span>
                         {match.isFinished && p.position && (
                           <span className="text-base flex-shrink-0">{getPositionEmoji(p.position)}</span>
                         )}
