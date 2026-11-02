@@ -9,6 +9,7 @@ export type Player = {
   description?: string;
   attributes?: RacingAttribute[];
   position?: number; // 1st, 2nd, 3rd, 4th place
+  isPlaceholder?: boolean; // Empty slot, rendered as "TBD"
 };
 
 export type Race = {
@@ -34,4 +35,10 @@ export type Round = {
 export type Tournament = {
   id: string;
   rounds: Round[];
+};
+
+export type RulesInfo = {
+  dateRange: string;
+  time: string;
+  location: string;
 };

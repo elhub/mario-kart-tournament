@@ -1,12 +1,21 @@
 import { useEffect, useRef } from "react";
 import p5 from "p5";
+import { cn } from "@/lib/utils";
 
-export const BracketConnections = () => {
+interface BracketConnectionsProps {
+  isVisible?: boolean;
+  onReady?: () => void;
+}
+
+export const BracketConnections = ({ isVisible = true, onReady }: BracketConnectionsProps) => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const p5Instance = useRef<p5 | null>(null);
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
 
   useEffect(() => {
     if (!canvasRef.current) return;
+    let hasNotifiedReady = false;
 
     // Race connection mapping: source match -> destination match
     const matchConnections: Record<string, string> = {
@@ -51,6 +60,12 @@ export const BracketConnections = () => {
         }
 
         drawConnections(p);
+
+        // p5 starts after window load, so the first frame is the earliest the lines can be shown.
+        if (!hasNotifiedReady) {
+          hasNotifiedReady = true;
+          onReadyRef.current?.();
+        }
       };
 
       p.windowResized = () => {
@@ -121,16 +136,25 @@ export const BracketConnections = () => {
       };
     };
 
-    p5Instance.current = new p5(sketch);
+    // StrictMode mounts twice in dev, and p5.remove() cannot cancel a sketch whose async setup is still pending.
+    const timer = window.setTimeout(() => {
+      p5Instance.current = new p5(sketch);
+    }, 0);
 
     return () => {
-      if (p5Instance.current) {
-        p5Instance.current.remove();
-      }
+      window.clearTimeout(timer);
+      p5Instance.current?.remove();
+      p5Instance.current = null;
     };
   }, []);
 
   return (
-    <div ref={canvasRef} className="absolute top-0 left-0 w-px h-px pointer-events-none z-0" />
+    <div
+      ref={canvasRef}
+      className={cn(
+        "absolute top-0 left-0 w-px h-px pointer-events-none z-0 transition-opacity duration-300",
+        !isVisible && "opacity-0"
+      )}
+    />
   );
 };
